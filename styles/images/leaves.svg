@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
+  <title>Leaf pattern</title>
+  <g fill="none" stroke="#3e4a2b" stroke-width="1.5" stroke-opacity="0.16" stroke-linecap="round">
+    <path d="M30 60 C30 30 55 15 80 15 C80 45 60 65 30 60 Z"/>
+    <path d="M30 60 L68 26"/>
+    <path d="M100 150 C100 120 125 105 150 105 C150 135 130 155 100 150 Z"/>
+    <path d="M100 150 L138 116"/>
+  </g>
+</svg>

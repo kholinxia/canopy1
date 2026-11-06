@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!--
+  index.html - home page
+  COS10005 Web Development, Assignment 2 (Semester 2, 2026)
+  Lincoln Kho Jia Heng, 105808759
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Lincoln Kho Jia Heng (105808759)" />
+    <meta name="keywords" content="Sarawak, plants, ERT, citizen science, Dipterocarpaceae, Burseraceae, biodiversity" />
+    <meta name="description" content="Canopy - a citizen science platform for identifying and tracking Endangered, Rare and Threatened plants in Sarawak, Malaysia." />
+    <title>Canopy | Home</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 700px)" />
+    <script src="scripts/script.js" defer="defer"></script>
+    <script src="scripts/enhancements.js" defer="defer"></script>
+</head>
+<body>
+    <!-- top of the page: logo, tagline, menu -->
+    <header>
+        <h1 class="brand">
+            <a href="index.html" class="brand-link">
+                <img src="images/logo.svg" alt="Canopy logo" class="logo-icon" width="56" height="34" />
+            </a>
+        </h1>
+        <p class="tagline">A citizen science platform for Endangered, Rare &amp; Threatened plants</p>
+        <nav>
+            <!-- hamburger menu for phones: hidden checkbox + label, no JavaScript -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+            <label for="nav-toggle" class="nav-toggle-label"><span class="burger-icon">&#9776;</span><span class="burger-text">Menu</span></label>
+            <ul class="menu">
+                <li class="has-dropdown">
+                    <a href="explore.html">Explore</a>
+                    <ul class="dropdown">
+                        <li><a href="explore1.html">Families</a></li>
+                        <li><a href="explore2.html">Genera</a></li>
+                        <li><a href="explore3.html">Species</a></li>
+                    </ul>
+                </li>
+                <li><a href="identify.html">Identify</a></li>
+                <li><a href="contributor.html">Contributors</a></li>
+                <li><a href="contribute.html">Contribute</a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- wrapper: main column on the left, manual box on the right -->
+    <div class="page-layout">
+    <!-- main part of the page -->
+    <main>
+        <!-- section: hero -->
+        <section id="hero">
+            <h2 class="visually-hidden">Welcome to Canopy</h2>
+            <figure>
+                <img src="images/hero-rainforest.jpg" alt="Bornean rainforest canopy in Sarawak" width="800" height="400" />
+                <figcaption>The rainforests of Sarawak hold some of the richest, and most threatened, plant biodiversity on Earth. <span class="photo-credit">Photo: <a href="https://en.wikipedia.org/wiki/Borneo_lowland_rain_forests#/media/File:Primary_Rainforest_(10623380025).jpg">Wikipedia</a></span></figcaption>
+            </figure>
+        </section>
+
+        <!-- section: intro -->
+        <section id="intro">
+            <h2>Why Canopy exists</h2>
+            <p>
+                Malaysia is recognised as one of the world's biodiversity hotspots, but the same forests that
+                shelter thousands of plant species are under growing pressure from agriculture, logging and
+                land conversion. Scientists cannot monitor every hillside and river valley on their own, which
+                is where <strong>citizen science</strong> comes in. Canopy is an alpha-stage web
+                platform that invites everyday hikers, students and nature enthusiasts to help track
+                Endangered, Rare and Threatened (ERT) plant species across Sarawak.
+            </p>
+            <p>
+                Through this site, visitors can browse a growing plant encyclopedia organised by family, genus
+                and species, learn how to recognise ERT plants in the field, submit their own sightings for
+                review, and get in touch with the project team. Every contribution — even a single photograph
+                with a location note — adds to a dataset that conservationists can use to prioritise protection
+                efforts.
+            </p>
+        </section>
+
+        <!-- section: how it works -->
+        <section id="how-it-works">
+            <h2>How the project works</h2>
+            <article>
+                <h3>1. Learn</h3>
+                <p>Explore family, genus and species pages to understand what makes a plant rare or threatened.</p>
+            </article>
+            <article>
+                <h3>2. Spot</h3>
+                <p>Use the identification guide when you're out on the trail to narrow down what you've found.</p>
+            </article>
+            <article>
+                <h3>3. Report</h3>
+                <p>Submit your sighting through the contribution form so it can be verified by our reviewers.</p>
+            </article>
+        </section>
+
+        <!-- section: explore links -->
+        <section id="explore-links">
+            <h2>Explore the plant encyclopedia</h2>
+            <article>
+                <h3>Families</h3>
+                <p>Start at the top level and meet the plant families tracked by the platform.</p>
+                <a href="explore1.html" class="btn">Browse families</a>
+            </article>
+            <article>
+                <h3>Genera</h3>
+                <p>See the closely related groups of plants that make up each family.</p>
+                <a href="explore2.html" class="btn">Browse genera</a>
+            </article>
+            <article>
+                <h3>Species</h3>
+                <p>Read profiles of individual species, with photos and field notes.</p>
+                <a href="explore3.html" class="btn">Browse species</a>
+            </article>
+        </section>
+
+        <!-- plant slideshow: filled in by scripts/enhancements.js -->
+        <section id="plant-slideshow-section">
+            <h2>Plant slideshow</h2>
+            <div id="plant-slideshow" class="slideshow"></div>
+            <noscript><p>Turn on JavaScript to see the plant slideshow here.</p></noscript>
+        </section>
+
+        <!-- demo video: button goes to YouTube, same video is embedded on video.html -->
+        <section id="demo-video">
+            <h2>Watch the demo video</h2>
+            <p>A 10 to 12 minute walkthrough of the whole website, with the key features and the code behind them explained.</p>
+            <a href="https://youtu.be/JJjthoW2Zk4" class="btn" target="_blank" rel="noopener">Watch on YouTube</a>
+            <p>Or watch it on the <a href="video.html">Video page</a>.</p>
+        </section>
+
+        <hr />
+
+        <!-- aside: a related note -->
+        <aside>
+            <h2>Did you know?</h2>
+            <p>
+                Sarawak alone is home to more than 8,000 recorded species of flowering plants, and new species
+                are still being described every year in its interior forests.
+            </p>
+        </aside>
+    </main>
+    <!-- manual box (aside), floats right -->
+    <aside class="manual-box" aria-label="Page manual">
+        <h2>Manual</h2>
+        <h3>Using Canopy</h3>
+        <!-- ordered list -->
+        <ol>
+            <li>Use the menu at the top for the main pages. On a phone, tap the <strong>Menu</strong> button. Video, the two Acknowledgement pages and the two Enhancements pages (CSS and JavaScript) are in the footer.</li>
+            <li>Start with Explore to learn about families, genera and species.</li>
+            <li>Out on the trail? Use Identify to narrow down what you found, then Contribute to report it.</li>
+        </ol>
+    </aside>
+    </div>
+
+    <!-- bottom bar: buttons to Contribute and Enquiry -->
+    <section class="cta-bar" aria-label="Get involved">
+        <div class="cta-text">
+            <h2>Spotted a plant, or have a question?</h2>
+            <p>Send in a sighting for review, or ask the team about the project.</p>
+        </div>
+        <div class="cta-actions">
+            <a href="contribute.html" class="btn cta-primary">Contribute</a>
+            <a href="enquiry.html" class="btn cta-secondary">Enquiry</a>
+        </div>
+    </section>
+
+    <!-- footer: links, my email (mailto) and copyright -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-about">
+                <p class="footer-brand">Canopy</p>
+                <p>A citizen science platform for Endangered, Rare &amp; Threatened plants of Sarawak, Malaysia.</p>
+            </div>
+            <nav class="footer-col" aria-label="Explore plants">
+                <h2>Explore</h2>
+                <ul>
+                    <li><a href="explore1.html">Families</a></li>
+                    <li><a href="explore2.html">Genera</a></li>
+                    <li><a href="explore3.html">Species</a></li>
+                    <li><a href="identify.html">Identify</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Get involved">
+                <h2>Get involved</h2>
+                <ul>
+                    <li><a href="contributor.html">Contributors</a></li>
+                    <li><a href="contribute.html">Contribute</a></li>
+                    <li><a href="enquiry.html">Enquiry</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Site information">
+                <h2>Information</h2>
+                <ul>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="https://youtu.be/JJjthoW2Zk4" target="_blank" rel="noopener">Demo video</a></li>
+                    <li><a href="video.html">Video page</a></li>
+                    <li><a href="enhancement1.html">Enhancements 1 (CSS)</a></li>
+                    <li><a href="enhancement2.html">Enhancements 2 (JavaScript)</a></li>
+                    <li><a href="acknowledgement.html">Acknowledgement 1</a></li>
+                    <li><a href="acknowledgement2.html">Acknowledgement 2</a></li>
+                </ul>
+            </nav>
+        </div>
+        <p class="footer-contact">Contact: <a href="mailto:105808759@students.swinburne.edu.my">105808759@students.swinburne.edu.my</a></p>
+        <p class="footer-legal">&#169; 2026 Canopy. Prepared for COS10005 Web Development, Assignment 2, Semester 2 2026, Swinburne University of Technology Sarawak. For educational use only.</p>
+    </footer>
+</body>
+</html>

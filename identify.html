@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<!--
+  identify.html - identify page
+  COS10005 Web Development, Assignment 2 (Semester 2, 2026)
+  Lincoln Kho Jia Heng, 105808759
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Lincoln Kho Jia Heng (105808759)" />
+    <meta name="keywords" content="Sarawak, plants, ERT, citizen science, Dipterocarpaceae, Burseraceae, biodiversity" />
+    <meta name="description" content="Guide to identifying ERT plants in the field for Canopy contributors." />
+    <title>Canopy | Identify</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 700px)" />
+    <script src="scripts/script.js" defer="defer"></script>
+    <script src="scripts/enhancements.js" defer="defer"></script>
+</head>
+<body>
+    <!-- top of the page: logo, tagline, menu -->
+    <header>
+        <h1 class="brand">
+            <a href="index.html" class="brand-link">
+                <img src="images/logo.svg" alt="Canopy logo" class="logo-icon" width="56" height="34" />
+            </a>
+        </h1>
+        <p class="tagline">A citizen science platform for Endangered, Rare &amp; Threatened plants</p>
+        <nav>
+            <!-- hamburger menu for phones: hidden checkbox + label, no JavaScript -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+            <label for="nav-toggle" class="nav-toggle-label"><span class="burger-icon">&#9776;</span><span class="burger-text">Menu</span></label>
+            <ul class="menu">
+                <li class="has-dropdown">
+                    <a href="explore.html">Explore</a>
+                    <ul class="dropdown">
+                        <li><a href="explore1.html">Families</a></li>
+                        <li><a href="explore2.html">Genera</a></li>
+                        <li><a href="explore3.html">Species</a></li>
+                    </ul>
+                </li>
+                <li><a href="identify.html">Identify</a></li>
+                <li><a href="contributor.html">Contributors</a></li>
+                <li><a href="contribute.html">Contribute</a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- wrapper: main column on the left, manual box on the right -->
+    <div class="page-layout">
+    <!-- main part of the page -->
+    <main>
+        <h2>Identifying an ERT plant in the field</h2>
+        <p>
+            One of the biggest barriers to citizen science is confidence: many hikers see something unusual but
+            aren't sure whether it's worth reporting. This page walks through a simple process for narrowing down
+            what you've found, even without formal botanical training. The long-term goal of the Canopy
+            project is to pair this manual process with an automatic visual identification engine, but this alpha
+            release focuses on giving contributors a clear manual workflow first.
+        </p>
+
+        <!-- section: visual cues -->
+        <section id="visual-cues">
+            <h3>Start with the obvious visual cues</h3>
+            <p>
+                Before trying to match a tree to a species, look for a handful of large, easy-to-spot features,
+                either on the tree itself or on what has fallen from it. A papery winged fruit, or a tall trunk that
+                flares into buttress roots at the base, points to a dipterocarp such as <em>Dipterocarpus</em> or
+                <em>Hopea</em>. A leaf made of several leaflets along one stalk, combined with fragrant resin on the
+                bark, points to the incense-tree family and the genera <em>Canarium</em> and <em>Santiria</em>.
+                Because their fruit, leaves and smell differ so clearly, this first step usually narrows things down quickly.
+            </p>
+            <figure>
+                <img src="images/identify-comparison.jpg" alt="Side-by-side comparison of a dry winged Dipterocarpus fruit and a small fleshy Santiria fruit" width="600" height="400" />
+                <figcaption>Left: the fruit of a <em>Dipterocarpus</em> tree, carried on long papery wings. Right: the fruit of a <em>Santiria</em> tree, a small fleshy drupe that ripens from green through red to black. The fruit alone usually tells the two families apart.</figcaption>
+            </figure>
+        </section>
+
+        <!-- section: narrowing down -->
+        <section id="narrowing-down">
+            <h3>Narrowing down the species</h3>
+            <p>
+                Once you know the family, elevation and habitat are usually the fastest way to narrow things down
+                further. A very tall tree with a straight, clean trunk and long-winged fruit on the ground in lowland forest could be
+                <em>Dipterocarpus grandiflorus</em> or <em>Dipterocarpus cornutus</em>, while a tree in swamp forest that
+                floods now and then may be <em>Hopea nutans</em>. For the incense-tree family, the resin-scented bark and
+                leaflet stalks that dry black on <em>Santiria laevigata</em>, or the swampy habitat and reddish fruit of
+                <em>Santiria apiculata</em>, are useful clues once you compare your photos against the species profiles on the Explore page.
+            </p>
+            <!-- ordered list -->
+            <ol>
+                <li>Identify the family from the fruit, leaves and bark of the tree.</li>
+                <li>Note the elevation, habitat type, and nearby vegetation.</li>
+                <li>Compare leaf shape, bark and fruit against the species pages.</li>
+                <li>If still unsure, submit the sighting anyway and let a reviewer confirm it.</li>
+            </ol>
+            <!-- definition list -->
+            <dl>
+                <dt>Elevation</dt>
+                <dd>Height above sea level; a strong indicator for narrowing down which <em>Hopea</em> or <em>Santiria</em> species you may have found.</dd>
+                <dt>Habitat type</dt>
+                <dd>Broad category such as lowland mixed dipterocarp forest, peat swamp forest, or freshwater swamp forest.</dd>
+            </dl>
+            <div class="table-scroll">
+                <!-- table: Field clues for the two families -->
+                <table class="data-table">
+                    <caption>Field clues for the two families</caption>
+                    <thead>
+                        <tr><th scope="col">Clue</th><th scope="col">Dipterocarpaceae</th><th scope="col">Burseraceae</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Fruit</td><td>Dry fruit carried on papery wings</td><td>Small fleshy fruit (a drupe)</td></tr>
+                        <tr><td>Leaves</td><td>Single leaf blades</td><td>Several leaflets along one stalk</td></tr>
+                        <tr><td>Trunk and bark</td><td>Tall, straight trunk, often with buttress roots</td><td>Resin-scented bark</td></tr>
+                        <tr><td>Genera on this site</td><td><em>Dipterocarpus</em>, <em>Hopea</em></td><td><em>Canarium</em>, <em>Santiria</em></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- section: upload preview -->
+        <section id="upload-preview">
+            <h3>Upload a photo (preview)</h3>
+            <p>
+                This is an early, structure-only preview of the automatic visual identification engine described
+                in the project brief: eventually, uploading a photo here will suggest a likely species for you to
+                confirm. For now it only shows the basic upload control; no analysis is performed yet.
+            </p>
+            <!-- form: validation is HTML5 only (required, pattern, maxlength), no JavaScript -->
+            <form action="#" method="post" enctype="multipart/form-data" id="identify-upload-form">
+                <div class="form-row">
+                    <label for="id-photo">Upload a photo:</label>
+                    <input type="file" id="id-photo" name="id-photo" accept="image/*" />
+                </div>
+                <div class="form-row form-actions">
+                    <button type="submit">Submit</button>
+                    <button type="reset">Cancel</button>
+                </div>
+            </form>
+        </section>
+
+        <hr />
+
+        <!-- aside: a related note -->
+        <aside>
+            <h2>When in doubt, don't guess</h2>
+            <p>
+                It's always better to submit an uncertain sighting through the Contribute page than to skip
+                reporting it. Reviewers on our team are able to confirm identification from good photographs even
+                when the contributor isn't sure of the exact species.
+            </p>
+        </aside>
+    </main>
+    <!-- manual box (aside), floats right -->
+    <aside class="manual-box" aria-label="Page manual">
+        <h2>Manual</h2>
+        <h3>How to identify a plant</h3>
+        <!-- ordered list -->
+        <ol>
+            <li>A winged fruit or buttressed trunk suggests a dipterocarp; compound leaves with fragrant resin suggest Burseraceae.</li>
+            <li>Note the elevation and habitat.</li>
+            <li>Compare leaves, bark and fruit with the Species page.</li>
+            <li>Optional: choose a photo in the upload box and press Submit (preview only, no analysis yet).</li>
+            <li>Still unsure? Go to Contribute.</li>
+        </ol>
+    </aside>
+    </div>
+
+    <!-- bottom bar: buttons to Contribute and Enquiry -->
+    <section class="cta-bar" aria-label="Get involved">
+        <div class="cta-text">
+            <h2>Spotted a plant, or have a question?</h2>
+            <p>Send in a sighting for review, or ask the team about the project.</p>
+        </div>
+        <div class="cta-actions">
+            <a href="contribute.html" class="btn cta-primary">Contribute</a>
+            <a href="enquiry.html" class="btn cta-secondary">Enquiry</a>
+        </div>
+    </section>
+
+    <!-- footer: links, my email (mailto) and copyright -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-about">
+                <p class="footer-brand">Canopy</p>
+                <p>A citizen science platform for Endangered, Rare &amp; Threatened plants of Sarawak, Malaysia.</p>
+            </div>
+            <nav class="footer-col" aria-label="Explore plants">
+                <h2>Explore</h2>
+                <ul>
+                    <li><a href="explore1.html">Families</a></li>
+                    <li><a href="explore2.html">Genera</a></li>
+                    <li><a href="explore3.html">Species</a></li>
+                    <li><a href="identify.html" aria-current="page">Identify</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Get involved">
+                <h2>Get involved</h2>
+                <ul>
+                    <li><a href="contributor.html">Contributors</a></li>
+                    <li><a href="contribute.html">Contribute</a></li>
+                    <li><a href="enquiry.html">Enquiry</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Site information">
+                <h2>Information</h2>
+                <ul>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="https://youtu.be/JJjthoW2Zk4" target="_blank" rel="noopener">Demo video</a></li>
+                    <li><a href="video.html">Video page</a></li>
+                    <li><a href="enhancement1.html">Enhancements 1 (CSS)</a></li>
+                    <li><a href="enhancement2.html">Enhancements 2 (JavaScript)</a></li>
+                    <li><a href="acknowledgement.html">Acknowledgement 1</a></li>
+                    <li><a href="acknowledgement2.html">Acknowledgement 2</a></li>
+                </ul>
+            </nav>
+        </div>
+        <p class="footer-contact">Contact: <a href="mailto:105808759@students.swinburne.edu.my">105808759@students.swinburne.edu.my</a></p>
+        <p class="footer-legal">&#169; 2026 Canopy. Prepared for COS10005 Web Development, Assignment 2, Semester 2 2026, Swinburne University of Technology Sarawak. For educational use only.</p>
+    </footer>
+</body>
+</html>

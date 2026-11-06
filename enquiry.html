@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<!--
+  enquiry.html - enquiry form
+  COS10005 Web Development, Assignment 2 (Semester 2, 2026)
+  Lincoln Kho Jia Heng, 105808759
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Lincoln Kho Jia Heng (105808759)" />
+    <meta name="keywords" content="Sarawak, plants, ERT, citizen science, Dipterocarpaceae, Burseraceae, biodiversity" />
+    <meta name="description" content="Send an enquiry to the Canopy team." />
+    <title>Canopy | Enquiry</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 700px)" />
+    <script src="scripts/script.js" defer="defer"></script>
+    <script src="scripts/enhancements.js" defer="defer"></script>
+</head>
+<body>
+    <!-- top of the page: logo, tagline, menu -->
+    <header>
+        <h1 class="brand">
+            <a href="index.html" class="brand-link">
+                <img src="images/logo.svg" alt="Canopy logo" class="logo-icon" width="56" height="34" />
+            </a>
+        </h1>
+        <p class="tagline">A citizen science platform for Endangered, Rare &amp; Threatened plants</p>
+        <nav>
+            <!-- hamburger menu for phones: hidden checkbox + label, no JavaScript -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+            <label for="nav-toggle" class="nav-toggle-label"><span class="burger-icon">&#9776;</span><span class="burger-text">Menu</span></label>
+            <ul class="menu">
+                <li class="has-dropdown">
+                    <a href="explore.html">Explore</a>
+                    <ul class="dropdown">
+                        <li><a href="explore1.html">Families</a></li>
+                        <li><a href="explore2.html">Genera</a></li>
+                        <li><a href="explore3.html">Species</a></li>
+                    </ul>
+                </li>
+                <li><a href="identify.html">Identify</a></li>
+                <li><a href="contributor.html">Contributors</a></li>
+                <li><a href="contribute.html">Contribute</a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- wrapper: main column on the left, manual box on the right -->
+    <div class="page-layout">
+    <!-- main part of the page -->
+    <main>
+        <h2>Send us an enquiry</h2>
+        <p>
+            Have a question about a plant, want to volunteer as a reviewer, or need help with a submission?
+            Fill in the form below and we'll get back to you. Every field must be filled in, and the form
+            lists anything that is wrong before it is sent. You can also reach this form from the Enquire
+            button on any plant in the Explore pages.
+        </p>
+
+        <!-- form: validated with JavaScript only (see scripts/script.js), so no HTML5 validation attributes -->
+        <form action="https://api.web3forms.com/submit" method="post" id="enquiry-form" novalidate="novalidate">
+            <!-- public access key for Web3Forms (safe to put in client-side code) -->
+            <input type="hidden" name="access_key" value="9d56bbe1-27e3-44c2-af4b-36132ce0b964" />
+            <!-- fieldset: Your details -->
+            <fieldset>
+                <legend>Your details</legend>
+
+                <div class="form-row">
+                    <label for="first-name">First name:</label>
+                    <input type="text" id="first-name" name="first-name" placeholder="e.g. Lin" />
+                </div>
+                <div class="form-row">
+                    <label for="last-name">Last name:</label>
+                    <input type="text" id="last-name" name="last-name" placeholder="e.g. Kho" />
+                </div>
+                <div class="form-row">
+                    <label for="email">Email address:</label>
+                    <input type="text" id="email" name="email" placeholder="you@example.com" />
+                </div>
+                <div class="form-row">
+                    <label for="phone">Phone number:</label>
+                    <input type="text" id="phone" name="phone" placeholder="e.g. 0123456789" />
+                </div>
+            </fieldset>
+
+            <!-- fieldset: Your address -->
+            <fieldset>
+                <legend>Your address</legend>
+
+                <div class="form-row">
+                    <label for="street">Street address:</label>
+                    <input type="text" id="street" name="street" placeholder="e.g. 12 Jalan Utama" />
+                </div>
+                <div class="form-row">
+                    <label for="city">City / town:</label>
+                    <input type="text" id="city" name="city" placeholder="e.g. Kuching" />
+                </div>
+                <div class="form-row">
+                    <label for="postcode">Postcode:</label>
+                    <input type="text" id="postcode" name="postcode" placeholder="5 digits, e.g. 93350" />
+                </div>
+            </fieldset>
+
+            <!-- fieldset: Your enquiry -->
+            <fieldset>
+                <legend>Your enquiry</legend>
+
+                <div class="form-row">
+                    <label for="plant">Plant:</label>
+                    <!-- the options are added by scripts/script.js from an array -->
+                    <select id="plant" name="plant"></select>
+                </div>
+
+                <div class="form-row">
+                    <label for="subject">Subject:</label>
+                    <input type="text" id="subject" name="subject" placeholder="Filled in when you choose a plant" />
+                </div>
+                <div class="form-row">
+                    <label for="group-size">Number of people in your group:</label>
+                    <input type="text" id="group-size" name="group-size" placeholder="e.g. 4" />
+                </div>
+
+                <div class="form-row">
+                    <label for="preferred-date">Preferred date for a reply:</label>
+                    <input type="date" id="preferred-date" name="preferred-date" />
+                </div>
+
+                <!-- fieldset: How should we contact you? -->
+                <fieldset class="inline-group">
+                    <legend>How should we contact you?</legend>
+                    <div class="choice-row">
+                        <input type="radio" id="contact-email" name="contact-method" value="email" />
+                        <label for="contact-email">Email</label>
+                    </div>
+                    <div class="choice-row">
+                        <input type="radio" id="contact-phone" name="contact-method" value="phone" />
+                        <label for="contact-phone">Phone</label>
+                    </div>
+                </fieldset>
+
+                <div class="form-row">
+                    <label for="enquiry-comments">Comments:</label>
+                    <textarea id="enquiry-comments" name="enquiry-comments" rows="6" cols="40"
+                              placeholder="Tell us a bit more about your enquiry."></textarea>
+                </div>
+
+                <div class="choice-row">
+                    <input type="checkbox" id="consent" name="consent" value="yes" />
+                    <label for="consent">I agree to be contacted about this enquiry.</label>
+                </div>
+            </fieldset>
+
+            <!-- all the validation messages are listed here -->
+            <div id="form-errors" class="form-errors" role="alert"></div>
+
+            <div class="form-row form-actions">
+                <button type="submit">Submit</button>
+                <button type="reset">Cancel</button>
+            </div>
+        </form>
+
+        <hr />
+
+        <!-- aside: a related note -->
+        <aside>
+            <h2>Response time</h2>
+            <p>We aim to reply to all enquiries within three working days.</p>
+        </aside>
+    </main>
+    <!-- manual box (aside), floats right -->
+    <aside class="manual-box" aria-label="Page manual">
+        <h2>Manual</h2>
+        <h3>How to send an enquiry</h3>
+        <!-- ordered list -->
+        <ol>
+            <li>Fill in your name, email and phone (digits only, up to 10), and your address (postcode is 5 digits).</li>
+            <li>Choose a plant from the list. The Subject fills itself in. Then add your group size, a reply date and how we should contact you.</li>
+            <li>Write your question in Comments and tick the consent box.</li>
+            <li>Press <strong>Submit</strong> to send, or <strong>Cancel</strong> to clear the form.</li>
+            <li>Want to send plant photos? Use Contribute instead.</li>
+        </ol>
+    </aside>
+    </div>
+
+    <!-- bottom bar: buttons to Contribute and Enquiry -->
+    <section class="cta-bar" aria-label="Get involved">
+        <div class="cta-text">
+            <h2>Spotted a plant, or have a question?</h2>
+            <p>Send in a sighting for review, or ask the team about the project.</p>
+        </div>
+        <div class="cta-actions">
+            <a href="contribute.html" class="btn cta-primary">Contribute</a>
+            <a href="enquiry.html" class="btn cta-secondary">Enquiry</a>
+        </div>
+    </section>
+
+    <!-- footer: links, my email (mailto) and copyright -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-about">
+                <p class="footer-brand">Canopy</p>
+                <p>A citizen science platform for Endangered, Rare &amp; Threatened plants of Sarawak, Malaysia.</p>
+            </div>
+            <nav class="footer-col" aria-label="Explore plants">
+                <h2>Explore</h2>
+                <ul>
+                    <li><a href="explore1.html">Families</a></li>
+                    <li><a href="explore2.html">Genera</a></li>
+                    <li><a href="explore3.html">Species</a></li>
+                    <li><a href="identify.html">Identify</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Get involved">
+                <h2>Get involved</h2>
+                <ul>
+                    <li><a href="contributor.html">Contributors</a></li>
+                    <li><a href="contribute.html">Contribute</a></li>
+                    <li><a href="enquiry.html" aria-current="page">Enquiry</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Site information">
+                <h2>Information</h2>
+                <ul>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="https://youtu.be/JJjthoW2Zk4" target="_blank" rel="noopener">Demo video</a></li>
+                    <li><a href="video.html">Video page</a></li>
+                    <li><a href="enhancement1.html">Enhancements 1 (CSS)</a></li>
+                    <li><a href="enhancement2.html">Enhancements 2 (JavaScript)</a></li>
+                    <li><a href="acknowledgement.html">Acknowledgement 1</a></li>
+                    <li><a href="acknowledgement2.html">Acknowledgement 2</a></li>
+                </ul>
+            </nav>
+        </div>
+        <p class="footer-contact">Contact: <a href="mailto:105808759@students.swinburne.edu.my">105808759@students.swinburne.edu.my</a></p>
+        <p class="footer-legal">&#169; 2026 Canopy. Prepared for COS10005 Web Development, Assignment 2, Semester 2 2026, Swinburne University of Technology Sarawak. For educational use only.</p>
+    </footer>
+</body>
+</html>

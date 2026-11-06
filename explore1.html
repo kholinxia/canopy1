@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<!--
+  explore1.html - families page
+  COS10005 Web Development, Assignment 2 (Semester 2, 2026)
+  Lincoln Kho Jia Heng, 105808759
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Lincoln Kho Jia Heng (105808759)" />
+    <meta name="keywords" content="Sarawak, plants, ERT, citizen science, Dipterocarpaceae, Burseraceae, biodiversity" />
+    <meta name="description" content="Overview of the Dipterocarpaceae and Burseraceae plant families tracked by Canopy." />
+    <title>Canopy | Families</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 700px)" />
+    <script src="scripts/script.js" defer="defer"></script>
+    <script src="scripts/enhancements.js" defer="defer"></script>
+</head>
+<body>
+    <!-- top of the page: logo, tagline, menu -->
+    <header>
+        <h1 class="brand">
+            <a href="index.html" class="brand-link">
+                <img src="images/logo.svg" alt="Canopy logo" class="logo-icon" width="56" height="34" />
+            </a>
+        </h1>
+        <p class="tagline">A citizen science platform for Endangered, Rare &amp; Threatened plants</p>
+        <nav>
+            <!-- hamburger menu for phones: hidden checkbox + label, no JavaScript -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+            <label for="nav-toggle" class="nav-toggle-label"><span class="burger-icon">&#9776;</span><span class="burger-text">Menu</span></label>
+            <ul class="menu">
+                <li class="has-dropdown">
+                    <a href="explore.html">Explore</a>
+                    <ul class="dropdown">
+                        <li><a href="explore1.html">Families</a></li>
+                        <li><a href="explore2.html">Genera</a></li>
+                        <li><a href="explore3.html">Species</a></li>
+                    </ul>
+                </li>
+                <li><a href="identify.html">Identify</a></li>
+                <li><a href="contributor.html">Contributors</a></li>
+                <li><a href="contribute.html">Contribute</a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- wrapper: main column on the left, manual box on the right -->
+    <div class="page-layout">
+    <!-- main part of the page -->
+    <main>
+        <nav class="submenu" aria-label="Explore sections">
+            <ul>
+                <li><a href="explore.html">Overview</a></li>
+                <li><a href="explore1.html">Families</a></li>
+                <li><a href="explore2.html">Genera</a></li>
+                <li><a href="explore3.html">Species</a></li>
+            </ul>
+        </nav>
+
+        <h2>Families</h2>
+        <p>
+            A plant family brings together genera that share a common ancestor and a recognisable set of features.
+            Canopy follows the PlantsData list supplied for this project, and the alpha dataset covers two families
+            of rainforest trees that dominate the lowland and hill forests of Borneo: the dipterocarps
+            (Dipterocarpaceae) and the incense-tree family (Burseraceae). Both are important for timber, resin or
+            fruit, and both lose habitat wherever forest is cleared.
+        </p>
+
+        <!-- section: dipterocarpaceae -->
+        <section id="dipterocarpaceae" class="explore-row">
+            <figure class="explore-row-media">
+                <img src="images/dipterocarpaceae-family.jpg" alt="A tall dipterocarp tree rising above the rainforest canopy" width="600" height="400" />
+                <figcaption>Dipterocarpaceae family <span class="photo-credit">Photo: <a href="https://www.inaturalist.org/observations/397683864">iNaturalist</a></span></figcaption>
+            </figure>
+            <div class="explore-row-body">
+                <h3>Dipterocarpaceae</h3>
+            <p>
+                Dipterocarpaceae is the great timber family of tropical Asia. Botanists count about 695 species in
+                roughly 22 genera, and the name comes from the Greek for &#8220;two-winged fruit&#8221;, because
+                many members drop seeds with papery wings that spin away from the parent tree. North Borneo, which
+                covers Brunei, Sabah and Sarawak, is regarded as the richest place on Earth for dipterocarps. Many
+                of these trees form the tallest layer of the forest, and they supply timber, plywood, resins and
+                aromatic oils. That value is also the danger: heavy logging, illegal cutting and the conversion
+                of forest to farmland have pushed many species towards extinction.
+            </p>
+            <!-- definition list -->
+            <dl>
+                <dt>Described by</dt>
+                <dd>Carl Ludwig Blume, in 1825.</dd>
+                <dt>Distribution</dt>
+                <dd>Tropical forests from India and southern China through Malaysia and Indonesia to the Philippines, with Borneo the centre of diversity.</dd>
+                <dt>Conservation concern</dt>
+                <dd>Overcutting and habitat conversion leave a large share of Bornean species imperilled.</dd>
+            </dl>
+                <div class="explore-row-links">
+                    <a href="explore2.html" class="btn">Genera</a><a href="explore3.html" class="btn">Species</a>
+                    <a href="enquiry.html" class="btn btn-enquire" data-enquiry-name="Dipterocarpaceae" data-enquiry-type="Family">Enquire</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- section: burseraceae -->
+        <section id="burseraceae" class="explore-row">
+            <figure class="explore-row-media">
+                <img src="images/burseraceae-family.jpg" alt="Resin-bearing Burseraceae tree with a pinnate compound leaf" width="600" height="400" />
+                <figcaption>Burseraceae family <span class="photo-credit">Photo: <a href="https://www.inaturalist.org/photos/24912?size=original">iNaturalist</a></span></figcaption>
+            </figure>
+            <div class="explore-row-body">
+                <h3>Burseraceae</h3>
+            <p>
+                Burseraceae is often called the incense-tree or torchwood family, because almost every part of
+                its trees contains fragrant resin. Counts differ between studies, but the family holds around
+                17 to 19 genera and about 540 species, and the famous frankincense and myrrh both come from
+                relatives of the Bornean trees. In Malesia the group known as the Canarieae, which includes
+                <em>Canarium</em>, <em>Dacryodes</em> and <em>Santiria</em>, is especially well represented.
+                The trees have flaking, aromatic bark and leaves divided into pairs of leaflets, they bear
+                small flowers on separate male and female trees, and their fleshy fruits are eaten by birds and
+                mammals that spread the seeds through the forest.
+            </p>
+            <!-- ordered list -->
+            <ol>
+                <li>Smell a fallen leaf or a flake of bark; Burseraceae often give off a sharp, resinous or almond-like scent.</li>
+                <li>Look for compound leaves, where several leaflets sit along a single stalk with one at the tip.</li>
+                <li>Check for sticky resin on the bark or on broken twigs, but avoid damaging the tree.</li>
+            </ol>
+                <div class="explore-row-links">
+                    <a href="explore2.html" class="btn">Genera</a><a href="explore3.html" class="btn">Species</a>
+                    <a href="enquiry.html" class="btn btn-enquire" data-enquiry-name="Burseraceae" data-enquiry-type="Family">Enquire</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- section: families glance -->
+        <section id="families-glance">
+            <h3>Families at a glance</h3>
+            <div class="table-scroll">
+                <!-- table: The two families and what they contain -->
+                <table class="data-table">
+                    <caption>The two families and what they contain</caption>
+                    <thead>
+                        <tr><th scope="col">Family</th><th scope="col">Genera tracked</th><th scope="col">Species tracked</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Dipterocarpaceae</td><td><em>Dipterocarpus</em>, <em>Hopea</em></td><td>4</td></tr>
+                        <tr><td>Burseraceae</td><td><em>Canarium</em>, <em>Santiria</em></td><td>4</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <hr />
+
+        <!-- aside: a related note -->
+        <aside>
+            <h2>Why look at trees?</h2>
+            <p>
+                Big trees are easy to miss because their flowers and fruit are far overhead. Fallen fruit, leaves and
+                bark flakes on the ground are often the best evidence, so photograph them next to something that
+                shows their size, such as a coin or a hand.
+            </p>
+        </aside>
+    </main>
+    <!-- manual box (aside), floats right -->
+    <aside class="manual-box" aria-label="Page manual">
+        <h2>Manual</h2>
+        <h3>Reading Families</h3>
+        <!-- ordered list -->
+        <ol>
+            <li>Each row is one plant family, with its photo on the left.</li>
+            <li>Use the Genera and Species buttons to go one level deeper.</li>
+            <li>Not sure what you found? Use Identify in the menu.</li>
+        </ol>
+    </aside>
+    </div>
+
+    <!-- bottom bar: buttons to Contribute and Enquiry -->
+    <section class="cta-bar" aria-label="Get involved">
+        <div class="cta-text">
+            <h2>Spotted a plant, or have a question?</h2>
+            <p>Send in a sighting for review, or ask the team about the project.</p>
+        </div>
+        <div class="cta-actions">
+            <a href="contribute.html" class="btn cta-primary">Contribute</a>
+            <a href="enquiry.html" class="btn cta-secondary">Enquiry</a>
+        </div>
+    </section>
+
+    <!-- footer: links, my email (mailto) and copyright -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-about">
+                <p class="footer-brand">Canopy</p>
+                <p>A citizen science platform for Endangered, Rare &amp; Threatened plants of Sarawak, Malaysia.</p>
+            </div>
+            <nav class="footer-col" aria-label="Explore plants">
+                <h2>Explore</h2>
+                <ul>
+                    <li><a href="explore1.html" aria-current="page">Families</a></li>
+                    <li><a href="explore2.html">Genera</a></li>
+                    <li><a href="explore3.html">Species</a></li>
+                    <li><a href="identify.html">Identify</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Get involved">
+                <h2>Get involved</h2>
+                <ul>
+                    <li><a href="contributor.html">Contributors</a></li>
+                    <li><a href="contribute.html">Contribute</a></li>
+                    <li><a href="enquiry.html">Enquiry</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Site information">
+                <h2>Information</h2>
+                <ul>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="https://youtu.be/JJjthoW2Zk4" target="_blank" rel="noopener">Demo video</a></li>
+                    <li><a href="video.html">Video page</a></li>
+                    <li><a href="enhancement1.html">Enhancements 1 (CSS)</a></li>
+                    <li><a href="enhancement2.html">Enhancements 2 (JavaScript)</a></li>
+                    <li><a href="acknowledgement.html">Acknowledgement 1</a></li>
+                    <li><a href="acknowledgement2.html">Acknowledgement 2</a></li>
+                </ul>
+            </nav>
+        </div>
+        <p class="footer-contact">Contact: <a href="mailto:105808759@students.swinburne.edu.my">105808759@students.swinburne.edu.my</a></p>
+        <p class="footer-legal">&#169; 2026 Canopy. Prepared for COS10005 Web Development, Assignment 2, Semester 2 2026, Swinburne University of Technology Sarawak. For educational use only.</p>
+    </footer>
+</body>
+</html>

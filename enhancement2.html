@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<!--
+  enhancement2.html - JavaScript enhancements
+  COS10005 Web Development, Assignment 2 (Semester 2, 2026)
+  Lincoln Kho Jia Heng, 105808759
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Lincoln Kho Jia Heng (105808759)" />
+    <meta name="keywords" content="Sarawak, plants, ERT, citizen science, Dipterocarpaceae, Burseraceae, biodiversity" />
+    <meta name="description" content="Description of the five JavaScript enhancements implemented on Canopy." />
+    <title>Canopy | JavaScript enhancements</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 700px)" />
+    <script src="scripts/script.js" defer="defer"></script>
+    <script src="scripts/enhancements.js" defer="defer"></script>
+</head>
+<body>
+    <!-- top of the page: logo, tagline, menu -->
+    <header>
+        <h1 class="brand">
+            <a href="index.html" class="brand-link">
+                <img src="images/logo.svg" alt="Canopy logo" class="logo-icon" width="56" height="34" />
+            </a>
+        </h1>
+        <p class="tagline">A citizen science platform for Endangered, Rare &amp; Threatened plants</p>
+        <nav>
+            <!-- hamburger menu for phones: hidden checkbox + label, no JavaScript -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+            <label for="nav-toggle" class="nav-toggle-label"><span class="burger-icon">&#9776;</span><span class="burger-text">Menu</span></label>
+            <ul class="menu">
+                <li class="has-dropdown">
+                    <a href="explore.html">Explore</a>
+                    <ul class="dropdown">
+                        <li><a href="explore1.html">Families</a></li>
+                        <li><a href="explore2.html">Genera</a></li>
+                        <li><a href="explore3.html">Species</a></li>
+                    </ul>
+                </li>
+                <li><a href="identify.html">Identify</a></li>
+                <li><a href="contributor.html">Contributors</a></li>
+                <li><a href="contribute.html">Contribute</a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- wrapper: main column on the left, manual box on the right -->
+    <div class="page-layout">
+    <!-- main part of the page -->
+    <main>
+        <h2>JavaScript enhancements</h2>
+        <p>
+            These are the five JavaScript enhancements on top of the Assignment 2 requirements. They are listed from the hardest to build (1) to the easiest (5). All the code is
+            in <code>scripts/enhancements.js</code>, one function for each enhancement, with comments in the
+            file. Each one below says how it is triggered, what a programmer has to do to build it, and where
+            you can see it on the site. The CSS enhancements from Assignment 1 are on the
+            <a href="enhancement1.html">Enhancements 1 (CSS)</a> page.
+        </p>
+
+        <!-- section: enh identify -->
+        <section id="enh-identify">
+            <h3>1. Identify a plant from a photo</h3>
+            <p>
+                <strong>How it is triggered:</strong> on the Contribute page, choose a photo of a plant, say whether it
+                shows a leaf, flower, fruit, bark or the whole tree, and press <em>Identify this plant</em>. After a
+                moment the page lists up to three best guesses with the family, a common name and a percentage score.
+                Pressing <em>Use this name</em> puts the guess into the &#8220;Plant&#8217;s name&#8221; box. If the
+                photo has no plant in it, the service is out of requests for the day, or there is no connection, a
+                message says so.
+            </p>
+            <p>
+                <strong>How it works:</strong> the page sends the photo to the
+                <a href="https://my.plantnet.org/doc/getting-started/introduction">Pl@ntNet identification API</a>. A
+                <code>FormData</code> object holds the photos (up to five) and one organ value for each, and
+                <code>fetch()</code> sends it as a POST request to
+                <code>my-api.plantnet.org/v2/identify/all</code> with my API key in the address. The reply is JSON: a
+                list of species sorted by score, each with its scientific name, family and common names.
+                <code>Canopy.identifyResults</code> builds the list with <code>createElement</code> and uses
+                <code>Math.round</code> to turn the score into a percentage. Each response status is handled on its
+                own (404 no plant found, 429 daily limit reached, other errors, and <code>catch</code> for no
+                connection), and the button is disabled while the request is running. The free plan allows 500
+                identifications a day, and the key must be set to &#8220;expose my API key&#8221; with the
+                site&#8217;s address on its allowed domains before a browser may use it. The service may not know every Sarawak species, so the guesses are only
+                suggestions.
+            </p>
+            <p>
+                <strong>See it on:</strong> <a href="contribute.html">Contribute</a>.
+            </p>
+            <p class="enh-reference">
+                Reference: <a href="https://my.plantnet.org/doc/getting-started/introduction">Pl@ntNet API documentation</a> (third-party service),
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">MDN Web Docs &#8211; Using the Fetch API</a>,
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData">MDN Web Docs &#8211; FormData</a>.
+            </p>
+        </section>
+
+        <!-- section: enh api -->
+        <section id="enh-api">
+            <h3>2. Sending the form to an API</h3>
+            <p>
+                <strong>How it is triggered:</strong> fill in the Enquiry or Contribute form correctly, press
+                <em>Submit</em> and then <em>Confirm and send</em> in the preview. The page stays where it is, shows
+                &#8220;Sending...&#8221; and then a green thank-you message, and the form is cleared. If something
+                goes wrong, a red message says so instead. The data arrives in my email.
+            </p>
+            <p>
+                <strong>How it works:</strong> the site has no server of its own, so the form is sent to
+                <a href="https://docs.web3forms.com/">Web3Forms</a>, a free form API. Each form has a hidden
+                <code>access_key</code> field. <code>Canopy.sendForm</code> builds a <code>FormData</code> object from
+                the form and sends it with <code>fetch()</code> as a POST request. The reply is JSON, and
+                <code>result.success</code> decides which message is shown. Network failures are caught with
+                <code>catch</code>. The free plan does not accept files, so for the photo field only the file names
+                are sent. The same address is in the form's <code>action</code> attribute, so the form still works if
+                JavaScript is off.
+            </p>
+            <p>
+                <strong>See it on:</strong> <a href="enquiry.html">Enquiry</a> and
+                <a href="contribute.html">Contribute</a>.
+            </p>
+            <p class="enh-reference">
+                Reference: <a href="https://docs.web3forms.com/">Web3Forms documentation</a>,
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">MDN Web Docs &#8211; Using the Fetch API</a>,
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData">MDN Web Docs &#8211; FormData</a>.
+            </p>
+        </section>
+
+        <!-- section: enh preview -->
+        <section id="enh-preview">
+            <h3>3. Preview pop-up before a form is sent</h3>
+            <p>
+                <strong>How it is triggered:</strong> fill in a form correctly and press Submit. Instead of sending
+                straight away, a pop-up lists everything you entered. <em>Edit</em> closes the pop-up so you can
+                change something, and <em>Confirm and send</em> sends the form.
+            </p>
+            <p>
+                <strong>How it works:</strong> <code>Canopy.setupPreview</code> listens for the
+                <code>submit</code> event after the validation in <code>script.js</code> has run. If nothing was
+                wrong, it calls <code>event.preventDefault()</code>, builds a <code>dialog</code> element from the
+                form's fields (<code>Canopy.collectValues</code>) and opens it with <code>showModal()</code>. The
+                confirm button calls <code>Canopy.sendForm</code> (enhancement 2). If the browser does not support
+                <code>dialog</code>, the form is sent as normal.
+            </p>
+            <p>
+                <strong>See it on:</strong> <a href="enquiry.html">Enquiry</a> and
+                <a href="contribute.html">Contribute</a>.
+            </p>
+            <p class="enh-reference">
+                Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal">MDN Web Docs &#8211; HTMLDialogElement.showModal()</a>.
+            </p>
+        </section>
+
+        <!-- section: enh slideshow -->
+        <section id="enh-slideshow">
+            <h3>4. Plant slideshow</h3>
+            <p>
+                <strong>How it is triggered:</strong> open the home page. A slideshow of the eight species starts on a
+                random plant and changes by itself every five seconds, with a fade. You can use <em>Previous</em> and
+                <em>Next</em>, press the left and right arrow keys, click a dot to jump to a plant, or press
+                <em>Pause</em>. It stops while the mouse or keyboard focus is on it, and it starts paused for
+                visitors whose device is set to reduce motion.
+            </p>
+            <p>
+                <strong>How it works:</strong> the eight plants are an array of objects in <code>Canopy.slides</code>.
+                <code>Canopy.setupSlideshow</code> builds the picture, text, buttons and dots with
+                <code>createElement</code>, and keeps the current position in a variable. <code>show()</code> replaces
+                the content and wraps around at the ends with a remainder (<code>%</code>). <code>setInterval()</code>
+                moves on every five seconds and <code>clearInterval()</code> stops it. Mouse, focus and
+                <code>keydown</code> listeners pause it and handle the arrow keys, <code>window.matchMedia()</code>
+                checks the reduced-motion setting, and <code>aria-current</code> and <code>aria-live</code> keep it
+                usable with a screen reader.
+            </p>
+            <p>
+                <strong>See it on:</strong> <a href="index.html">the home page</a>.
+            </p>
+            <p class="enh-reference">
+                Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/API/setInterval">MDN Web Docs &#8211; setInterval()</a>,
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia">MDN Web Docs &#8211; Window.matchMedia()</a>.
+            </p>
+        </section>
+
+        <!-- section: enh filter -->
+        <section id="enh-filter">
+            <h3>5. Search and filter the species</h3>
+            <p>
+                <strong>How it is triggered:</strong> on the Species page, type in <em>Search the species</em> or choose
+                a <em>Conservation status</em>. The profiles and gallery pictures that do not match disappear while you
+                type, and a line says how many are showing (for example &#8220;Showing 2 of 8 species&#8221;).
+                <em>Clear</em> puts everything back. Searching for a local name such as &#8220;keruing&#8221; also works.
+            </p>
+            <p>
+                <strong>How it works:</strong> <code>Canopy.setupSpeciesFilter</code> builds the search box, the menu
+                and the count with <code>createElement</code>. The menu options are not typed in: a regular expression in
+                <code>Canopy.statusOf</code> reads the first words of each profile&#8217;s Status line (for example
+                &#8220;Least Concern&#8221;) and the unique ones are sorted into the menu. An <code>input</code> or
+                <code>change</code> listener then compares the lower-case <code>textContent</code> of each profile with the
+                search text and the chosen status, and uses <code>classList.toggle</code> to add or remove a
+                <code>filtered-out</code> class (<code>display: none</code>). Each gallery picture is hidden when the
+                profile it links to is hidden.
+            </p>
+            <p>
+                <strong>See it on:</strong> <a href="explore3.html">Species</a>.
+            </p>
+            <p class="enh-reference">
+                Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event">MDN Web Docs &#8211; input event</a>,
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent">MDN Web Docs &#8211; Node.textContent</a>.
+            </p>
+        </section>
+
+        <hr />
+
+        <!-- aside: other JavaScript -->
+        <aside id="other-js">
+            <h2>Other JavaScript on the site</h2>
+            <p>
+                These four are also written in <code>enhancements.js</code> but are not counted as enhancements. The dropdown
+                and the live feedback belong to the Assignment 2 requirements (the menu built from an array and the form
+                validation), and the menu highlight is a very small feature.
+            </p>
+            <p>
+                <strong>Dropdown menu opened with JavaScript.</strong> On a wide screen, moving the mouse onto
+                <em>Explore</em> slides open Families, Genera and Species. The CSS holds only the look (closed with
+                <code>max-height: 0</code>); <code>Canopy.makeDropdown</code> adds the <code>open</code> class from
+                <code>mouseenter</code>, <code>mouseleave</code> (with <code>setTimeout</code>), <code>focusin</code>,
+                <code>keydown</code> (Esc) and <code>click</code> listeners, and sets <code>aria-expanded</code>. On a
+                touch screen the first tap opens it and the second follows the link.
+            </p>
+            <p>
+                <strong>Menu highlights the current page.</strong> The link for the page you are on is bold and
+                underlined. <code>Canopy.highlightCurrentPage</code> reads <code>window.location.pathname</code> and adds
+                the <code>active</code> class and <code>aria-current="page"</code> to the matching menu link.
+            </p>
+            <p>
+                <strong>Saved draft and comment counter.</strong> What you type in the Enquiry and Contribute forms is
+                kept in the browser (<code>localStorage</code>) and put back if you come back later or reload. It is
+                cleared when the form is sent or reset. A counter under the comment box shows how many characters
+                were typed. <code>Canopy.saveDraft</code>, <code>restoreDraft</code> and <code>clearDraft</code> do the
+                saving, with <code>JSON.stringify</code> and <code>JSON.parse</code>.
+            </p>
+            <p>
+                <strong>Live feedback while typing.</strong> Leave a form field and a message appears under it, and the
+                border turns green or red; it updates on every key press. <code>Canopy.setupLiveFeedback</code> uses the
+                same regular expressions as the submit check and adds <code>blur</code> and <code>input</code> listeners.
+                See it on <a href="enquiry.html">Enquiry</a> and <a href="contribute.html">Contribute</a>.
+            </p>
+        </aside>
+
+        <hr />
+
+        <!-- aside: third-party code -->
+        <aside>
+            <h2>Third-party code</h2>
+            <p>
+                I wrote all the code in <code>enhancements.js</code> myself, using the MDN pages listed above to
+                check how each function works. No library or copied script is used. The only third-party parts are the
+                Web3Forms service in enhancement 2 and the Pl@ntNet service in enhancement 1. All sources are also listed on
+                <a href="acknowledgement2.html">Acknowledgement 2</a>.
+            </p>
+        </aside>
+    </main>
+    <!-- manual box (aside), floats right -->
+    <aside class="manual-box" aria-label="Page manual">
+        <h2>Manual</h2>
+        <h3>Finding each enhancement</h3>
+        <!-- ordered list -->
+        <ol>
+            <li>Each section says how to trigger the feature and links to the page where it is live.</li>
+            <li>The photo identification (1) is on the Contribute page, and the form sending and preview (2 and 3) are on the Enquiry and Contribute pages.</li>
+            <li>The slideshow (4) is on the home page and the search and filter (5) is on the Species page.</li>
+            <li>The dropdown and live feedback are described at the bottom of the page.</li>
+        </ol>
+    </aside>
+    </div>
+
+    <!-- bottom bar: buttons to Contribute and Enquiry -->
+    <section class="cta-bar" aria-label="Get involved">
+        <div class="cta-text">
+            <h2>Spotted a plant, or have a question?</h2>
+            <p>Send in a sighting for review, or ask the team about the project.</p>
+        </div>
+        <div class="cta-actions">
+            <a href="contribute.html" class="btn cta-primary">Contribute</a>
+            <a href="enquiry.html" class="btn cta-secondary">Enquiry</a>
+        </div>
+    </section>
+
+    <!-- footer: links, my email (mailto) and copyright -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-about">
+                <p class="footer-brand">Canopy</p>
+                <p>A citizen science platform for Endangered, Rare &amp; Threatened plants of Sarawak, Malaysia.</p>
+            </div>
+            <nav class="footer-col" aria-label="Explore plants">
+                <h2>Explore</h2>
+                <ul>
+                    <li><a href="explore1.html">Families</a></li>
+                    <li><a href="explore2.html">Genera</a></li>
+                    <li><a href="explore3.html">Species</a></li>
+                    <li><a href="identify.html">Identify</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Get involved">
+                <h2>Get involved</h2>
+                <ul>
+                    <li><a href="contributor.html">Contributors</a></li>
+                    <li><a href="contribute.html">Contribute</a></li>
+                    <li><a href="enquiry.html">Enquiry</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Site information">
+                <h2>Information</h2>
+                <ul>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="https://youtu.be/JJjthoW2Zk4" target="_blank" rel="noopener">Demo video</a></li>
+                    <li><a href="video.html">Video page</a></li>
+                    <li><a href="enhancement1.html">Enhancements 1 (CSS)</a></li>
+                    <li><a href="enhancement2.html" aria-current="page">Enhancements 2 (JavaScript)</a></li>
+                    <li><a href="acknowledgement.html">Acknowledgement 1</a></li>
+                    <li><a href="acknowledgement2.html">Acknowledgement 2</a></li>
+                </ul>
+            </nav>
+        </div>
+        <p class="footer-contact">Contact: <a href="mailto:105808759@students.swinburne.edu.my">105808759@students.swinburne.edu.my</a></p>
+        <p class="footer-legal">&#169; 2026 Canopy. Prepared for COS10005 Web Development, Assignment 2, Semester 2 2026, Swinburne University of Technology Sarawak. For educational use only.</p>
+    </footer>
+</body>
+</html>

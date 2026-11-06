@@ -1,0 +1,244 @@
+/* ===========================================
+   Canopy - mobile.css (phones)
+   Only loaded when the screen is 700px wide or less, using the media
+   attribute on the <link> tag in each HTML page.
+   =========================================== */
+
+body {
+    font-size: 95%;
+}
+
+main, footer {
+    width: 95%;
+}
+
+.logo-icon {
+    height: 2.2rem;
+}
+
+/* menu opens as a column instead of a row (the toggle itself is in style.css) */
+/* no hover on touch screens, so the Explore sub-links are always shown under it */
+.submenu ul {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/* explore rows: text and buttons stacked, full-width buttons that are easy to tap */
+.category-row {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.category-row-links {
+    flex-direction: column;
+}
+
+.category-row-links .btn {
+    text-align: center;
+}
+
+/* profile photo goes above the text */
+.profile-photo {
+    float: none;
+    display: block;
+    margin: 0 auto 1rem auto;
+    max-width: 220px;
+}
+
+.profile-name {
+    font-size: 170%;
+}
+
+/* tables scroll sideways instead of being squashed */
+.profile-table {
+    display: block;
+    overflow-x: auto;
+}
+
+/* full-width buttons */
+form button {
+    margin: 0.3rem 0;
+}
+
+.form-actions button {
+    flex: 1;
+    margin: 0;
+}
+
+.form-row {
+    max-width: 100%;
+}
+
+iframe {
+    height: 250px;
+}
+
+.gallery-item {
+    width: 110px;
+    height: 110px;
+}
+
+.flip-card {
+    width: 140px;
+    height: 180px;
+}
+
+/* manual box goes under the content */
+.page-layout {
+    width: 95%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+}
+
+.page-layout main {
+    flex: none;
+}
+
+.manual-box {
+    flex: none;
+    position: static;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+/* header shortcuts go under the tagline */
+/* explore rows: photo on top, text and buttons below */
+.explore-row {
+    flex-direction: column;
+}
+
+.explore-row-media {
+    flex: none;
+    width: 100%;
+}
+
+.contrib-card {
+    height: 480px;
+}
+
+/* wide-screen layouts go back to one column */
+#visual-cues { display: block; }
+#visual-cues figure { margin: 1rem 0; }
+
+.cta-bar {
+    width: 95%;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.cta-actions { width: 100%; }
+.cta-actions .btn { flex: 1; text-align: center; }
+
+/* wide-screen layouts go back to one column */
+#intro { column-count: 1; }
+
+#hero img { aspect-ratio: 16 / 9; }
+
+.profile-photo { align-self: center; }
+
+/* ===== phone header: Menu button, logo, tagline underneath, menu opens as a light panel ===== */
+header {
+    position: relative;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 0.9rem;
+    padding: 0.9rem 1rem;
+}
+
+/* the button and the list sit straight in the header grid */
+header nav { display: contents; }
+
+.nav-toggle-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0;
+    padding: 0.4rem 0.9rem;
+    background-color: var(--color-neutral);
+    color: var(--color-primary);
+    border-radius: 12px;
+    font-size: 1.5rem;
+}
+
+.burger-text {
+    font-family: "Segoe UI", Verdana, Arial, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+header h1 { grid-column: 2; grid-row: 1; }
+header p.tagline { grid-column: 1 / -1; grid-row: 2; font-size: 0.85rem; }
+
+.menu {
+    display: none;
+    grid-column: 1 / -1;
+    grid-row: 3;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 0.2rem;
+    margin-top: 0.3rem;
+    padding: 0.8rem 1rem;
+    background-color: var(--color-neutral);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+}
+
+.nav-toggle:checked ~ .menu { display: flex; }
+
+.menu a {
+    display: block;
+    text-align: left;
+    color: var(--color-ink);
+    padding: 0.55rem 0.6rem;
+}
+
+.menu a:hover, .menu a:focus {
+    background-color: rgba(var(--color-primary-rgb), 0.12);
+    color: var(--color-primary);
+    transform: none;
+}
+
+/* explore sub-links are always listed under it, with a line on the left */
+.dropdown {
+    position: static;
+    display: block;
+    max-height: none;
+    overflow: visible;
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    width: auto;
+    margin: 0.1rem 0 0.3rem 0.9rem;
+    padding: 0 0 0 0.5rem;
+    border-left: 3px solid var(--color-primary);
+}
+
+.dropdown a {
+    color: var(--color-ink);
+    text-align: left;
+    border-left: none;
+    padding: 0.5rem 0.9rem;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.dropdown a:hover { background-color: rgba(var(--color-primary-rgb), 0.12); }
+
+/* floats are turned off, everything is one column */
+.page-layout main { float: none; width: auto; }
+.manual-box { float: none; width: auto; margin-top: 0; }
+
+
+/* the slideshow stacks in one column on phones, and the dots go on their own line */
+.slide-stage {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.slide-dots {
+    margin-left: 0;
+    width: 100%;
+}

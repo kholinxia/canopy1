@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!--
+  profile.html - student profile
+  COS10005 Web Development, Assignment 2 (Semester 2, 2026)
+  Lincoln Kho Jia Heng, 105808759
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Lincoln Kho Jia Heng (105808759)" />
+    <meta name="keywords" content="Sarawak, plants, ERT, citizen science, Dipterocarpaceae, Burseraceae, biodiversity" />
+    <meta name="description" content="Individual profile page for the Canopy project author." />
+    <title>Canopy | My Profile</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 700px)" />
+    <script src="scripts/script.js" defer="defer"></script>
+    <script src="scripts/enhancements.js" defer="defer"></script>
+</head>
+<body>
+    <!-- top of the page: logo, tagline, menu -->
+    <header>
+        <h1 class="brand">
+            <a href="index.html" class="brand-link">
+                <img src="images/logo.svg" alt="Canopy logo" class="logo-icon" width="56" height="34" />
+            </a>
+        </h1>
+        <p class="tagline">A citizen science platform for Endangered, Rare &amp; Threatened plants</p>
+        <nav>
+            <!-- hamburger menu for phones: hidden checkbox + label, no JavaScript -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+            <label for="nav-toggle" class="nav-toggle-label"><span class="burger-icon">&#9776;</span><span class="burger-text">Menu</span></label>
+            <ul class="menu">
+                <li class="has-dropdown">
+                    <a href="explore.html">Explore</a>
+                    <ul class="dropdown">
+                        <li><a href="explore1.html">Families</a></li>
+                        <li><a href="explore2.html">Genera</a></li>
+                        <li><a href="explore3.html">Species</a></li>
+                    </ul>
+                </li>
+                <li><a href="identify.html">Identify</a></li>
+                <li><a href="contributor.html">Contributors</a></li>
+                <li><a href="contribute.html">Contribute</a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- main part of the page -->
+    <main id="profile-main">
+        <!-- section: profile card -->
+        <section id="profile-card">
+            <figure class="profile-photo">
+                <img src="images/profile-photo.jpg" alt="Photo of Lincoln Kho Jia Heng" width="200" height="200" />
+            </figure>
+            <div class="profile-id">
+                <h2 class="profile-name">Lincoln Kho Jia Heng</h2>
+                <p class="student-number">Student ID: <span>105808759</span></p>
+                <p class="course">Course: Bachelor of Computer Science (Cybersecurity), Swinburne University of Technology Sarawak</p>
+            </div>
+        </section>
+
+        <!-- section: personal details -->
+        <section id="personal-details">
+            <h2 class="visually-hidden">About me</h2>
+            <!-- table: Personal details -->
+            <table class="profile-table">
+                <caption>Personal details</caption>
+                <tbody>
+                    <tr>
+                        <th scope="row">Demographic</th>
+                        <td>Malaysian university student based in Sarawak</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Hometown</th>
+                        <td>Kuching, Sarawak</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">A great achievement</th>
+                        <td>Getting into Swinburne University of Technology Sarawak</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Favourite games</th>
+                        <td>Left 4 Dead 2, Red Dead Redemption</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Interests</th>
+                        <td>3D printing, Bambu Lab filament resale, cybersecurity, C and Python programming</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Side business</th>
+                        <td>Small 3D printing service and filament resale</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <div class="profile-email">
+            <a href="mailto:105808759@students.swinburne.edu.my" class="btn">Email me</a>
+        </div>
+    </main>
+
+    <!-- footer: links, my email (mailto) and copyright -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-about">
+                <p class="footer-brand">Canopy</p>
+                <p>A citizen science platform for Endangered, Rare &amp; Threatened plants of Sarawak, Malaysia.</p>
+            </div>
+            <nav class="footer-col" aria-label="Explore plants">
+                <h2>Explore</h2>
+                <ul>
+                    <li><a href="explore1.html">Families</a></li>
+                    <li><a href="explore2.html">Genera</a></li>
+                    <li><a href="explore3.html">Species</a></li>
+                    <li><a href="identify.html">Identify</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Get involved">
+                <h2>Get involved</h2>
+                <ul>
+                    <li><a href="contributor.html">Contributors</a></li>
+                    <li><a href="contribute.html">Contribute</a></li>
+                    <li><a href="enquiry.html">Enquiry</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Site information">
+                <h2>Information</h2>
+                <ul>
+                    <li><a href="profile.html" aria-current="page">Profile</a></li>
+                    <li><a href="https://youtu.be/JJjthoW2Zk4" target="_blank" rel="noopener">Demo video</a></li>
+                    <li><a href="video.html">Video page</a></li>
+                    <li><a href="enhancement1.html">Enhancements 1 (CSS)</a></li>
+                    <li><a href="enhancement2.html">Enhancements 2 (JavaScript)</a></li>
+                    <li><a href="acknowledgement.html">Acknowledgement 1</a></li>
+                    <li><a href="acknowledgement2.html">Acknowledgement 2</a></li>
+                </ul>
+            </nav>
+        </div>
+        <p class="footer-contact"><a href="mailto:105808759@students.swinburne.edu.my">Email me</a></p>
+        <p class="footer-legal">&#169; 2026 Canopy. Prepared for COS10005 Web Development, Assignment 2, Semester 2 2026, Swinburne University of Technology Sarawak. For educational use only.</p>
+    </footer>
+</body>
+</html>

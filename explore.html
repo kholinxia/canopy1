@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<!--
+  explore.html - explore overview page
+  COS10005 Web Development, Assignment 2 (Semester 2, 2026)
+  Lincoln Kho Jia Heng, 105808759
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Lincoln Kho Jia Heng (105808759)" />
+    <meta name="keywords" content="Sarawak, plants, ERT, citizen science, Dipterocarpaceae, Burseraceae, biodiversity" />
+    <meta name="description" content="Explore plant families, genera and species tracked by Canopy." />
+    <title>Canopy | Explore</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 700px)" />
+    <script src="scripts/script.js" defer="defer"></script>
+    <script src="scripts/enhancements.js" defer="defer"></script>
+</head>
+<body>
+    <!-- top of the page: logo, tagline, menu -->
+    <header>
+        <h1 class="brand">
+            <a href="index.html" class="brand-link">
+                <img src="images/logo.svg" alt="Canopy logo" class="logo-icon" width="56" height="34" />
+            </a>
+        </h1>
+        <p class="tagline">A citizen science platform for Endangered, Rare &amp; Threatened plants</p>
+        <nav>
+            <!-- hamburger menu for phones: hidden checkbox + label, no JavaScript -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+            <label for="nav-toggle" class="nav-toggle-label"><span class="burger-icon">&#9776;</span><span class="burger-text">Menu</span></label>
+            <ul class="menu">
+                <li class="has-dropdown">
+                    <a href="explore.html">Explore</a>
+                    <ul class="dropdown">
+                        <li><a href="explore1.html">Families</a></li>
+                        <li><a href="explore2.html">Genera</a></li>
+                        <li><a href="explore3.html">Species</a></li>
+                    </ul>
+                </li>
+                <li><a href="identify.html">Identify</a></li>
+                <li><a href="contributor.html">Contributors</a></li>
+                <li><a href="contribute.html">Contribute</a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- wrapper: main column on the left, manual box on the right -->
+    <div class="page-layout">
+    <!-- main part of the page -->
+    <main>
+        <section>
+            <h2>The Canopy Plant Encyclopedia</h2>
+            <p>
+                Our encyclopedia is organised the same way botanists classify plants: from broad
+                <strong>families</strong>, down to more specific <strong>genera</strong>, down to individual
+                <strong>species</strong>. For this alpha version we are focusing on two families of rainforest trees,
+                Dipterocarpaceae and Burseraceae, which are both important to Borneo's forests and both
+                affected by logging and land clearance.
+            </p>
+        </section>
+
+        <!-- section: category cards -->
+        <section id="category-cards">
+            <h3>Choose a level</h3>
+            <div class="category-column">
+                <article class="category-row">
+                    <div class="category-row-text">
+                        <h3><a href="explore1.html">Families</a></h3>
+                        <p>Start broad: an overview of the Dipterocarpaceae and Burseraceae families and why they matter.</p>
+                    </div>
+                    <div class="category-row-links">
+                        <a href="explore2.html" class="btn">See Genera &#8594;</a>
+                        <a href="explore3.html" class="btn">See Species &#8594;</a>
+                    </div>
+                </article>
+
+                <article class="category-row">
+                    <div class="category-row-text">
+                        <h3><a href="explore2.html">Genera</a></h3>
+                        <p>A closer look at the Dipterocarpus, Hopea, Canarium and Santiria genera, their traits and their distribution.</p>
+                    </div>
+                    <div class="category-row-links">
+                        <a href="explore1.html" class="btn">See Families &#8594;</a>
+                        <a href="explore3.html" class="btn">See Species &#8594;</a>
+                    </div>
+                </article>
+
+                <article class="category-row">
+                    <div class="category-row-text">
+                        <h3><a href="explore3.html">Species</a></h3>
+                        <p>Detailed profiles of the eight individual species currently tracked on the platform.</p>
+                    </div>
+                    <div class="category-row-links">
+                        <a href="explore1.html" class="btn">See Families &#8594;</a>
+                        <a href="explore2.html" class="btn">See Genera &#8594;</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- section: dataset overview -->
+        <section id="dataset-overview">
+            <h3>The alpha dataset at a glance</h3>
+            <figure>
+                <img src="images/hero-rainforest.jpg" alt="Bornean rainforest canopy in Sarawak" width="800" height="400" />
+                <figcaption>The lowland and hill forests of Borneo are home to the trees in this encyclopedia. <span class="photo-credit">Photo: <a href="https://en.wikipedia.org/wiki/Borneo_lowland_rain_forests#/media/File:Primary_Rainforest_(10623380025).jpg">Wikipedia</a></span></figcaption>
+            </figure>
+            <div class="table-scroll">
+                <!-- table: Families, genera and species covered in this release -->
+                <table class="data-table">
+                    <caption>Families, genera and species covered in this release</caption>
+                    <thead>
+                        <tr><th scope="col">Family</th><th scope="col">Genera</th><th scope="col">Species</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Dipterocarpaceae</td><td><em>Dipterocarpus</em>, <em>Hopea</em></td><td>4</td></tr>
+                        <tr><td>Burseraceae</td><td><em>Canarium</em>, <em>Santiria</em></td><td>4</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- definition list -->
+            <dl>
+                <dt>Family</dt>
+                <dd>A group of related genera, such as Dipterocarpaceae.</dd>
+                <dt>Genus</dt>
+                <dd>A group of closely related species, such as <em>Hopea</em>. The first word of a scientific name.</dd>
+                <dt>Species</dt>
+                <dd>A single kind of plant, such as <em>Hopea nutans</em>.</dd>
+            </dl>
+        </section>
+
+        <!-- section: location notes -->
+        <section id="location-notes">
+            <h2>Where to spot them</h2>
+            <p>
+                These are mostly tall trees of lowland and hill forest, so the best clues are often on the ground:
+                fallen winged fruit, compound leaves and flakes of bark. <em>Dipterocarpus grandiflorus</em> is
+                listed as Endangered across its range, while the tallest <em>Hopea nutans</em> on record was
+                measured in Tawau Hills National Park in Sabah.
+            </p>
+        </section>
+
+        <hr />
+
+        <!-- section: related pages -->
+        <section id="related-pages">
+            <h2>Keep exploring</h2>
+            <p>
+                Found something in the forest that you cannot match to a species? The
+                <a href="identify.html">Identify</a> page explains how to narrow it down from the fruit, leaves and bark.
+                To see who first described these plants, visit the <a href="contributor.html">Contributor</a> page.
+            </p>
+        </section>
+
+        <!-- aside: a related note -->
+        <aside>
+            <h2>A note on scope</h2>
+            <p>
+                This alpha release covers two families, two genera per family and two species per genus (eight
+                species in total) as a demonstration dataset. Future versions of the platform are intended to
+                expand this to cover the full range of ERT plants found across Sarawak.
+            </p>
+        </aside>
+    </main>
+    <!-- manual box (aside), floats right -->
+    <aside class="manual-box" aria-label="Page manual">
+        <h2>Manual</h2>
+        <h3>Using Explore</h3>
+        <!-- ordered list -->
+        <ol>
+            <li>Choose Families, Genera or Species.</li>
+            <li>Each row has buttons that jump to the other two levels.</li>
+            <li>Hover over Explore in the menu for direct links.</li>
+        </ol>
+    </aside>
+    </div>
+
+    <!-- bottom bar: buttons to Contribute and Enquiry -->
+    <section class="cta-bar" aria-label="Get involved">
+        <div class="cta-text">
+            <h2>Spotted a plant, or have a question?</h2>
+            <p>Send in a sighting for review, or ask the team about the project.</p>
+        </div>
+        <div class="cta-actions">
+            <a href="contribute.html" class="btn cta-primary">Contribute</a>
+            <a href="enquiry.html" class="btn cta-secondary">Enquiry</a>
+        </div>
+    </section>
+
+    <!-- footer: links, my email (mailto) and copyright -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-about">
+                <p class="footer-brand">Canopy</p>
+                <p>A citizen science platform for Endangered, Rare &amp; Threatened plants of Sarawak, Malaysia.</p>
+            </div>
+            <nav class="footer-col" aria-label="Explore plants">
+                <h2>Explore</h2>
+                <ul>
+                    <li><a href="explore1.html">Families</a></li>
+                    <li><a href="explore2.html">Genera</a></li>
+                    <li><a href="explore3.html">Species</a></li>
+                    <li><a href="identify.html">Identify</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Get involved">
+                <h2>Get involved</h2>
+                <ul>
+                    <li><a href="contributor.html">Contributors</a></li>
+                    <li><a href="contribute.html">Contribute</a></li>
+                    <li><a href="enquiry.html">Enquiry</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Site information">
+                <h2>Information</h2>
+                <ul>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="https://youtu.be/JJjthoW2Zk4" target="_blank" rel="noopener">Demo video</a></li>
+                    <li><a href="video.html">Video page</a></li>
+                    <li><a href="enhancement1.html">Enhancements 1 (CSS)</a></li>
+                    <li><a href="enhancement2.html">Enhancements 2 (JavaScript)</a></li>
+                    <li><a href="acknowledgement.html">Acknowledgement 1</a></li>
+                    <li><a href="acknowledgement2.html">Acknowledgement 2</a></li>
+                </ul>
+            </nav>
+        </div>
+        <p class="footer-contact">Contact: <a href="mailto:105808759@students.swinburne.edu.my">105808759@students.swinburne.edu.my</a></p>
+        <p class="footer-legal">&#169; 2026 Canopy. Prepared for COS10005 Web Development, Assignment 2, Semester 2 2026, Swinburne University of Technology Sarawak. For educational use only.</p>
+    </footer>
+</body>
+</html>

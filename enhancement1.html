@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<!--
+  enhancement1.html - list of enhancements
+  COS10005 Web Development, Assignment 2 (Semester 2, 2026)
+  Lincoln Kho Jia Heng, 105808759
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Lincoln Kho Jia Heng (105808759)" />
+    <meta name="keywords" content="Sarawak, plants, ERT, citizen science, Dipterocarpaceae, Burseraceae, biodiversity" />
+    <meta name="description" content="Description of the HTML/CSS enhancements implemented on Canopy." />
+    <title>Canopy | CSS enhancements</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 700px)" />
+    <script src="scripts/script.js" defer="defer"></script>
+    <script src="scripts/enhancements.js" defer="defer"></script>
+</head>
+<body>
+    <!-- top of the page: logo, tagline, menu -->
+    <header>
+        <h1 class="brand">
+            <a href="index.html" class="brand-link">
+                <img src="images/logo.svg" alt="Canopy logo" class="logo-icon" width="56" height="34" />
+            </a>
+        </h1>
+        <p class="tagline">A citizen science platform for Endangered, Rare &amp; Threatened plants</p>
+        <nav>
+            <!-- hamburger menu for phones: hidden checkbox + label, no JavaScript -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+            <label for="nav-toggle" class="nav-toggle-label"><span class="burger-icon">&#9776;</span><span class="burger-text">Menu</span></label>
+            <ul class="menu">
+                <li class="has-dropdown">
+                    <a href="explore.html">Explore</a>
+                    <ul class="dropdown">
+                        <li><a href="explore1.html">Families</a></li>
+                        <li><a href="explore2.html">Genera</a></li>
+                        <li><a href="explore3.html">Species</a></li>
+                    </ul>
+                </li>
+                <li><a href="identify.html">Identify</a></li>
+                <li><a href="contributor.html">Contributors</a></li>
+                <li><a href="contribute.html">Contribute</a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- wrapper: main column on the left, manual box on the right -->
+    <div class="page-layout">
+    <!-- main part of the page -->
+    <main>
+        <h2>Enhancements beyond the base requirements</h2>
+        <p>
+            Four HTML/CSS enhancements were added on top of the core assignment requirements, all implemented
+            with pure CSS and no JavaScript. Each one is described below along with a link to where it can be
+            seen in action on the live site.
+        </p>
+
+        <!-- section: enh hover -->
+        <section id="enh-hover">
+            <h3>1. Button / link hover effect</h3>
+            <p>
+                Every link in the <a href="index.html">main navigation menu</a> and every button on the
+                <a href="contribute.html">Contribute</a> and <a href="enquiry.html">Enquiry</a> forms uses CSS
+                <code>transition</code> and <code>transform</code> properties (see the <code>.menu a</code> and
+                <code>button</code> rules in <code>styles/style.css</code>), so hovering smoothly animates colour
+                and position instead of changing instantly.
+            </p>
+            <p class="enh-reference">
+                Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition">MDN Web Docs &#8211; the CSS <code>transition</code> property</a>.
+            </p>
+        </section>
+
+        <!-- section: enh hamburger -->
+        <section id="enh-hamburger">
+            <h3>2. CSS-only hamburger navigation</h3>
+            <p>
+                On wide screens the full menu is always visible across the top of the page. On phones and other
+                narrow screens (700px and below) it collapses behind a <strong>Menu</strong> button (&#9776;) at the
+                top left, next to the logo, and opens as a panel listing every page. This is built with the
+                "checkbox hack": a hidden <code>&lt;input type="checkbox"&gt;</code> paired with a
+                <code>&lt;label&gt;</code>, and a CSS general sibling selector
+                (<code>.nav-toggle:checked ~ .menu</code> in <code>styles/mobile.css</code>) that reveals the menu
+                when the checkbox is checked &#8212; no JavaScript involved.
+            </p>
+            <p>
+                The slide-down dropdown under <strong>Explore</strong> uses a <code>max-height</code> +
+                <code>transition</code> in <code>styles/style.css</code> (<code>.has-dropdown.open .dropdown</code>).
+                In Assignment 1 this opened with <code>:hover</code>. In Assignment 2 it is opened by JavaScript, so it is
+                explained on the <a href="enhancement2.html#other-js">Enhancements 2</a> page. On narrow screens,
+                where hover isn't reliable with touch, <code>styles/mobile.css</code> shows the same links already
+                nested under Explore.
+            </p>
+            <p class="enh-reference">
+                Reference(s): <a href="https://css-tricks.com/the-checkbox-hack/">CSS-Tricks &#8211; "The Checkbox Hack"</a>,
+                <a href="https://www.w3schools.com/howto/howto_css_dropdown_navbar.asp">W3Schools &#8211; "How To Create a Dropdown Navbar"</a>.
+            </p>
+        </section>
+
+        <!-- section: enh gallery -->
+        <section id="enh-gallery">
+            <h3>3. Photo gallery</h3>
+            <p>
+                The <a href="explore3.html#species-gallery">species gallery on the Species page</a> lays out
+                thumbnails of all eight tracked species in a responsive grid. Hovering (or focusing, for keyboard
+                users) a thumbnail zooms the photo in smoothly via <code>transform: scale()</code> on the image
+                inside an <code>overflow: hidden</code> container (see <code>.gallery-item</code> in
+                <code>styles/style.css</code>), and each thumbnail links straight to that species' full profile
+                further down the page.
+            </p>
+            <p class="enh-reference">
+                Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit">MDN Web Docs &#8211; the CSS <code>object-fit</code> property</a>.
+            </p>
+        </section>
+
+        <!-- section: enh flipcard -->
+        <section id="enh-flipcard">
+            <h3>4. Flip cards</h3>
+            <p>
+                The <a href="explore3.html#species-flip-cards">quick-reference cards on the Species page</a>
+                use 3D CSS transforms (<code>perspective</code>, <code>transform-style: preserve-3d</code> and
+                <code>backface-visibility: hidden</code> in the <code>.flip-card</code> rules) so that hovering
+                or focusing a card flips it over to reveal one key fact about that species on the back, without
+                any JavaScript.
+            </p>
+            <p class="enh-reference">
+                Reference: <a href="https://www.w3schools.com/howto/howto_css_flip_card.asp">W3Schools &#8211; "How To Create a Flip Card"</a>.
+            </p>
+        </section>
+
+        <hr />
+
+        <!-- aside: a related note -->
+        <aside>
+            <h2>Why these enhancements</h2>
+            <p>
+                Each enhancement was chosen because it directly improves how a real contributor browses and uses
+                the site &#8212; a friendlier mobile menu, a faster way to preview species, and a fun way to
+                surface one extra fact per species &#8212; rather than being purely decorative.
+            </p>
+        </aside>
+    </main>
+    <!-- manual box (aside), floats right -->
+    <aside class="manual-box" aria-label="Page manual">
+        <h2>Manual</h2>
+        <h3>Finding each enhancement</h3>
+        <!-- ordered list -->
+        <ol>
+            <li>Each section links to the page where the feature is live.</li>
+            <li>The gallery and flip cards are on the Species page.</li>
+            <li>On a phone the Menu button opens the navigation; on a wide screen the Explore dropdown is described on the Enhancements 2 page.</li>
+        </ol>
+    </aside>
+    </div>
+
+    <!-- bottom bar: buttons to Contribute and Enquiry -->
+    <section class="cta-bar" aria-label="Get involved">
+        <div class="cta-text">
+            <h2>Spotted a plant, or have a question?</h2>
+            <p>Send in a sighting for review, or ask the team about the project.</p>
+        </div>
+        <div class="cta-actions">
+            <a href="contribute.html" class="btn cta-primary">Contribute</a>
+            <a href="enquiry.html" class="btn cta-secondary">Enquiry</a>
+        </div>
+    </section>
+
+    <!-- footer: links, my email (mailto) and copyright -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-about">
+                <p class="footer-brand">Canopy</p>
+                <p>A citizen science platform for Endangered, Rare &amp; Threatened plants of Sarawak, Malaysia.</p>
+            </div>
+            <nav class="footer-col" aria-label="Explore plants">
+                <h2>Explore</h2>
+                <ul>
+                    <li><a href="explore1.html">Families</a></li>
+                    <li><a href="explore2.html">Genera</a></li>
+                    <li><a href="explore3.html">Species</a></li>
+                    <li><a href="identify.html">Identify</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Get involved">
+                <h2>Get involved</h2>
+                <ul>
+                    <li><a href="contributor.html">Contributors</a></li>
+                    <li><a href="contribute.html">Contribute</a></li>
+                    <li><a href="enquiry.html">Enquiry</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Site information">
+                <h2>Information</h2>
+                <ul>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="https://youtu.be/JJjthoW2Zk4" target="_blank" rel="noopener">Demo video</a></li>
+                    <li><a href="video.html">Video page</a></li>
+                    <li><a href="enhancement1.html" aria-current="page">Enhancements 1 (CSS)</a></li>
+                    <li><a href="enhancement2.html">Enhancements 2 (JavaScript)</a></li>
+                    <li><a href="acknowledgement.html">Acknowledgement 1</a></li>
+                    <li><a href="acknowledgement2.html">Acknowledgement 2</a></li>
+                </ul>
+            </nav>
+        </div>
+        <p class="footer-contact">Contact: <a href="mailto:105808759@students.swinburne.edu.my">105808759@students.swinburne.edu.my</a></p>
+        <p class="footer-legal">&#169; 2026 Canopy. Prepared for COS10005 Web Development, Assignment 2, Semester 2 2026, Swinburne University of Technology Sarawak. For educational use only.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<!--
+  explore2.html - genera page
+  COS10005 Web Development, Assignment 2 (Semester 2, 2026)
+  Lincoln Kho Jia Heng, 105808759
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Lincoln Kho Jia Heng (105808759)" />
+    <meta name="keywords" content="Sarawak, plants, ERT, citizen science, Dipterocarpaceae, Burseraceae, biodiversity" />
+    <meta name="description" content="Overview of the Dipterocarpus, Hopea, Canarium and Santiria genera tracked by Canopy." />
+    <title>Canopy | Genera</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 700px)" />
+    <script src="scripts/script.js" defer="defer"></script>
+    <script src="scripts/enhancements.js" defer="defer"></script>
+</head>
+<body>
+    <!-- top of the page: logo, tagline, menu -->
+    <header>
+        <h1 class="brand">
+            <a href="index.html" class="brand-link">
+                <img src="images/logo.svg" alt="Canopy logo" class="logo-icon" width="56" height="34" />
+            </a>
+        </h1>
+        <p class="tagline">A citizen science platform for Endangered, Rare &amp; Threatened plants</p>
+        <nav>
+            <!-- hamburger menu for phones: hidden checkbox + label, no JavaScript -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+            <label for="nav-toggle" class="nav-toggle-label"><span class="burger-icon">&#9776;</span><span class="burger-text">Menu</span></label>
+            <ul class="menu">
+                <li class="has-dropdown">
+                    <a href="explore.html">Explore</a>
+                    <ul class="dropdown">
+                        <li><a href="explore1.html">Families</a></li>
+                        <li><a href="explore2.html">Genera</a></li>
+                        <li><a href="explore3.html">Species</a></li>
+                    </ul>
+                </li>
+                <li><a href="identify.html">Identify</a></li>
+                <li><a href="contributor.html">Contributors</a></li>
+                <li><a href="contribute.html">Contribute</a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- wrapper: main column on the left, manual box on the right -->
+    <div class="page-layout">
+    <!-- main part of the page -->
+    <main>
+        <nav class="submenu" aria-label="Explore sections">
+            <ul>
+                <li><a href="explore.html">Overview</a></li>
+                <li><a href="explore1.html">Families</a></li>
+                <li><a href="explore2.html">Genera</a></li>
+                <li><a href="explore3.html">Species</a></li>
+            </ul>
+        </nav>
+
+        <h2>Genera</h2>
+        <p>
+            Within each family, plants are grouped into genera whose members resemble each other closely. Canopy
+            covers two genera for each of the two families on the Families page, so four genera in total:
+            <em>Dipterocarpus</em> and <em>Hopea</em> from Dipterocarpaceae, and <em>Canarium</em> and
+            <em>Santiria</em> from Burseraceae. All four appear in the PlantsData list for this project.
+        </p>
+
+        <!-- section: dipterocarpus -->
+        <section id="dipterocarpus" class="explore-row">
+            <figure class="explore-row-media">
+                <img src="images/dipterocarpus-genus.jpg" alt="Winged fruit of a Dipterocarpus tree on the forest floor" width="600" height="400" />
+                <figcaption><em>Dipterocarpus</em> genus (Dipterocarpaceae) <span class="photo-credit">Photo: <a href="https://www.inaturalist.org/observations/344316033">iNaturalist</a></span></figcaption>
+            </figure>
+            <div class="explore-row-body">
+                <h3>Dipterocarpus</h3>
+            <p>
+                <em>Dipterocarpus</em> is a genus of about 70 species of tall rainforest trees, found from Sri Lanka and
+                India across Southeast Asia to the Philippines. Borneo holds the greatest variety, and many of its
+                species grow nowhere else; <em>D. cuspidatus</em>, for example, is known from north-eastern Sarawak and
+                <em>D. sarawakensis</em> is called the Sarawak keruing. The name comes from Greek and means
+                &#8220;two-winged fruits&#8221;, a reminder that each fruit carries two long wings that help it spin away
+                from the parent tree. The genus is a major source of timber and of a resinous oil sold as keruing or
+                gurjun oil, and some species are also used in traditional herbal medicine.
+            </p>
+            <!-- definition list -->
+            <dl>
+                <dt>Family</dt>
+                <dd>Dipterocarpaceae</dd>
+                <dt>Species on Canopy</dt>
+                <dd><em>Dipterocarpus grandiflorus</em> and <em>Dipterocarpus cornutus</em></dd>
+                <dt>Described by</dt>
+                <dd>C. F. Gaertner</dd>
+            </dl>
+                <div class="explore-row-links">
+                    <a href="explore1.html" class="btn">Families</a><a href="explore3.html" class="btn">Species</a>
+                    <a href="enquiry.html" class="btn btn-enquire" data-enquiry-name="Dipterocarpus" data-enquiry-type="Genus">Enquire</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- section: hopea -->
+        <section id="hopea" class="explore-row">
+            <figure class="explore-row-media">
+                <img src="images/hopea-genus.jpg" alt="Buttressed trunk of a Hopea tree in lowland rainforest" width="600" height="400" />
+                <figcaption><em>Hopea</em> genus (Dipterocarpaceae) <span class="photo-credit">Photo: <a href="https://www.inaturalist.org/photos/258495628?size=original">iNaturalist</a></span></figcaption>
+            </figure>
+            <div class="explore-row-body">
+                <h3>Hopea</h3>
+            <p>
+                <em>Hopea</em> contains about 114 species and ranges from Sri Lanka and southern India across
+                Myanmar and southern China to New Guinea. It is named after John Hope, the first Regius Keeper of
+                the Royal Botanic Garden in Edinburgh. Most species are small to medium trees of the main and lower
+                canopy in lowland rainforest, although a few, such as <em>Hopea nutans</em>, can grow tall enough to
+                poke out above the forest roof. The low branches and sometimes thick buttress roots are good clues,
+                and the smooth chocolate-brown bark of young trees later cracks and becomes mottled with grey.
+            </p>
+                <div class="explore-row-links">
+                    <a href="explore1.html" class="btn">Families</a><a href="explore3.html" class="btn">Species</a>
+                    <a href="enquiry.html" class="btn btn-enquire" data-enquiry-name="Hopea" data-enquiry-type="Genus">Enquire</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- section: canarium -->
+        <section id="canarium" class="explore-row">
+            <figure class="explore-row-media">
+                <img src="images/canarium-genus.jpg" alt="Large Canarium tree with pinnate leaves" width="600" height="400" />
+                <figcaption><em>Canarium</em> genus (Burseraceae) <span class="photo-credit">Photo: <a href="https://www.inaturalist.org/photos/102044644?size=medium">iNaturalist</a></span></figcaption>
+            </figure>
+            <div class="explore-row-body">
+                <h3>Canarium</h3>
+            <p>
+                <em>Canarium</em> is a genus of about 120 species, native from tropical Africa through South and
+                Southeast Asia and Malesia to Australia and the western Pacific. The trees are large evergreens that
+                can reach 40 to 50 metres, with pinnate leaves, and individual trees are either male or female.
+                People use the genus widely: <em>Canarium indicum</em> and the pili nut (<em>C. ovatum</em>) give
+                edible nuts, <em>C. luzonicum</em> yields the resin known as elemi, and in Sarawak the fruit of
+                <em>Canarium odontophyllum</em>, called dabai, is a celebrated seasonal delicacy. Linnaeus described
+                the genus in 1754.
+            </p>
+                <div class="explore-row-links">
+                    <a href="explore1.html" class="btn">Families</a><a href="explore3.html" class="btn">Species</a>
+                    <a href="enquiry.html" class="btn btn-enquire" data-enquiry-name="Canarium" data-enquiry-type="Genus">Enquire</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- section: santiria -->
+        <section id="santiria" class="explore-row">
+            <figure class="explore-row-media">
+                <img src="images/santiria-genus.jpg" alt="Resin-scented bark and pinnate leaves of a Santiria tree" width="600" height="400" />
+                <figcaption><em>Santiria</em> genus (Burseraceae) <span class="photo-credit">Photo: <a href="https://www.flickr.com/photos/loupok/13449833805/">Flickr: loupok</a></span></figcaption>
+            </figure>
+            <div class="explore-row-body">
+                <h3>Santiria</h3>
+            <p>
+                <em>Santiria</em> was described by the botanist Carl Ludwig Blume and belongs to the incense-tree
+                family. Its members are medium to large trees, often with buttress roots, and they carry leaves made
+                of several leaflets arranged along one stalk. The flowers are tiny, with male and female flowers on
+                separate trees, and the fruit is a drupe that is often lopsided and sits on a persistent calyx. Like
+                its relatives, the genus has a strong resinous smell that people compare to turpentine or mango. In
+                Malaysia the trees are known as kerantai or kedondong, and their wood is brown to yellow and of
+                medium weight. Some varieties are restricted to Borneo, and one is found only in Sarawak.
+            </p>
+            <!-- definition list -->
+            <dl>
+                <dt>Family</dt>
+                <dd>Burseraceae</dd>
+                <dt>Species on Canopy</dt>
+                <dd><em>Santiria laevigata</em> and <em>Santiria apiculata</em></dd>
+                <dt>Described by</dt>
+                <dd>Carl Ludwig Blume</dd>
+                <dt>Local names</dt>
+                <dd>Kerantai, kedondong</dd>
+            </dl>
+                <div class="explore-row-links">
+                    <a href="explore1.html" class="btn">Families</a><a href="explore3.html" class="btn">Species</a>
+                    <a href="enquiry.html" class="btn btn-enquire" data-enquiry-name="Santiria" data-enquiry-type="Genus">Enquire</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- section: telling genera apart -->
+        <section id="telling-genera-apart">
+            <h3>Telling the four genera apart</h3>
+            <!-- ordered list -->
+            <ol>
+                <li>Decide the family first: winged fruit and buttressed trunks suggest Dipterocarpaceae, while compound leaves and fragrant resin suggest Burseraceae.</li>
+                <li>Within the family, note the habitat and elevation where you found the tree.</li>
+                <li>Compare your photographs with the species profiles on the Species page.</li>
+            </ol>
+            <div class="table-scroll">
+                <!-- table: Each genus, its family and its species -->
+                <table class="data-table">
+                    <caption>Each genus, its family and its species</caption>
+                    <thead>
+                        <tr><th scope="col">Genus</th><th scope="col">Family</th><th scope="col">Species tracked</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><em>Dipterocarpus</em></td><td>Dipterocarpaceae</td><td><em>D. grandiflorus</em>, <em>D. cornutus</em></td></tr>
+                        <tr><td><em>Hopea</em></td><td>Dipterocarpaceae</td><td><em>H. nutans</em>, <em>H. beccariana</em></td></tr>
+                        <tr><td><em>Canarium</em></td><td>Burseraceae</td><td><em>C. odontophyllum</em>, <em>C. decumanum</em></td></tr>
+                        <tr><td><em>Santiria</em></td><td>Burseraceae</td><td><em>S. laevigata</em>, <em>S. apiculata</em></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <hr />
+
+        <!-- aside: a related note -->
+        <aside>
+            <h2>Field tip</h2>
+            <p>
+                Resin is a useful clue for both families. If a tree has clear or milky droplets on the bark, note
+                their colour and photograph them, but never cut into the trunk to look for more.
+            </p>
+        </aside>
+    </main>
+    <!-- manual box (aside), floats right -->
+    <aside class="manual-box" aria-label="Page manual">
+        <h2>Manual</h2>
+        <h3>Reading Genera</h3>
+        <!-- ordered list -->
+        <ol>
+            <li>Each row is one genus, with its photo on the left.</li>
+            <li>Use Families to go up a level, or Species to see individual plants.</li>
+            <li>Note the fruit, leaves and bark of the tree if you find a Hopea or Canarium.</li>
+        </ol>
+    </aside>
+    </div>
+
+    <!-- bottom bar: buttons to Contribute and Enquiry -->
+    <section class="cta-bar" aria-label="Get involved">
+        <div class="cta-text">
+            <h2>Spotted a plant, or have a question?</h2>
+            <p>Send in a sighting for review, or ask the team about the project.</p>
+        </div>
+        <div class="cta-actions">
+            <a href="contribute.html" class="btn cta-primary">Contribute</a>
+            <a href="enquiry.html" class="btn cta-secondary">Enquiry</a>
+        </div>
+    </section>
+
+    <!-- footer: links, my email (mailto) and copyright -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-about">
+                <p class="footer-brand">Canopy</p>
+                <p>A citizen science platform for Endangered, Rare &amp; Threatened plants of Sarawak, Malaysia.</p>
+            </div>
+            <nav class="footer-col" aria-label="Explore plants">
+                <h2>Explore</h2>
+                <ul>
+                    <li><a href="explore1.html">Families</a></li>
+                    <li><a href="explore2.html" aria-current="page">Genera</a></li>
+                    <li><a href="explore3.html">Species</a></li>
+                    <li><a href="identify.html">Identify</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Get involved">
+                <h2>Get involved</h2>
+                <ul>
+                    <li><a href="contributor.html">Contributors</a></li>
+                    <li><a href="contribute.html">Contribute</a></li>
+                    <li><a href="enquiry.html">Enquiry</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Site information">
+                <h2>Information</h2>
+                <ul>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="https://youtu.be/JJjthoW2Zk4" target="_blank" rel="noopener">Demo video</a></li>
+                    <li><a href="video.html">Video page</a></li>
+                    <li><a href="enhancement1.html">Enhancements 1 (CSS)</a></li>
+                    <li><a href="enhancement2.html">Enhancements 2 (JavaScript)</a></li>
+                    <li><a href="acknowledgement.html">Acknowledgement 1</a></li>
+                    <li><a href="acknowledgement2.html">Acknowledgement 2</a></li>
+                </ul>
+            </nav>
+        </div>
+        <p class="footer-contact">Contact: <a href="mailto:105808759@students.swinburne.edu.my">105808759@students.swinburne.edu.my</a></p>
+        <p class="footer-legal">&#169; 2026 Canopy. Prepared for COS10005 Web Development, Assignment 2, Semester 2 2026, Swinburne University of Technology Sarawak. For educational use only.</p>
+    </footer>
+</body>
+</html>

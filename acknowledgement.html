@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<!--
+  acknowledgement.html - acknowledgement page for Assignment 1 (photos, references, CSS and HTML techniques)
+  COS10005 Web Development, Assignment 2 (Semester 2, 2026)
+  Lincoln Kho Jia Heng, 105808759
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Lincoln Kho Jia Heng (105808759)" />
+    <meta name="keywords" content="Sarawak, plants, ERT, citizen science, Dipterocarpaceae, Burseraceae, biodiversity" />
+    <meta name="description" content="Photo credits and sources used on the Canopy website." />
+    <title>Canopy | Acknowledgement 1</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 700px)" />
+    <script src="scripts/script.js" defer="defer"></script>
+    <script src="scripts/enhancements.js" defer="defer"></script>
+</head>
+<body>
+    <!-- top of the page: logo, tagline, menu -->
+    <header>
+        <h1 class="brand">
+            <a href="index.html" class="brand-link">
+                <img src="images/logo.svg" alt="Canopy logo" class="logo-icon" width="56" height="34" />
+            </a>
+        </h1>
+        <p class="tagline">A citizen science platform for Endangered, Rare &amp; Threatened plants</p>
+        <nav>
+            <!-- hamburger menu for phones: hidden checkbox + label, no JavaScript -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+            <label for="nav-toggle" class="nav-toggle-label"><span class="burger-icon">&#9776;</span><span class="burger-text">Menu</span></label>
+            <ul class="menu">
+                <li class="has-dropdown">
+                    <a href="explore.html">Explore</a>
+                    <ul class="dropdown">
+                        <li><a href="explore1.html">Families</a></li>
+                        <li><a href="explore2.html">Genera</a></li>
+                        <li><a href="explore3.html">Species</a></li>
+                    </ul>
+                </li>
+                <li><a href="identify.html">Identify</a></li>
+                <li><a href="contributor.html">Contributors</a></li>
+                <li><a href="contribute.html">Contribute</a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- wrapper: main column on the left, manual box on the right -->
+    <div class="page-layout">
+    <!-- main part of the page -->
+    <main>
+        <h2>Acknowledgement 1</h2>
+        <p>
+            Canopy uses photos supplied by other people and knowledge gathered from published sources. Photos and references are
+            listed separately below: first who supplied each photo, then where the knowledge on this website was
+            learned (plants, scientists and building techniques). All descriptions were written in my own words.
+            The JavaScript added for Assignment 2 is credited on <a href="acknowledgement2.html">Acknowledgement 2</a>.
+        </p>
+
+        <!-- section: photo credits -->
+        <section id="photo-credits">
+            <h3>Photos</h3>
+            <div class="table-scroll">
+                <!-- table: Who supplied each photo and where it appears -->
+                <table class="data-table">
+                    <caption>Who supplied each photo and where it appears</caption>
+                    <thead>
+                        <tr><th>Photo</th><th>Used on</th><th>Source</th></tr>
+                    </thead>
+                    <tbody>
+                        <!-- the link here should be the same one used in that photo's caption -->
+                        <tr><td>hero-rainforest.jpg</td><td>Home</td><td><a href="https://en.wikipedia.org/wiki/Borneo_lowland_rain_forests#/media/File:Primary_Rainforest_(10623380025).jpg">Wikipedia: Borneo lowland rain forests (File: Primary Rainforest)</a></td></tr>
+                        <tr><td>dipterocarpaceae-family.jpg</td><td>Families</td><td><a href="https://www.inaturalist.org/observations/397683864">iNaturalist observation 397683864</a></td></tr>
+                        <tr><td>burseraceae-family.jpg</td><td>Families</td><td><a href="https://www.inaturalist.org/photos/24912?size=original">iNaturalist photo 24912</a></td></tr>
+                        <tr><td>dipterocarpus-genus.jpg</td><td>Genera</td><td><a href="https://www.inaturalist.org/observations/344316033">iNaturalist observation 344316033</a></td></tr>
+                        <tr><td>hopea-genus.jpg</td><td>Genera</td><td><a href="https://www.inaturalist.org/photos/258495628?size=original">iNaturalist photo 258495628</a></td></tr>
+                        <tr><td>canarium-genus.jpg</td><td>Genera, Contributors</td><td><a href="https://www.inaturalist.org/photos/102044644?size=medium">iNaturalist photo 102044644</a></td></tr>
+                        <tr><td>santiria-genus.jpg</td><td>Genera</td><td><a href="https://www.flickr.com/photos/loupok/13449833805/">Flickr: loupok (photo 13449833805)</a></td></tr>
+                        <tr><td>dipterocarpus-grandiflorus.jpg</td><td>Species, Contributors</td><td><a href="https://www.flickr.com/photos/loupok/14960509992/">Flickr: loupok (photo 14960509992)</a></td></tr>
+                        <tr><td>dipterocarpus-cornutus.jpg</td><td>Species, Contributors</td><td><a href="https://www.inaturalist.org/photos/71155376?size=medium">iNaturalist photo 71155376</a></td></tr>
+                        <tr><td>hopea-nutans.jpg</td><td>Species</td><td><a href="http://inaturalist.org/photos/75789843?size=medium">iNaturalist photo 75789843</a></td></tr>
+                        <tr><td>hopea-beccariana.jpg</td><td>Species, Contributors</td><td><a href="https://www.inaturalist.org/photos/246603349?size=medium">iNaturalist photo 246603349</a></td></tr>
+                        <tr><td>canarium-odontophyllum.jpg</td><td>Species</td><td><a href="https://en.wikipedia.org/wiki/Canarium_odontophyllum#/media/File:Buah_dabai-Canarium_odontophyllum-Malaysia.jpg">Wikipedia: Canarium odontophyllum (File: Buah dabai)</a></td></tr>
+                        <tr><td>canarium-decumanum.jpg</td><td>Species</td><td><a href="https://commons.wikimedia.org/w/index.php?curid=8574871">Wikimedia Commons</a></td></tr>
+                        <tr><td>santiria-laevigata.jpg</td><td>Species</td><td><a href="https://www.inaturalist.org/photos/337805281?size=medium">iNaturalist photo 337805281</a></td></tr>
+                        <tr><td>santiria-apiculata.jpg</td><td>Species</td><td><a href="https://www.inaturalist.org/photos/1471235?size=medium">iNaturalist photo 1471235</a></td></tr>
+                        <tr><td>identify-comparison.jpg</td><td>Identify</td><td>Side-by-side made from two photos. Left, a <em>Dipterocarpus</em> fruit: <a href="https://upload.wikimedia.org/wikipedia/commons/8/81/Seed_of_Dipterocarpus_indicus.jpg">Wikimedia Commons (Seed of Dipterocarpus indicus)</a>. Right, a <em>Santiria</em> fruit: <a href="https://www.inaturalist.org/photos/1471235?size=medium">iNaturalist photo 1471235</a>.</td></tr>
+                        <tr><td>profile-photo.jpg</td><td>Profile</td><td>Own photo</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- section: references -->
+        <section id="references">
+            <h3>References</h3>
+            <h4>Plants, places and conservation</h4>
+            <ul>
+                <li><a href="https://www.inaturalist.org/taxa/47126-Plantae">iNaturalist &#8211; Plantae (PlantsData reference list for this project)</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Dipterocarpaceae">Wikipedia &#8211; Dipterocarpaceae</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Burseraceae">Wikipedia &#8211; Burseraceae</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Dipterocarpus">Wikipedia &#8211; Dipterocarpus</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Hopea">Wikipedia &#8211; Hopea</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Canarium">Wikipedia &#8211; Canarium</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Santiria">Wikipedia &#8211; Santiria</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Dipterocarpus_grandiflorus">Wikipedia &#8211; Dipterocarpus grandiflorus</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Dipterocarpus_cornutus">Wikipedia &#8211; Dipterocarpus cornutus</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Hopea_nutans">Wikipedia &#8211; Hopea nutans</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Hopea_beccariana">Wikipedia &#8211; Hopea beccariana</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Canarium_odontophyllum">Wikipedia &#8211; Canarium odontophyllum</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Canarium_decumanum">Wikipedia &#8211; Canarium decumanum</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Santiria_laevigata">Wikipedia &#8211; Santiria laevigata</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Santiria_apiculata">Wikipedia &#8211; Santiria apiculata</a></li>
+                <li><a href="https://uses.plantnet-project.org/en/Dipterocarpus_grandiflorus_(PROSEA)">PROSEA &#8211; Dipterocarpus grandiflorus</a></li>
+                <li><a href="https://uses.plantnet-project.org/en/Dipterocarpus_cornutus_(PROSEA)">PROSEA &#8211; Dipterocarpus cornutus</a></li>
+                <li><a href="https://www.nparks.gov.sg/florafaunaweb/flora/4/6/4670">NParks Flora &amp; Fauna Web &#8211; Santiria laevigata</a></li>
+                <li><a href="https://lkcnhm.nus.edu.sg/wp-content/uploads/sites/11/app/uploads/2019/05/NIS-2019-0004.pdf">Nature in Singapore (2019) &#8211; account of Santiria in Singapore</a></li>
+                <li><a href="https://www.delta-intkey.com/wood/en/www/bursantr.htm">DELTA &#8211; Santiria wood description</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Citizen_science">Wikipedia &#8211; Citizen science</a></li>
+            </ul>
+            <h4>Scientists</h4>
+            <ul>
+                <li><a href="https://en.wikipedia.org/wiki/Odoardo_Beccari">Wikipedia &#8211; Odoardo Beccari</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Francisco_Manuel_Blanco">Wikipedia &#8211; Manuel Blanco</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/William_Turner_Thiselton-Dyer">Wikipedia &#8211; William Turner Thiselton-Dyer</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Carl_Linnaeus">Wikipedia &#8211; Carl Linnaeus</a></li>
+            </ul>
+            <h4>Code and design techniques</h4>
+            <!-- definition list -->
+            <dl>
+                <dt>Hover effects</dt>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition">MDN Web Docs &#8211; the CSS transition property</a></dd>
+                <dt>Hamburger menu</dt>
+                <dd><a href="https://css-tricks.com/the-checkbox-hack/">CSS-Tricks &#8211; The Checkbox Hack</a></dd>
+                <dt>Dropdown navigation</dt>
+                <dd><a href="https://www.w3schools.com/howto/howto_css_dropdown_navbar.asp">W3Schools &#8211; How To Create a Dropdown Navbar</a></dd>
+                <dt>Photo gallery</dt>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit">MDN Web Docs &#8211; the CSS object-fit property</a></dd>
+                <dt>Flip cards</dt>
+                <dd><a href="https://www.w3schools.com/howto/howto_css_flip_card.asp">W3Schools &#8211; How To Create a Flip Card</a></dd>
+            </dl>
+        </section>
+
+        <hr />
+
+        <!-- aside: a related note -->
+        <aside>
+            <h2>Spotted a missing credit?</h2>
+            <p>If a photo or source is not credited correctly, please tell us through the Enquiry page and we will fix it.</p>
+        </aside>
+    </main>
+    <!-- manual box (aside), floats right -->
+    <aside class="manual-box" aria-label="Page manual">
+        <h2>Manual</h2>
+        <h3>About this page</h3>
+        <!-- ordered list -->
+        <ol>
+            <li>Photos lists who supplied each image and where it appears, with a link to the source.</li>
+            <li>References lists where the knowledge on this website was learned.</li>
+            <li>Code and design techniques credit the methods used to build the site.</li>
+        </ol>
+    </aside>
+    </div>
+
+    <!-- bottom bar: buttons to Contribute and Enquiry -->
+    <section class="cta-bar" aria-label="Get involved">
+        <div class="cta-text">
+            <h2>Spotted a plant, or have a question?</h2>
+            <p>Send in a sighting for review, or ask the team about the project.</p>
+        </div>
+        <div class="cta-actions">
+            <a href="contribute.html" class="btn cta-primary">Contribute</a>
+            <a href="enquiry.html" class="btn cta-secondary">Enquiry</a>
+        </div>
+    </section>
+
+    <!-- footer: links, my email (mailto) and copyright -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-about">
+                <p class="footer-brand">Canopy</p>
+                <p>A citizen science platform for Endangered, Rare &amp; Threatened plants of Sarawak, Malaysia.</p>
+            </div>
+            <nav class="footer-col" aria-label="Explore plants">
+                <h2>Explore</h2>
+                <ul>
+                    <li><a href="explore1.html">Families</a></li>
+                    <li><a href="explore2.html">Genera</a></li>
+                    <li><a href="explore3.html">Species</a></li>
+                    <li><a href="identify.html">Identify</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Get involved">
+                <h2>Get involved</h2>
+                <ul>
+                    <li><a href="contributor.html">Contributors</a></li>
+                    <li><a href="contribute.html">Contribute</a></li>
+                    <li><a href="enquiry.html">Enquiry</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Site information">
+                <h2>Information</h2>
+                <ul>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="https://youtu.be/JJjthoW2Zk4" target="_blank" rel="noopener">Demo video</a></li>
+                    <li><a href="video.html">Video page</a></li>
+                    <li><a href="enhancement1.html">Enhancements 1 (CSS)</a></li>
+                    <li><a href="enhancement2.html">Enhancements 2 (JavaScript)</a></li>
+                    <li><a href="acknowledgement.html" aria-current="page">Acknowledgement 1</a></li>
+                    <li><a href="acknowledgement2.html">Acknowledgement 2</a></li>
+                </ul>
+            </nav>
+        </div>
+        <p class="footer-contact">Contact: <a href="mailto:105808759@students.swinburne.edu.my">105808759@students.swinburne.edu.my</a></p>
+        <p class="footer-legal">&#169; 2026 Canopy. Prepared for COS10005 Web Development, Assignment 2, Semester 2 2026, Swinburne University of Technology Sarawak. For educational use only.</p>
+    </footer>
+</body>
+</html>

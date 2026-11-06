@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!--
+  contribute.html - contribution form
+  COS10005 Web Development, Assignment 2 (Semester 2, 2026)
+  Lincoln Kho Jia Heng, 105808759
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Lincoln Kho Jia Heng (105808759)" />
+    <meta name="keywords" content="Sarawak, plants, ERT, citizen science, Dipterocarpaceae, Burseraceae, biodiversity" />
+    <meta name="description" content="Submit a plant sighting to Canopy." />
+    <title>Canopy | Contribute</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 700px)" />
+    <script src="scripts/script.js" defer="defer"></script>
+    <script src="scripts/enhancements.js" defer="defer"></script>
+</head>
+<body>
+    <!-- top of the page: logo, tagline, menu -->
+    <header>
+        <h1 class="brand">
+            <a href="index.html" class="brand-link">
+                <img src="images/logo.svg" alt="Canopy logo" class="logo-icon" width="56" height="34" />
+            </a>
+        </h1>
+        <p class="tagline">A citizen science platform for Endangered, Rare &amp; Threatened plants</p>
+        <nav>
+            <!-- hamburger menu for phones: hidden checkbox + label, no JavaScript -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+            <label for="nav-toggle" class="nav-toggle-label"><span class="burger-icon">&#9776;</span><span class="burger-text">Menu</span></label>
+            <ul class="menu">
+                <li class="has-dropdown">
+                    <a href="explore.html">Explore</a>
+                    <ul class="dropdown">
+                        <li><a href="explore1.html">Families</a></li>
+                        <li><a href="explore2.html">Genera</a></li>
+                        <li><a href="explore3.html">Species</a></li>
+                    </ul>
+                </li>
+                <li><a href="identify.html">Identify</a></li>
+                <li><a href="contributor.html">Contributors</a></li>
+                <li><a href="contribute.html">Contribute</a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- wrapper: main column on the left, manual box on the right -->
+    <div class="page-layout">
+    <!-- main part of the page -->
+    <main>
+        <h2>Contribute a sighting</h2>
+        <p>
+            Found a plant you think might be an ERT species? Fill in the form below and one of our reviewers will
+            take a look. Every field must be filled in. If something is wrong, the form lists all the problems together
+            before it is sent.
+        </p>
+
+        <!-- form: validated with JavaScript only (see scripts/script.js), so no HTML5 validation attributes -->
+        <form action="https://api.web3forms.com/submit" method="post" enctype="multipart/form-data" id="contribute-form" novalidate="novalidate">
+            <!-- public access key for Web3Forms (safe to put in client-side code) -->
+            <input type="hidden" name="access_key" value="9d56bbe1-27e3-44c2-af4b-36132ce0b964" />
+            <!-- fieldset: Contributor details -->
+            <fieldset>
+                <legend>Contributor details</legend>
+
+                <div class="form-row">
+                    <label for="contributor-name">Your name:</label>
+                    <input type="text" id="contributor-name" name="contributor-name" placeholder="e.g. Lin" />
+                </div>
+                <div class="form-row">
+                    <label for="email">Email address:</label>
+                    <input type="text" id="email" name="email" placeholder="you@example.com" />
+                </div>
+                <div class="form-row">
+                    <label for="phone">Phone number:</label>
+                    <input type="text" id="phone" name="phone" placeholder="e.g. 0123456789" />
+                </div>
+                <div class="form-row">
+                    <label for="street">Street address:</label>
+                    <input type="text" id="street" name="street" placeholder="e.g. 12 Jalan Utama" />
+                </div>
+                <div class="form-row">
+                    <label for="city">City / town:</label>
+                    <input type="text" id="city" name="city" placeholder="e.g. Kuching" />
+                </div>
+                <div class="form-row">
+                    <label for="postcode">Postcode:</label>
+                    <input type="text" id="postcode" name="postcode" placeholder="5 digits, e.g. 93350" />
+                </div>
+            </fieldset>
+
+            <!-- fieldset: Plant details -->
+            <fieldset>
+                <legend>Plant details</legend>
+
+                <div class="form-row">
+                    <label for="plant-name">Plant's name (if known):</label>
+                    <input type="text" id="plant-name" name="plant-name" placeholder="e.g. Hopea nutans" />
+                </div>
+                <div class="form-row">
+                    <label for="plant-count">Number of plants you saw:</label>
+                    <input type="text" id="plant-count" name="plant-count" placeholder="e.g. 3" />
+                </div>
+
+                <div class="form-row">
+                    <label for="plant-photo">Photo(s) of the plant:</label>
+                    <input type="file" id="plant-photo" name="plant-photo" accept="image/*" multiple="multiple" />
+                </div>
+
+                <div class="form-row">
+                    <label for="plant-comments">Comments (location, date, anything unusual):</label>
+                    <textarea id="plant-comments" name="plant-comments" rows="6" cols="40"
+                              placeholder="e.g. Fallen winged fruit found under a tall tree on a lowland forest trail on 3 September."></textarea>
+                </div>
+            </fieldset>
+
+            <!-- all the validation messages are listed here -->
+            <div id="form-errors" class="form-errors" role="alert"></div>
+
+            <div class="form-row form-actions">
+                <button type="submit">Submit</button>
+                <button type="reset">Cancel</button>
+            </div>
+        </form>
+
+        <hr />
+
+        <!-- aside: a related note -->
+        <aside>
+            <h2>Tips for a useful submission</h2>
+            <p>
+                Photos taken in good light, with the whole plant visible in at least one shot, are much easier
+                for reviewers to confirm. See the Identify page for a full field checklist.
+            </p>
+        </aside>
+    </main>
+    <!-- manual box (aside), floats right -->
+    <aside class="manual-box" aria-label="Page manual">
+        <h2>Manual</h2>
+        <h3>How to upload a sighting</h3>
+        <!-- ordered list -->
+        <ol>
+            <li>Enter your name (letters and spaces, up to 25), your email, phone (digits only, up to 10) and address (postcode is 5 digits).</li>
+            <li>Enter the plant&#8217;s name and how many plants you saw (a number above 0).</li>
+            <li>Under Photo(s), click <em>Choose files</em> and pick your images. Hold Ctrl (Cmd on Mac) to select several.</li>
+            <li>Add the location, date and anything unusual in Comments.</li>
+            <li>Press <strong>Submit</strong> to send, or <strong>Cancel</strong> to clear the form.</li>
+        </ol>
+    </aside>
+    </div>
+
+    <!-- bottom bar: buttons to Contribute and Enquiry -->
+    <section class="cta-bar" aria-label="Get involved">
+        <div class="cta-text">
+            <h2>Spotted a plant, or have a question?</h2>
+            <p>Send in a sighting for review, or ask the team about the project.</p>
+        </div>
+        <div class="cta-actions">
+            <a href="contribute.html" class="btn cta-primary">Contribute</a>
+            <a href="enquiry.html" class="btn cta-secondary">Enquiry</a>
+        </div>
+    </section>
+
+    <!-- footer: links, my email (mailto) and copyright -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-about">
+                <p class="footer-brand">Canopy</p>
+                <p>A citizen science platform for Endangered, Rare &amp; Threatened plants of Sarawak, Malaysia.</p>
+            </div>
+            <nav class="footer-col" aria-label="Explore plants">
+                <h2>Explore</h2>
+                <ul>
+                    <li><a href="explore1.html">Families</a></li>
+                    <li><a href="explore2.html">Genera</a></li>
+                    <li><a href="explore3.html">Species</a></li>
+                    <li><a href="identify.html">Identify</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Get involved">
+                <h2>Get involved</h2>
+                <ul>
+                    <li><a href="contributor.html">Contributors</a></li>
+                    <li><a href="contribute.html" aria-current="page">Contribute</a></li>
+                    <li><a href="enquiry.html">Enquiry</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Site information">
+                <h2>Information</h2>
+                <ul>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="https://youtu.be/JJjthoW2Zk4" target="_blank" rel="noopener">Demo video</a></li>
+                    <li><a href="video.html">Video page</a></li>
+                    <li><a href="enhancement1.html">Enhancements 1 (CSS)</a></li>
+                    <li><a href="enhancement2.html">Enhancements 2 (JavaScript)</a></li>
+                    <li><a href="acknowledgement.html">Acknowledgement 1</a></li>
+                    <li><a href="acknowledgement2.html">Acknowledgement 2</a></li>
+                </ul>
+            </nav>
+        </div>
+        <p class="footer-contact">Contact: <a href="mailto:105808759@students.swinburne.edu.my">105808759@students.swinburne.edu.my</a></p>
+        <p class="footer-legal">&#169; 2026 Canopy. Prepared for COS10005 Web Development, Assignment 2, Semester 2 2026, Swinburne University of Technology Sarawak. For educational use only.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<!--
+  explore3.html - species page
+  COS10005 Web Development, Assignment 2 (Semester 2, 2026)
+  Lincoln Kho Jia Heng, 105808759
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Lincoln Kho Jia Heng (105808759)" />
+    <meta name="keywords" content="Sarawak, plants, ERT, citizen science, Dipterocarpaceae, Burseraceae, biodiversity" />
+    <meta name="description" content="Species profiles for the eight ERT plants tracked by Canopy." />
+    <title>Canopy | Species</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 700px)" />
+    <script src="scripts/script.js" defer="defer"></script>
+    <script src="scripts/enhancements.js" defer="defer"></script>
+</head>
+<body>
+    <!-- top of the page: logo, tagline, menu -->
+    <header>
+        <h1 class="brand">
+            <a href="index.html" class="brand-link">
+                <img src="images/logo.svg" alt="Canopy logo" class="logo-icon" width="56" height="34" />
+            </a>
+        </h1>
+        <p class="tagline">A citizen science platform for Endangered, Rare &amp; Threatened plants</p>
+        <nav>
+            <!-- hamburger menu for phones: hidden checkbox + label, no JavaScript -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+            <label for="nav-toggle" class="nav-toggle-label"><span class="burger-icon">&#9776;</span><span class="burger-text">Menu</span></label>
+            <ul class="menu">
+                <li class="has-dropdown">
+                    <a href="explore.html">Explore</a>
+                    <ul class="dropdown">
+                        <li><a href="explore1.html">Families</a></li>
+                        <li><a href="explore2.html">Genera</a></li>
+                        <li><a href="explore3.html">Species</a></li>
+                    </ul>
+                </li>
+                <li><a href="identify.html">Identify</a></li>
+                <li><a href="contributor.html">Contributors</a></li>
+                <li><a href="contribute.html">Contribute</a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- wrapper: main column on the left, manual box on the right -->
+    <div class="page-layout">
+    <!-- main part of the page -->
+    <main>
+        <nav class="submenu" aria-label="Explore sections">
+            <ul>
+                <li><a href="explore.html">Overview</a></li>
+                <li><a href="explore1.html">Families</a></li>
+                <li><a href="explore2.html">Genera</a></li>
+                <li><a href="explore3.html">Species</a></li>
+            </ul>
+        </nav>
+
+        <h2>Species</h2>
+        <p>
+            Below are profiles for the eight species tracked in the Canopy alpha dataset: two for each of the four
+            genera. <em>Dipterocarpus</em> and <em>Hopea</em> belong to the dipterocarps, while <em>Canarium</em> and
+            <em>Santiria</em> belong to the incense-tree family. Each profile gives basic identification notes and
+            the conservation status where one is known, to help contributors recognise the tree in the field.
+        </p>
+
+        <!-- section: species gallery -->
+        <section id="species-gallery">
+            <h3>Species gallery</h3>
+            <p>Hover or tap a thumbnail to preview it, or click through to the full profile below.</p>
+            <div class="gallery">
+                <a href="#dipterocarpus-grandiflorus" class="gallery-item">
+                    <img src="images/dipterocarpus-grandiflorus.jpg" alt="Dipterocarpus grandiflorus" />
+                    <span>Dipterocarpus grandiflorus</span>
+                </a>
+                <a href="#dipterocarpus-cornutus" class="gallery-item">
+                    <img src="images/dipterocarpus-cornutus.jpg" alt="Dipterocarpus cornutus" />
+                    <span>Dipterocarpus cornutus</span>
+                </a>
+                <a href="#hopea-nutans" class="gallery-item">
+                    <img src="images/hopea-nutans.jpg" alt="Hopea nutans" />
+                    <span>Hopea nutans</span>
+                </a>
+                <a href="#hopea-beccariana" class="gallery-item">
+                    <img src="images/hopea-beccariana.jpg" alt="Hopea beccariana" />
+                    <span>Hopea beccariana</span>
+                </a>
+                <a href="#canarium-odontophyllum" class="gallery-item">
+                    <img src="images/canarium-odontophyllum.jpg" alt="Canarium odontophyllum" />
+                    <span>Canarium odontophyllum</span>
+                </a>
+                <a href="#canarium-decumanum" class="gallery-item">
+                    <img src="images/canarium-decumanum.jpg" alt="Canarium decumanum" />
+                    <span>Canarium decumanum</span>
+                </a>
+                <a href="#santiria-laevigata" class="gallery-item">
+                    <img src="images/santiria-laevigata.jpg" alt="Santiria laevigata" />
+                    <span>Santiria laevigata</span>
+                </a>
+                <a href="#santiria-apiculata" class="gallery-item">
+                    <img src="images/santiria-apiculata.jpg" alt="Santiria apiculata" />
+                    <span>Santiria apiculata</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- section: species flip cards -->
+        <section id="species-flip-cards">
+            <h3>Quick reference cards</h3>
+            <p>Hover (or tab to and focus) a card to flip it over and see one key fact about each species.</p>
+            <div class="flip-card-row">
+                <div class="flip-card" tabindex="0">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="images/dipterocarpus-grandiflorus.jpg" alt="Dipterocarpus grandiflorus" />
+                            <span>Dipterocarpus grandiflorus</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Endangered; its fruit has two wings up to 22 cm long.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card" tabindex="0">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="images/dipterocarpus-cornutus.jpg" alt="Dipterocarpus cornutus" />
+                            <span>Dipterocarpus cornutus</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Least Concern; its trunk oil was used as varnish and to seal boats.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card" tabindex="0">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="images/hopea-nutans.jpg" alt="Hopea nutans" />
+                            <span>Hopea nutans</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Near Threatened; one tree measured 82.8 m tall.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card" tabindex="0">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="images/hopea-beccariana.jpg" alt="Hopea beccariana" />
+                            <span>Hopea beccariana</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Vulnerable; named after the botanist Odoardo Beccari.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card" tabindex="0">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="images/canarium-odontophyllum.jpg" alt="Canarium odontophyllum" />
+                            <span>Canarium odontophyllum</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Known as dabai in Sarawak; the fruit is a seasonal delicacy.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card" tabindex="0">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="images/canarium-decumanum.jpg" alt="Canarium decumanum" />
+                            <span>Canarium decumanum</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Up to 54 m tall, with fruits as long as 8.5 cm.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card" tabindex="0">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="images/santiria-laevigata.jpg" alt="Santiria laevigata" />
+                            <span>Santiria laevigata</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Bark and resin smell of mango or turpentine; the fruit ripens yellow, red, then black.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card" tabindex="0">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="images/santiria-apiculata.jpg" alt="Santiria apiculata" />
+                            <span>Santiria apiculata</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Often grows in swampy ground; fruit ripens from green to red to purplish-black.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- section: dipterocarpus grandiflorus -->
+        <section id="dipterocarpus-grandiflorus" class="explore-row">
+            <figure class="explore-row-media">
+                <img src="images/dipterocarpus-grandiflorus.jpg" alt="Straight trunk of a tall Dipterocarpus grandiflorus tree" width="600" height="400" />
+                <figcaption><em>Dipterocarpus grandiflorus</em> <span class="photo-credit">Photo: <a href="https://www.flickr.com/photos/loupok/14960509992/">Flickr: loupok</a></span></figcaption>
+            </figure>
+            <div class="explore-row-body">
+                <h3><em>Dipterocarpus grandiflorus</em></h3>
+            <p>
+                <em>Dipterocarpus grandiflorus</em> is a tall tree of lowland evergreen forest that can pass 40 metres.
+                Its trunk is straight and round, clear of branches for up to 30 metres and as much as 135 cm across,
+                and the grey or yellowish bark is only slightly fissured. The leaves are ovate and 10&#8211;18 cm long.
+                After flowering, the calyx grows into the fruit, which carries five ridges and two long wings that
+                can reach 22 cm. The tree ranges from the Andaman Islands and Myanmar through Thailand, Vietnam and
+                Peninsular Malaysia to Sumatra, Borneo and the Philippines, usually below about 600 to 700 metres.
+                It is assessed as Endangered because its forest habitat is shrinking, and it is a source of keruing
+                timber and of the oleo-resin known as minyak keruing. Blanco described it in the second edition of
+                Flora de Filipinas (1845).
+            </p>
+            <dl>
+                <dt>Local name</dt>
+                <dd>Keruing belimbing (Peninsular Malaysia and Sabah); apitong (Philippines)</dd>
+                <dt>Status</dt>
+                <dd>Endangered (IUCN Red List).</dd>
+            </dl>
+                <div class="explore-row-links">
+                    <a href="explore1.html" class="btn">Families</a><a href="explore2.html" class="btn">Genera</a>
+                    <a href="enquiry.html" class="btn btn-enquire" data-enquiry-name="Dipterocarpus grandiflorus" data-enquiry-type="Species">Enquire</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- section: dipterocarpus cornutus -->
+        <section id="dipterocarpus-cornutus" class="explore-row">
+            <figure class="explore-row-media">
+                <img src="images/dipterocarpus-cornutus.jpg" alt="Very large Dipterocarpus cornutus tree with pale bark" width="600" height="400" />
+                <figcaption><em>Dipterocarpus cornutus</em> <span class="photo-credit">Photo: <a href="https://www.inaturalist.org/photos/71155376?size=medium">iNaturalist</a></span></figcaption>
+            </figure>
+            <div class="explore-row-body">
+                <h3><em>Dipterocarpus cornutus</em></h3>
+            <p>
+                <em>Dipterocarpus cornutus</em> is a very large tree, reaching about 50 metres, with a tall trunk and
+                bark that is paler than in most other keruing. Its leaves are among the biggest in the genus, 15 to
+                30 cm long and densely hairy underneath, and the pale yellow flowers are about 4 cm across. The fruit
+                calyx is nearly round with five prominent knobs and two long wings of up to 21 cm. The species grows
+                in Peninsular Malaysia, Singapore, Sumatra and southern and eastern Borneo, and is rated Least Concern.
+                Its timber is sold as keruing, and the oil that flows from the trunk has been used as a varnish, for
+                sealing boats and for lighting. The species was named by Dyer in the Flora of British India (1874).
+            </p>
+            <dl>
+                <dt>Local names</dt>
+                <dd>Keruing gajah, keruing gombang; akas (East Kalimantan)</dd>
+                <dt>Status</dt>
+                <dd>Least Concern (IUCN Red List).</dd>
+            </dl>
+                <div class="explore-row-links">
+                    <a href="explore1.html" class="btn">Families</a><a href="explore2.html" class="btn">Genera</a>
+                    <a href="enquiry.html" class="btn btn-enquire" data-enquiry-name="Dipterocarpus cornutus" data-enquiry-type="Species">Enquire</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- section: hopea nutans -->
+        <section id="hopea-nutans" class="explore-row">
+            <figure class="explore-row-media">
+                <img src="images/hopea-nutans.jpg" alt="Tall Hopea nutans tree in lowland forest" width="600" height="400" />
+                <figcaption><em>Hopea nutans</em> <span class="photo-credit">Photo: <a href="http://inaturalist.org/photos/75789843?size=medium">iNaturalist</a></span></figcaption>
+            </figure>
+            <div class="explore-row-body">
+                <h3><em>Hopea nutans</em></h3>
+            <p>
+                <em>Hopea nutans</em> is a giant of the rainforest. The tallest tree measured so far stands at
+                82.8 metres in Tawau Hills National Park in Sabah. The species occurs in Peninsular Malaysia and
+                Borneo, in lowland and hill mixed dipterocarp forest and in freshwater swamp forest, on sandy,
+                limestone and ultrabasic soils that flood from time to time. It grows up to about 650 metres and
+                is rated Near Threatened. Ridley named the species.
+            </p>
+            <dl>
+                <dt>Status</dt>
+                <dd>Near Threatened.</dd>
+            </dl>
+                <div class="explore-row-links">
+                    <a href="explore1.html" class="btn">Families</a><a href="explore2.html" class="btn">Genera</a>
+                    <a href="enquiry.html" class="btn btn-enquire" data-enquiry-name="Hopea nutans" data-enquiry-type="Species">Enquire</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- section: hopea beccariana -->
+        <section id="hopea-beccariana" class="explore-row">
+            <figure class="explore-row-media">
+                <img src="images/hopea-beccariana.jpg" alt="Buttressed trunk of Hopea beccariana" width="600" height="400" />
+                <figcaption><em>Hopea beccariana</em> <span class="photo-credit">Photo: <a href="https://www.inaturalist.org/photos/246603349?size=medium">iNaturalist</a></span></figcaption>
+            </figure>
+            <div class="explore-row-body">
+                <h3><em>Hopea beccariana</em></h3>
+            <p>
+                <em>Hopea beccariana</em> can grow 45 metres tall, with a trunk up to 1.6 metres across, buttress
+                roots and deeply fissured bark. Its leathery, ovate leaves are about 8 cm long, and each flower
+                cluster carries up to five cream-coloured flowers. It grows in Thailand, Peninsular Malaysia,
+                Sumatra and Borneo, in dipterocarp forest and on coastal hills between 150 and 1,200 metres. It is
+                Vulnerable because land is converted to agriculture and trees are cut for timber. The name honours
+                the Italian botanist Odoardo Beccari.
+            </p>
+            <dl>
+                <dt>Local name</dt>
+                <dd>Merawan batu (in Singapore).</dd>
+                <dt>Status</dt>
+                <dd>Vulnerable (IUCN Red List).</dd>
+            </dl>
+                <div class="explore-row-links">
+                    <a href="explore1.html" class="btn">Families</a><a href="explore2.html" class="btn">Genera</a>
+                    <a href="enquiry.html" class="btn btn-enquire" data-enquiry-name="Hopea beccariana" data-enquiry-type="Species">Enquire</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- section: canarium odontophyllum -->
+        <section id="canarium-odontophyllum" class="explore-row">
+            <figure class="explore-row-media">
+                <img src="images/canarium-odontophyllum.jpg" alt="Glossy black dabai fruits of Canarium odontophyllum" width="600" height="400" />
+                <figcaption><em>Canarium odontophyllum</em> <span class="photo-credit">Photo: <a href="https://en.wikipedia.org/wiki/Canarium_odontophyllum#/media/File:Buah_dabai-Canarium_odontophyllum-Malaysia.jpg">Wikipedia</a></span></figcaption>
+            </figure>
+            <div class="explore-row-body">
+                <h3><em>Canarium odontophyllum</em></h3>
+            <p>
+                <em>Canarium odontophyllum</em> is known as dabai in Sarawak and kembayau in Sabah and Brunei, and
+                its fruit is sometimes called the Sarawak olive. The tree can reach 40 to 50 metres and is native to
+                Borneo. The fruit has glossy black skin and yellow flesh around an elongated seed, and the seed
+                is edible and is compared to almonds or pistachios. The fruit can be eaten raw or blanched, and the
+                annual Pesta Dabai festival in Song celebrates it. Growers now propagate selected trees by budding and
+                grafting. Miquel described the species.
+            </p>
+                <div class="explore-row-links">
+                    <a href="explore1.html" class="btn">Families</a><a href="explore2.html" class="btn">Genera</a>
+                    <a href="enquiry.html" class="btn btn-enquire" data-enquiry-name="Canarium odontophyllum" data-enquiry-type="Species">Enquire</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- section: canarium decumanum -->
+        <section id="canarium-decumanum" class="explore-row">
+            <figure class="explore-row-media">
+                <img src="images/canarium-decumanum.jpg" alt="Tall Canarium decumanum tree with grey bark" width="600" height="400" />
+                <figcaption><em>Canarium decumanum</em> <span class="photo-credit">Photo: <a href="https://commons.wikimedia.org/w/index.php?curid=8574871">Wikimedia Commons</a></span></figcaption>
+            </figure>
+            <div class="explore-row-body">
+                <h3><em>Canarium decumanum</em></h3>
+            <p>
+                <em>Canarium decumanum</em> is a very tall tree, up to 54 metres, with a trunk as wide as 150 cm and
+                grey bark that is smooth to scaly. Its flowers are yellow-brown and its ellipsoid fruits grow up to
+                8.5 cm long. The species lives in lowland forest in Borneo, the Moluccas and New Guinea.
+                Gaertner named it.
+            </p>
+            <dl>
+                <dt>Height</dt>
+                <dd>Up to 54 m.</dd>
+                <dt>Fruit</dt>
+                <dd>Ellipsoid, up to 8.5 cm long.</dd>
+            </dl>
+                <div class="explore-row-links">
+                    <a href="explore1.html" class="btn">Families</a><a href="explore2.html" class="btn">Genera</a>
+                    <a href="enquiry.html" class="btn btn-enquire" data-enquiry-name="Canarium decumanum" data-enquiry-type="Species">Enquire</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- section: santiria laevigata -->
+        <section id="santiria-laevigata" class="explore-row">
+            <figure class="explore-row-media">
+                <img src="images/santiria-laevigata.jpg" alt="Pinnate leaves and resin-covered buds of Santiria laevigata" width="600" height="400" />
+                <figcaption><em>Santiria laevigata</em> <span class="photo-credit">Photo: <a href="https://www.inaturalist.org/photos/337805281?size=medium">iNaturalist</a></span></figcaption>
+            </figure>
+            <div class="explore-row-body">
+                <h3><em>Santiria laevigata</em></h3>
+            <p>
+                <em>Santiria laevigata</em> is a medium to large evergreen tree, usually 15 to 30 metres tall and
+                often buttressed. The flaking bark ranges from rusty red to fawn or grey and is strongly aromatic,
+                and clear to creamy sticky resin oozes from the trunk. Each leaf has five to eleven leathery
+                leaflets whose stalks are swollen at both ends and turn blackish when dry, and the resin-covered
+                buds dry black and shiny. Male and female flowers grow on separate trees, and the fruit is a small
+                drupe, flattened on one side, that ripens from yellow to red and finally black; it is edible.
+                The species grows in Peninsular Malaysia, Sumatra, Borneo, Sulawesi, the Philippines and Singapore,
+                in dry forest, freshwater swamp and lowland peat swamp forest up to about 1,200 metres or more.
+                It is rated Least Concern overall but is Vulnerable in Singapore. Blume described it.
+            </p>
+            <dl>
+                <dt>Local names</dt>
+                <dd>Kedondong, smooth-leafed santiria</dd>
+                <dt>Status</dt>
+                <dd>Least Concern (IUCN Red List); Vulnerable in Singapore.</dd>
+            </dl>
+                <div class="explore-row-links">
+                    <a href="explore1.html" class="btn">Families</a><a href="explore2.html" class="btn">Genera</a>
+                    <a href="enquiry.html" class="btn btn-enquire" data-enquiry-name="Santiria laevigata" data-enquiry-type="Species">Enquire</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- section: santiria apiculata -->
+        <section id="santiria-apiculata" class="explore-row">
+            <figure class="explore-row-media">
+                <img src="images/santiria-apiculata.jpg" alt="Ovate leaflets and small red fruits of Santiria apiculata" width="600" height="400" />
+                <figcaption><em>Santiria apiculata</em> <span class="photo-credit">Photo: <a href="https://www.inaturalist.org/photos/1471235?size=medium">iNaturalist</a></span></figcaption>
+            </figure>
+            <div class="explore-row-body">
+                <h3><em>Santiria apiculata</em></h3>
+            <p>
+                <em>Santiria apiculata</em> is a smaller relative, usually 6 to 20 metres tall, though occasionally it
+                reaches 40 metres, and it has short buttresses. The bark is grey or brown and smooth to flaky, and the
+                pink-cream inner bark releases white drops of resin. Each leaf carries three to nine ovate to
+                elliptic leaflets, and the whitish twigs and leaf stalks are a handy clue. The round to oval fruit is
+                lopsided, about 1 to 2 cm long, and ripens from green through red to purplish-black. The tree is more
+                often found in swampy ground than on dry land, normally at low altitude, and it occurs in Indonesia,
+                Malaysia, the Philippines and Singapore. It is not considered threatened. A. W. Bennett named the
+                species.
+            </p>
+            <dl>
+                <dt>Local name</dt>
+                <dd>Pointed-leafed santiria</dd>
+                <dt>Status</dt>
+                <dd>Least Concern (IUCN Red List).</dd>
+            </dl>
+                <div class="explore-row-links">
+                    <a href="explore1.html" class="btn">Families</a><a href="explore2.html" class="btn">Genera</a>
+                    <a href="enquiry.html" class="btn btn-enquire" data-enquiry-name="Santiria apiculata" data-enquiry-type="Species">Enquire</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- section: species glance -->
+        <section id="species-glance">
+            <h3>The eight species at a glance</h3>
+            <div class="table-scroll">
+                <!-- table: Where each species sits in the hierarchy -->
+                <table class="data-table">
+                    <caption>Where each species sits in the hierarchy</caption>
+                    <thead>
+                        <tr><th scope="col">Species</th><th scope="col">Genus</th><th scope="col">Family</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><em>Dipterocarpus grandiflorus</em></td><td><em>Dipterocarpus</em></td><td>Dipterocarpaceae</td></tr>
+                        <tr><td><em>Dipterocarpus cornutus</em></td><td><em>Dipterocarpus</em></td><td>Dipterocarpaceae</td></tr>
+                        <tr><td><em>Hopea nutans</em></td><td><em>Hopea</em></td><td>Dipterocarpaceae</td></tr>
+                        <tr><td><em>Hopea beccariana</em></td><td><em>Hopea</em></td><td>Dipterocarpaceae</td></tr>
+                        <tr><td><em>Canarium odontophyllum</em></td><td><em>Canarium</em></td><td>Burseraceae</td></tr>
+                        <tr><td><em>Canarium decumanum</em></td><td><em>Canarium</em></td><td>Burseraceae</td></tr>
+                        <tr><td><em>Santiria laevigata</em></td><td><em>Santiria</em></td><td>Burseraceae</td></tr>
+                        <tr><td><em>Santiria apiculata</em></td><td><em>Santiria</em></td><td>Burseraceae</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- section: field checklist -->
+        <section id="field-checklist">
+            <h3>Quick field checklist for any species</h3>
+            <!-- ordered list -->
+            <ol>
+                <li>Photograph the whole tree, the bark, and any fallen leaves or fruit.</li>
+                <li>Note the GPS coordinates or a clear description of the location.</li>
+                <li>Record the date and approximate time of observation.</li>
+                <li>Avoid cutting or scraping the tree &#8212; observe only.</li>
+            </ol>
+        </section>
+
+        <hr />
+
+        <!-- aside: a related note -->
+        <aside>
+            <h2>Why only eight species?</h2>
+            <p>
+                This alpha release intentionally covers a small, manageable dataset so the platform's design and
+                workflow can be tested before it is expanded to the full range of ERT plants found in Sarawak.
+            </p>
+        </aside>
+    </main>
+    <!-- manual box (aside), floats right -->
+    <aside class="manual-box" aria-label="Page manual">
+        <h2>Manual</h2>
+        <h3>Gallery and flip cards</h3>
+        <!-- ordered list -->
+        <ol>
+            <li><strong>Gallery:</strong> hover over a thumbnail to zoom it, then click it to jump to that species.</li>
+            <li><strong>Flip cards:</strong> hover over a card to flip it and read one key fact. On a phone, tap the card.</li>
+            <li><strong>Keyboard:</strong> press Tab to focus a card; it stays flipped while focused.</li>
+            <li>Use the Families and Genera buttons under each species to go back up.</li>
+        </ol>
+    </aside>
+    </div>
+
+    <!-- bottom bar: buttons to Contribute and Enquiry -->
+    <section class="cta-bar" aria-label="Get involved">
+        <div class="cta-text">
+            <h2>Spotted a plant, or have a question?</h2>
+            <p>Send in a sighting for review, or ask the team about the project.</p>
+        </div>
+        <div class="cta-actions">
+            <a href="contribute.html" class="btn cta-primary">Contribute</a>
+            <a href="enquiry.html" class="btn cta-secondary">Enquiry</a>
+        </div>
+    </section>
+
+    <!-- footer: links, my email (mailto) and copyright -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-about">
+                <p class="footer-brand">Canopy</p>
+                <p>A citizen science platform for Endangered, Rare &amp; Threatened plants of Sarawak, Malaysia.</p>
+            </div>
+            <nav class="footer-col" aria-label="Explore plants">
+                <h2>Explore</h2>
+                <ul>
+                    <li><a href="explore1.html">Families</a></li>
+                    <li><a href="explore2.html">Genera</a></li>
+                    <li><a href="explore3.html" aria-current="page">Species</a></li>
+                    <li><a href="identify.html">Identify</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Get involved">
+                <h2>Get involved</h2>
+                <ul>
+                    <li><a href="contributor.html">Contributors</a></li>
+                    <li><a href="contribute.html">Contribute</a></li>
+                    <li><a href="enquiry.html">Enquiry</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Site information">
+                <h2>Information</h2>
+                <ul>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="https://youtu.be/JJjthoW2Zk4" target="_blank" rel="noopener">Demo video</a></li>
+                    <li><a href="video.html">Video page</a></li>
+                    <li><a href="enhancement1.html">Enhancements 1 (CSS)</a></li>
+                    <li><a href="enhancement2.html">Enhancements 2 (JavaScript)</a></li>
+                    <li><a href="acknowledgement.html">Acknowledgement 1</a></li>
+                    <li><a href="acknowledgement2.html">Acknowledgement 2</a></li>
+                </ul>
+            </nav>
+        </div>
+        <p class="footer-contact">Contact: <a href="mailto:105808759@students.swinburne.edu.my">105808759@students.swinburne.edu.my</a></p>
+        <p class="footer-legal">&#169; 2026 Canopy. Prepared for COS10005 Web Development, Assignment 2, Semester 2 2026, Swinburne University of Technology Sarawak. For educational use only.</p>
+    </footer>
+</body>
+</html>

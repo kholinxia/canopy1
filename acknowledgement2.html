@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<!--
+  acknowledgement2.html - acknowledgement page for Assignment 2 (JavaScript sources)
+  COS10005 Web Development, Assignment 2 (Semester 2, 2026)
+  Lincoln Kho Jia Heng, 105808759
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Lincoln Kho Jia Heng (105808759)" />
+    <meta name="keywords" content="Sarawak, plants, ERT, citizen science, Dipterocarpaceae, Burseraceae, biodiversity" />
+    <meta name="description" content="Sources and third-party services used for the JavaScript on the Canopy website." />
+    <title>Canopy | Acknowledgement 2</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 700px)" />
+    <script src="scripts/script.js" defer="defer"></script>
+    <script src="scripts/enhancements.js" defer="defer"></script>
+</head>
+<body>
+    <!-- top of the page: logo, tagline, menu -->
+    <header>
+        <h1 class="brand">
+            <a href="index.html" class="brand-link">
+                <img src="images/logo.svg" alt="Canopy logo" class="logo-icon" width="56" height="34" />
+            </a>
+        </h1>
+        <p class="tagline">A citizen science platform for Endangered, Rare &amp; Threatened plants</p>
+        <nav>
+            <!-- hamburger menu for phones: hidden checkbox + label, no JavaScript -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+            <label for="nav-toggle" class="nav-toggle-label"><span class="burger-icon">&#9776;</span><span class="burger-text">Menu</span></label>
+            <ul class="menu">
+                <li class="has-dropdown">
+                    <a href="explore.html">Explore</a>
+                    <ul class="dropdown">
+                        <li><a href="explore1.html">Families</a></li>
+                        <li><a href="explore2.html">Genera</a></li>
+                        <li><a href="explore3.html">Species</a></li>
+                    </ul>
+                </li>
+                <li><a href="identify.html">Identify</a></li>
+                <li><a href="contributor.html">Contributors</a></li>
+                <li><a href="contribute.html">Contribute</a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- wrapper: main column on the left, manual box on the right -->
+    <div class="page-layout">
+    <!-- main part of the page -->
+    <main>
+        <h2>Acknowledgement 2</h2>
+        <p>
+            This page credits what was used for the JavaScript added in Assignment 2. The photos, plant references and the
+            HTML and CSS techniques from Assignment 1 are on <a href="acknowledgement.html">Acknowledgement 1</a>.
+            All the JavaScript was written by me. The pages below were read to check how each feature works, and the
+            same links are in the comments of <code>scripts/script.js</code> and <code>scripts/enhancements.js</code>.
+        </p>
+
+        <!-- section: required parts -->
+        <section id="ack-required">
+            <h3>Assignment 2 requirements</h3>
+            <!-- definition list -->
+            <dl>
+                <dt>Passing the plant name between pages (sessionStorage)</dt>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API">MDN Web Docs &#8211; Web Storage API</a></dd>
+                <dt>Building the plant list and the Explore menu from arrays</dt>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement">MDN Web Docs &#8211; Document.createElement()</a></dd>
+                <dt>Checking the form fields (regular expressions)</dt>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions">MDN Web Docs &#8211; Regular expressions</a></dd>
+            </dl>
+        </section>
+
+        <!-- section: enhancements -->
+        <section id="ack-enhancements">
+            <h3>Enhancements (see Enhancements 2)</h3>
+            <dl>
+                <dt>1. Identify a plant from a photo</dt>
+                <dd><a href="https://my.plantnet.org/doc/getting-started/introduction">Pl@ntNet &#8211; API documentation (third-party service; plant identification by Pl@ntNet)</a></dd>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">MDN Web Docs &#8211; Using the Fetch API</a></dd>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData">MDN Web Docs &#8211; FormData</a></dd>
+                <dt>2. Sending the form to an API</dt>
+                <dd><a href="https://docs.web3forms.com/">Web3Forms &#8211; documentation (third-party service)</a></dd>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">MDN Web Docs &#8211; Using the Fetch API</a></dd>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData">MDN Web Docs &#8211; FormData</a></dd>
+                <dt>3. Preview pop-up before sending</dt>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal">MDN Web Docs &#8211; HTMLDialogElement.showModal()</a></dd>
+                <dt>4. Plant slideshow</dt>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/setInterval">MDN Web Docs &#8211; setInterval()</a></dd>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia">MDN Web Docs &#8211; Window.matchMedia()</a></dd>
+                <dt>5. Search and filter the species</dt>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event">MDN Web Docs &#8211; input event</a></dd>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent">MDN Web Docs &#8211; Node.textContent</a></dd>
+            </dl>
+        </section>
+
+        <!-- section: extras -->
+        <section id="ack-extras">
+            <h3>Other JavaScript (not counted as enhancements)</h3>
+            <dl>
+                <dt>Dropdown menu opened with JavaScript</dt>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseenter_event">MDN Web Docs &#8211; mouseenter event</a></dd>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-expanded">MDN Web Docs &#8211; aria-expanded</a></dd>
+                <dd>The look of the dropdown is the one from Assignment 1, see <a href="acknowledgement.html">Acknowledgement 1</a>.</dd>
+                <dt>Saved draft and comment counter</dt>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API">MDN Web Docs &#8211; Web Storage API</a></dd>
+                <dt>Menu highlights the current page</dt>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/Location/pathname">MDN Web Docs &#8211; Location.pathname</a></dd>
+                <dt>Live feedback while typing</dt>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions">MDN Web Docs &#8211; Regular expressions</a></dd>
+            </dl>
+        </section>
+
+        <hr />
+
+        <!-- aside: third-party note -->
+        <aside>
+            <h2>Third-party code</h2>
+            <p>
+                No library, framework or copied script is used. The only third-party parts are two online services. Web3Forms receives the form data and emails it to me
+                (its access key is a public key made for use in page code). Pl@ntNet identifies plants from photos on the Contribute
+                page; its API key is my own free-plan key.
+            </p>
+        </aside>
+    </main>
+    <!-- manual box (aside), floats right -->
+    <aside class="manual-box" aria-label="Page manual">
+        <h2>Manual</h2>
+        <h3>About this page</h3>
+        <!-- ordered list -->
+        <ol>
+            <li>Assignment 2 requirements lists the sources for the data transfer, the arrays and the validation.</li>
+            <li>Enhancements lists the sources for each of the five JavaScript enhancements.</li>
+            <li>Photos and plant references are on Acknowledgement 1.</li>
+        </ol>
+    </aside>
+    </div>
+
+    <!-- bottom bar: buttons to Contribute and Enquiry -->
+    <section class="cta-bar" aria-label="Get involved">
+        <div class="cta-text">
+            <h2>Spotted a plant, or have a question?</h2>
+            <p>Send in a sighting for review, or ask the team about the project.</p>
+        </div>
+        <div class="cta-actions">
+            <a href="contribute.html" class="btn cta-primary">Contribute</a>
+            <a href="enquiry.html" class="btn cta-secondary">Enquiry</a>
+        </div>
+    </section>
+
+    <!-- footer: links, my email (mailto) and copyright -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-about">
+                <p class="footer-brand">Canopy</p>
+                <p>A citizen science platform for Endangered, Rare &amp; Threatened plants of Sarawak, Malaysia.</p>
+            </div>
+            <nav class="footer-col" aria-label="Explore plants">
+                <h2>Explore</h2>
+                <ul>
+                    <li><a href="explore1.html">Families</a></li>
+                    <li><a href="explore2.html">Genera</a></li>
+                    <li><a href="explore3.html">Species</a></li>
+                    <li><a href="identify.html">Identify</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Get involved">
+                <h2>Get involved</h2>
+                <ul>
+                    <li><a href="contributor.html">Contributors</a></li>
+                    <li><a href="contribute.html">Contribute</a></li>
+                    <li><a href="enquiry.html">Enquiry</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Site information">
+                <h2>Information</h2>
+                <ul>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="https://youtu.be/JJjthoW2Zk4" target="_blank" rel="noopener">Demo video</a></li>
+                    <li><a href="video.html">Video page</a></li>
+                    <li><a href="enhancement1.html">Enhancements 1 (CSS)</a></li>
+                    <li><a href="enhancement2.html">Enhancements 2 (JavaScript)</a></li>
+                    <li><a href="acknowledgement.html">Acknowledgement 1</a></li>
+                    <li><a href="acknowledgement2.html" aria-current="page">Acknowledgement 2</a></li>
+                </ul>
+            </nav>
+        </div>
+        <p class="footer-contact">Contact: <a href="mailto:105808759@students.swinburne.edu.my">105808759@students.swinburne.edu.my</a></p>
+        <p class="footer-legal">&#169; 2026 Canopy. Prepared for COS10005 Web Development, Assignment 2, Semester 2 2026, Swinburne University of Technology Sarawak. For educational use only.</p>
+    </footer>
+</body>
+</html>

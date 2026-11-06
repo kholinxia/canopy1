@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<!--
+  contributor.html - contributors page
+  COS10005 Web Development, Assignment 2 (Semester 2, 2026)
+  Lincoln Kho Jia Heng, 105808759
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Lincoln Kho Jia Heng (105808759)" />
+    <meta name="keywords" content="Sarawak, plants, ERT, citizen science, Dipterocarpaceae, Burseraceae, biodiversity" />
+    <meta name="description" content="Meet the scientists who first described and studied the plants tracked by Canopy." />
+    <title>Canopy | Contributors</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 700px)" />
+    <script src="scripts/script.js" defer="defer"></script>
+    <script src="scripts/enhancements.js" defer="defer"></script>
+</head>
+<body>
+    <!-- top of the page: logo, tagline, menu -->
+    <header>
+        <h1 class="brand">
+            <a href="index.html" class="brand-link">
+                <img src="images/logo.svg" alt="Canopy logo" class="logo-icon" width="56" height="34" />
+            </a>
+        </h1>
+        <p class="tagline">A citizen science platform for Endangered, Rare &amp; Threatened plants</p>
+        <nav>
+            <!-- hamburger menu for phones: hidden checkbox + label, no JavaScript -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+            <label for="nav-toggle" class="nav-toggle-label"><span class="burger-icon">&#9776;</span><span class="burger-text">Menu</span></label>
+            <ul class="menu">
+                <li class="has-dropdown">
+                    <a href="explore.html">Explore</a>
+                    <ul class="dropdown">
+                        <li><a href="explore1.html">Families</a></li>
+                        <li><a href="explore2.html">Genera</a></li>
+                        <li><a href="explore3.html">Species</a></li>
+                    </ul>
+                </li>
+                <li><a href="identify.html">Identify</a></li>
+                <li><a href="contributor.html">Contributors</a></li>
+                <li><a href="contribute.html">Contribute</a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- wrapper: main column on the left, manual box on the right -->
+    <div class="page-layout">
+    <!-- main part of the page -->
+    <main>
+        <h2>Scientists behind the plants</h2>
+        <p>
+                Behind every species on Canopy is a scientist who first collected, described or studied it.
+                This page introduces four of them: an Italian explorer who collected in Sarawak, a Spanish friar in the
+                Philippines, a British botanist who later led Kew, and the eighteenth-century founder of plant naming. Hover over a card, or tap it on a
+                phone, to see what they studied and how their work shaped what we know about the plant.
+            </p>
+
+        <!-- section: contributor cards -->
+        <section id="contributor-cards">
+            <h3>Featured scientists</h3>
+            <div class="contrib-grid">
+                <div class="contrib-card" tabindex="0">
+                    <div class="contrib-inner">
+                        <div class="contrib-front">
+                            <span class="contrib-initials" aria-hidden="true">OB</span>
+                            <h4>Odoardo Beccari</h4>
+                            <p><strong>Research:</strong> Plant exploration &amp; taxonomy</p>
+                            <p>Active: 1860s</p>
+                            <span class="contrib-hint">Hover or tap to flip</span>
+                        </div>
+                        <div class="contrib-back">
+                            <figure>
+                                <img src="images/hopea-beccariana.jpg" alt="Hopea beccariana, the species linked to Odoardo Beccari" width="300" height="200" />
+                                <figcaption><em>Hopea beccariana</em> &#183; <span class="photo-credit">Photo: <a href="https://www.inaturalist.org/photos/246603349?size=medium">iNaturalist</a></span></figcaption>
+                            </figure>
+                            <dl>
+                                <dt>Species</dt>
+                                <dd><em>Hopea beccariana</em></dd>
+                                <dt>Research</dt>
+                                <dd>Explored Sarawak in the 1860s and collected plants across Borneo.</dd>
+                                <dt>Contribution</dt>
+                                <dd>The tree <em>Hopea beccariana</em> carries his name.</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="contrib-card" tabindex="0">
+                    <div class="contrib-inner">
+                        <div class="contrib-front">
+                            <span class="contrib-initials" aria-hidden="true">FB</span>
+                            <h4>Manuel Blanco</h4>
+                            <p><strong>Research:</strong> Philippine flora</p>
+                            <p>Active: 1830s&#8211;1840s</p>
+                            <span class="contrib-hint">Hover or tap to flip</span>
+                        </div>
+                        <div class="contrib-back">
+                            <figure>
+                                <img src="images/dipterocarpus-grandiflorus.jpg" alt="Dipterocarpus grandiflorus, the species linked to Manuel Blanco" width="300" height="200" />
+                                <figcaption><em>Dipterocarpus grandiflorus</em> &#183; <span class="photo-credit">Photo: <a href="https://www.flickr.com/photos/loupok/14960509992/">Flickr: loupok</a></span></figcaption>
+                            </figure>
+                            <dl>
+                                <dt>Species</dt>
+                                <dd><em>Dipterocarpus grandiflorus</em></dd>
+                                <dt>Research</dt>
+                                <dd>Spanish friar and botanist who wrote the Flora de Filipinas, an account of the plants of the Philippines.</dd>
+                                <dt>Contribution</dt>
+                                <dd>Described <em>Dipterocarpus grandiflorus</em> in the second edition of the Flora de Filipinas (1845).</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="contrib-card" tabindex="0">
+                    <div class="contrib-inner">
+                        <div class="contrib-front">
+                            <span class="contrib-initials" aria-hidden="true">TD</span>
+                            <h4>W. T. Thiselton-Dyer</h4>
+                            <p><strong>Research:</strong> Plant taxonomy</p>
+                            <p>Active: 1870s</p>
+                            <span class="contrib-hint">Hover or tap to flip</span>
+                        </div>
+                        <div class="contrib-back">
+                            <figure>
+                                <img src="images/dipterocarpus-cornutus.jpg" alt="Dipterocarpus cornutus, the species linked to W. T. Thiselton-Dyer" width="300" height="200" />
+                                <figcaption><em>Dipterocarpus cornutus</em> &#183; <span class="photo-credit">Photo: <a href="https://www.inaturalist.org/photos/71155376?size=medium">iNaturalist</a></span></figcaption>
+                            </figure>
+                            <dl>
+                                <dt>Species</dt>
+                                <dd><em>Dipterocarpus cornutus</em></dd>
+                                <dt>Research</dt>
+                                <dd>British botanist who later directed the Royal Botanic Gardens, Kew (1885&#8211;1905).</dd>
+                                <dt>Contribution</dt>
+                                <dd>Named <em>Dipterocarpus cornutus</em> in the Flora of British India (1874).</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="contrib-card" tabindex="0">
+                    <div class="contrib-inner">
+                        <div class="contrib-front">
+                            <span class="contrib-initials" aria-hidden="true">CL</span>
+                            <h4>Carl Linnaeus</h4>
+                            <p><strong>Research:</strong> Plant classification</p>
+                            <p>Active: Eighteenth century</p>
+                            <span class="contrib-hint">Hover or tap to flip</span>
+                        </div>
+                        <div class="contrib-back">
+                            <figure>
+                                <img src="images/canarium-genus.jpg" alt="A Canarium tree, the genus described by Carl Linnaeus" width="300" height="200" />
+                                <figcaption><em>Canarium</em> genus &#183; <span class="photo-credit">Photo: <a href="https://www.inaturalist.org/photos/102044644?size=medium">iNaturalist</a></span></figcaption>
+                            </figure>
+                            <dl>
+                                <dt>Genus</dt>
+                                <dd><em>Canarium</em></dd>
+                                <dt>Research</dt>
+                                <dd>Founded the two-part naming system that botanists still use.</dd>
+                                <dt>Contribution</dt>
+                                <dd>Described the genus <em>Canarium</em> in 1754.</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-scroll">
+                <!-- table: The four scientists at a glance -->
+                <table class="data-table">
+                    <caption>The four scientists at a glance</caption>
+                    <thead>
+                        <tr><th scope="col">Scientist</th><th scope="col">Field</th><th scope="col">Linked to</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Odoardo Beccari</td><td>Plant exploration</td><td><em>Hopea beccariana</em></td></tr>
+                        <tr><td>Manuel Blanco</td><td>Philippine flora</td><td><em>Dipterocarpus grandiflorus</em></td></tr>
+                        <tr><td>W. T. Thiselton-Dyer</td><td>Plant taxonomy</td><td><em>Dipterocarpus cornutus</em></td></tr>
+                        <tr><td>Carl Linnaeus</td><td>Plant classification</td><td>Genus <em>Canarium</em></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- section: naming process -->
+        <section id="naming-process">
+            <h3>How a plant gets its scientific name</h3>
+            <p>
+                Every plant on Canopy carries a two-part scientific name. The work of the scientists above follows
+                the same basic path that botanists still use today.
+            </p>
+            <!-- ordered list -->
+            <ol>
+                <li>A botanist collects a specimen, ideally with flowers or fruit, and records where it was found.</li>
+                <li>The specimen is pressed and stored in a herbarium so that others can examine it later.</li>
+                <li>The botanist compares it with known species and, if it is new, publishes a formal description.</li>
+                <li>The species receives its name, often honouring a place or a person, as <em>Hopea beccariana</em> does for Odoardo Beccari.</li>
+            </ol>
+            <dl>
+                <dt>Herbarium</dt>
+                <dd>A collection of pressed, labelled plant specimens kept for study.</dd>
+                <dt>Type specimen</dt>
+                <dd>The specimen that a species name is permanently tied to.</dd>
+                <dt>Epithet</dt>
+                <dd>The second word of a scientific name, such as <em>beccariana</em> in <em>Hopea beccariana</em>.</dd>
+            </dl>
+        </section>
+
+        <hr />
+
+        <!-- section: contribution link -->
+        <section id="contribution-link">
+            <h3>Share your own sighting</h3>
+            <p>
+                Contributor cards will also show sightings sent in by visitors. When you submit a plant through the
+                <a href="contribute.html">Contribution form</a>, a reviewer checks it, and in a later version of Canopy an approved
+                sighting will appear on this page as a card with your name, the plant's name, your photos and your comments.
+                For now this page shows the scientists, and the form only checks your entries.
+            </p>
+        </section>
+
+        <!-- aside: a related note -->
+        <aside>
+            <h2>Are you a botanist?</h2>
+            <p>
+                If you have botanical training or field experience with Bornean flora and would like to help
+                review submissions, reach out through the Enquiry page and select &#8220;Volunteering&#8221; as the topic.
+                Photo and source credits for this site are on the <a href="acknowledgement.html">Acknowledgement 1</a> page, and the JavaScript sources are on <a href="acknowledgement2.html">Acknowledgement 2</a>.
+            </p>
+        </aside>
+    </main>
+    <!-- manual box (aside), floats right -->
+    <aside class="manual-box" aria-label="Page manual">
+        <h2>Manual</h2>
+        <h3>Reading the scientist cards</h3>
+        <!-- ordered list -->
+        <ol>
+            <li>Hover over a card (tap on a phone) to flip it.</li>
+            <li>The front shows the scientist and their type of research.</li>
+            <li>The back shows the plant linked to them, their contribution and a photo.</li>
+            <li>Photo and source credits are on the Acknowledgement page, linked in the footer.</li>
+        </ol>
+    </aside>
+    </div>
+
+    <!-- bottom bar: buttons to Contribute and Enquiry -->
+    <section class="cta-bar" aria-label="Get involved">
+        <div class="cta-text">
+            <h2>Spotted a plant, or have a question?</h2>
+            <p>Send in a sighting for review, or ask the team about the project.</p>
+        </div>
+        <div class="cta-actions">
+            <a href="contribute.html" class="btn cta-primary">Contribute</a>
+            <a href="enquiry.html" class="btn cta-secondary">Enquiry</a>
+        </div>
+    </section>
+
+    <!-- footer: links, my email (mailto) and copyright -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-about">
+                <p class="footer-brand">Canopy</p>
+                <p>A citizen science platform for Endangered, Rare &amp; Threatened plants of Sarawak, Malaysia.</p>
+            </div>
+            <nav class="footer-col" aria-label="Explore plants">
+                <h2>Explore</h2>
+                <ul>
+                    <li><a href="explore1.html">Families</a></li>
+                    <li><a href="explore2.html">Genera</a></li>
+                    <li><a href="explore3.html">Species</a></li>
+                    <li><a href="identify.html">Identify</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Get involved">
+                <h2>Get involved</h2>
+                <ul>
+                    <li><a href="contributor.html" aria-current="page">Contributors</a></li>
+                    <li><a href="contribute.html">Contribute</a></li>
+                    <li><a href="enquiry.html">Enquiry</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Site information">
+                <h2>Information</h2>
+                <ul>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="https://youtu.be/JJjthoW2Zk4" target="_blank" rel="noopener">Demo video</a></li>
+                    <li><a href="video.html">Video page</a></li>
+                    <li><a href="enhancement1.html">Enhancements 1 (CSS)</a></li>
+                    <li><a href="enhancement2.html">Enhancements 2 (JavaScript)</a></li>
+                    <li><a href="acknowledgement.html">Acknowledgement 1</a></li>
+                    <li><a href="acknowledgement2.html">Acknowledgement 2</a></li>
+                </ul>
+            </nav>
+        </div>
+        <p class="footer-contact">Contact: <a href="mailto:105808759@students.swinburne.edu.my">105808759@students.swinburne.edu.my</a></p>
+        <p class="footer-legal">&#169; 2026 Canopy. Prepared for COS10005 Web Development, Assignment 2, Semester 2 2026, Swinburne University of Technology Sarawak. For educational use only.</p>
+    </footer>
+</body>
+</html>
