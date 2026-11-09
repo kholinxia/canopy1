@@ -1472,5 +1472,11 @@ fieldset.inline-group { margin: 1rem 0; }
     flex-basis: 100%;
 }
 
+.identify-preview {
+    max-width: 240px;
+    height: auto;
+    border-radius: var(--radius);
+}
+
 .identify-error { color: #a02020; font-weight: bold; }
 .identify-wait { font-style: italic; }
