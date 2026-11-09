@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Lincoln Kho Jia Heng (105808759)" />
     <meta name="keywords" content="Sarawak, plants, ERT, citizen science, Dipterocarpaceae, Burseraceae, biodiversity" />
-    <meta name="description" content="Guide to identifying ERT plants in the field for Canopy contributors." />
+    <meta name="description" content="Guide to identifying ERT plants in the field, with a photo identification tool, for Canopy contributors." />
     <title>Canopy | Identify</title>
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 700px)" />
@@ -56,9 +56,8 @@
         <p>
             One of the biggest barriers to citizen science is confidence: many hikers see something unusual but
             aren't sure whether it's worth reporting. This page walks through a simple process for narrowing down
-            what you've found, even without formal botanical training. The long-term goal of the Canopy
-            project is to pair this manual process with an automatic visual identification engine, but this alpha
-            release focuses on giving contributors a clear manual workflow first.
+            what you've found, even without formal botanical training. You can also upload a photo
+            further down the page and let an online plant identification service suggest a species, as a second opinion.
         </p>
 
         <!-- section: visual cues -->
@@ -120,25 +119,17 @@
             </div>
         </section>
 
-        <!-- section: upload preview -->
-        <section id="upload-preview">
-            <h3>Upload a photo (preview)</h3>
+        <!-- section: identify a photo, filled in by scripts/enhancements.js -->
+        <section id="photo-identify">
+            <h3>Identify a photo</h3>
             <p>
-                This is an early, structure-only preview of the automatic visual identification engine described
-                in the project brief: eventually, uploading a photo here will suggest a likely species for you to
-                confirm. For now it only shows the basic upload control; no analysis is performed yet.
+                Choose a photo, say whether it shows a leaf, flower, fruit, bark or the whole tree, and press the button.
+                The photo is sent to the <a href="https://my.plantnet.org/">Pl@ntNet</a> plant identification service,
+                which suggests up to three species with a score for each. These are only suggestions, and the service may
+                not know every Sarawak species, so check them against the species profiles. Nothing is saved on this site.
             </p>
-            <!-- form: validation is HTML5 only (required, pattern, maxlength), no JavaScript -->
-            <form action="#" method="post" enctype="multipart/form-data" id="identify-upload-form">
-                <div class="form-row">
-                    <label for="id-photo">Upload a photo:</label>
-                    <input type="file" id="id-photo" name="id-photo" accept="image/*" />
-                </div>
-                <div class="form-row form-actions">
-                    <button type="submit">Submit</button>
-                    <button type="reset">Cancel</button>
-                </div>
-            </form>
+            <div id="identify-tool" class="identify-box"></div>
+            <noscript><p>Turn on JavaScript to identify a photo here.</p></noscript>
         </section>
 
         <hr />
@@ -162,7 +153,7 @@
             <li>A winged fruit or buttressed trunk suggests a dipterocarp; compound leaves with fragrant resin suggest Burseraceae.</li>
             <li>Note the elevation and habitat.</li>
             <li>Compare leaves, bark and fruit with the Species page.</li>
-            <li>Optional: choose a photo in the upload box and press Submit (preview only, no analysis yet).</li>
+            <li>Optional: choose a photo in the identify box and press Identify this plant to get species suggestions.</li>
             <li>Still unsure? Go to Contribute.</li>
         </ol>
     </aside>
