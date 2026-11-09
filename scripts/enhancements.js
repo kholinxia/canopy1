@@ -199,8 +199,8 @@ Canopy.setupLiveFeedback = function (form) {
 };
 
 /* ---------- Enhancement 1: identify a plant from a photo (Pl@ntNet API) ----------
-   On the Contribute page, choose a photo, say what part of the plant it shows
-   and press "Identify this plant". The photo is sent to the Pl@ntNet
+   On the Contribute page and on the Identify page, choose a photo, say what part
+   of the plant it shows and press "Identify this plant". The photo is sent to the Pl@ntNet
    identification service. It answers with its best guesses and a score for each,
    and one click puts a guess into the "Plant's name" box.
    Pl@ntNet needs an API key (made on my.plantnet.org). The key goes in the web
@@ -232,7 +232,9 @@ Canopy.identifyMessage = function (box, text, kind) {
     box.appendChild(note);
 };
 
-/* Shows each guess with a button that copies the name into the form */
+/* Shows each guess. On the Contribute page each guess has a button that copies the
+   name into the form (nameField). On the Identify page there is no form, so a guess
+   that is one of the eight species on this site gets a link to its profile instead. */
 Canopy.identifyResults = function (box, results, nameField) {
     while (box.firstChild) {
         box.removeChild(box.firstChild);
@@ -256,19 +258,91 @@ Canopy.identifyResults = function (box, results, nameField) {
         var detail = " (" + family + (common.length > 0 ? ", " + common[0] : "") + ") " + percent + "% ";
         item.appendChild(document.createTextNode(detail));
 
-        item.appendChild(Canopy.makeButton("Use this name", "Use " + name + " as the plant name", (function (chosen) {
-            return function () {
-                nameField.value = chosen;
-                /* tell the other scripts (draft and live feedback) that the box changed */
-                nameField.dispatchEvent(new Event("input", { bubbles: true }));
-                nameField.focus();
-            };
-        })(name)));
+        if (nameField !== null) {
+            item.appendChild(Canopy.makeButton("Use this name", "Use " + name + " as the plant name", (function (chosen) {
+                return function () {
+                    nameField.value = chosen;
+                    /* tell the other scripts (draft and live feedback) that the box changed */
+                    nameField.dispatchEvent(new Event("input", { bubbles: true }));
+                    nameField.focus();
+                };
+            })(name)));
+        } else {
+            for (var s = 0; s < Canopy.slides.length; s++) {
+                if (Canopy.slides[s].name === name) {
+                    var link = document.createElement("a");
+                    link.setAttribute("href", "explore3.html#" + Canopy.slides[s].image);
+                    link.appendChild(document.createTextNode("See the profile on this site"));
+                    item.appendChild(link);
+                }
+            }
+        }
         list.appendChild(item);
     }
     box.appendChild(list);
 };
 
+/* Sends up to five photos to Pl@ntNet and shows what comes back in the "results" box.
+   "organ" is the part of the plant, "button" is switched off while waiting. */
+Canopy.identifyPhotos = function (files, organ, button, results, nameField) {
+    if (files.length === 0) {
+        Canopy.identifyMessage(results, "Choose a photo first.", "identify-error");
+        return;
+    }
+    /* Pl@ntNet accepts at most 5 photos of the same plant, and one organ for each */
+    var data = new FormData();
+    var used = Math.min(files.length, 5);
+    for (var p = 0; p < used; p++) {
+        data.append("images", files[p]);
+        data.append("organs", organ);
+    }
+    var address = Canopy.plantnetUrl + "?include-related-images=false&nb-results=3&lang=en&api-key=" + Canopy.plantnetKey;
+
+    button.disabled = true;
+    Canopy.identifyMessage(results, "Looking at your photo...", "identify-wait");
+    fetch(address, { method: "POST", body: data }).then(function (response) {
+        if (response.status === 404) {
+            Canopy.identifyMessage(results, "Pl@ntNet could not find a plant in this photo. Try a closer photo of a leaf or fruit.", "identify-error");
+            return null;
+        }
+        if (response.status === 429) {
+            Canopy.identifyMessage(results, "The daily limit of identifications has been used. Please try again tomorrow.", "identify-error");
+            return null;
+        }
+        if (response.status === 401 || response.status === 403) {
+            Canopy.identifyMessage(results, "The identification service refused the request (" + response.status + "). The API key must be set to \"expose my API key\" and this page's web address must be on its allowed list.", "identify-error");
+            return null;
+        }
+        if (!response.ok) {
+            Canopy.identifyMessage(results, "The identification service answered with an error (" + response.status + ").", "identify-error");
+            return null;
+        }
+        return response.json();
+    }).then(function (answer) {
+        if (answer !== null) {
+            Canopy.identifyResults(results, answer.results, nameField);
+        }
+    }).catch(function () {
+        Canopy.identifyMessage(results, "Sorry, the identification service could not be reached.", "identify-error");
+    }).then(function () {
+        button.disabled = false;
+    });
+};
+
+/* makes the "What does the photo show?" menu */
+Canopy.makeOrganMenu = function (id) {
+    var menu = document.createElement("select");
+    menu.setAttribute("id", id);
+    for (var i = 0; i < Canopy.organs.length; i++) {
+        var option = document.createElement("option");
+        option.setAttribute("value", Canopy.organs[i][0]);
+        option.appendChild(document.createTextNode(Canopy.organs[i][1]));
+        menu.appendChild(option);
+    }
+    return menu;
+};
+
+/* Contribute page: the identify box goes under the photo upload */
 Canopy.setupIdentify = function (form) {
     var photo = form.elements["plant-photo"];
     var nameField = form.elements["plant-name"];
@@ -282,61 +356,13 @@ Canopy.setupIdentify = function (form) {
     var label = document.createElement("label");
     label.setAttribute("for", "plant-organ");
     label.appendChild(document.createTextNode("What does the photo show?"));
-    var menu = document.createElement("select");
-    menu.setAttribute("id", "plant-organ");
-    for (var i = 0; i < Canopy.organs.length; i++) {
-        var option = document.createElement("option");
-        option.setAttribute("value", Canopy.organs[i][0]);
-        option.appendChild(document.createTextNode(Canopy.organs[i][1]));
-        menu.appendChild(option);
-    }
+    var menu = Canopy.makeOrganMenu("plant-organ");
 
     var results = document.createElement("div");
     results.setAttribute("role", "status");
 
     var button = Canopy.makeButton("Identify this plant", "", function () {
-        if (photo.files.length === 0) {
-            Canopy.identifyMessage(results, "Choose a photo above first.", "identify-error");
-            return;
-        }
-        /* Pl@ntNet accepts at most 5 photos of the same plant, and one organ for each */
-        var data = new FormData();
-        var used = Math.min(photo.files.length, 5);
-        for (var p = 0; p < used; p++) {
-            data.append("images", photo.files[p]);
-            data.append("organs", menu.value);
-        }
-        var address = Canopy.plantnetUrl + "?include-related-images=false&nb-results=3&lang=en&api-key=" + Canopy.plantnetKey;
-
-        button.disabled = true;
-        Canopy.identifyMessage(results, "Looking at your photo...", "identify-wait");
-        fetch(address, { method: "POST", body: data }).then(function (response) {
-            if (response.status === 404) {
-                Canopy.identifyMessage(results, "Pl@ntNet could not find a plant in this photo. Try a closer photo of a leaf or fruit.", "identify-error");
-                return null;
-            }
-            if (response.status === 429) {
-                Canopy.identifyMessage(results, "The daily limit of identifications has been used. Please try again tomorrow.", "identify-error");
-                return null;
-            }
-            if (response.status === 401 || response.status === 403) {
-                Canopy.identifyMessage(results, "The identification service refused the request (" + response.status + "). The API key must be set to \"expose my API key\" and this page's web address must be on its allowed list.", "identify-error");
-                return null;
-            }
-            if (!response.ok) {
-                Canopy.identifyMessage(results, "The identification service answered with an error (" + response.status + ").", "identify-error");
-                return null;
-            }
-            return response.json();
-        }).then(function (answer) {
-            if (answer !== null) {
-                Canopy.identifyResults(results, answer.results, nameField);
-            }
-        }).catch(function () {
-            Canopy.identifyMessage(results, "Sorry, the identification service could not be reached.", "identify-error");
-        }).then(function () {
-            button.disabled = false;
-        });
+        Canopy.identifyPhotos(photo.files, menu.value, button, results, nameField);
     });
 
     wrapper.appendChild(label);
@@ -346,6 +372,53 @@ Canopy.setupIdentify = function (form) {
 
     var row = photo.parentNode;
     row.parentNode.insertBefore(wrapper, row.nextSibling);
+};
+
+/* Identify page: a photo picker, a small preview of the photo and the same identify
+   button. Nothing is sent anywhere except to Pl@ntNet, and nothing is saved. */
+Canopy.setupIdentifyPage = function (box) {
+    var photoLabel = document.createElement("label");
+    photoLabel.setAttribute("for", "identify-photo");
+    photoLabel.appendChild(document.createTextNode("Choose a photo of the plant:"));
+    var photo = document.createElement("input");
+    photo.setAttribute("type", "file");
+    photo.setAttribute("id", "identify-photo");
+    photo.setAttribute("accept", "image/*");
+
+    var organLabel = document.createElement("label");
+    organLabel.setAttribute("for", "identify-organ");
+    organLabel.appendChild(document.createTextNode("What does the photo show?"));
+    var menu = Canopy.makeOrganMenu("identify-organ");
+
+    var preview = document.createElement("img");
+    preview.setAttribute("class", "identify-preview");
+    preview.setAttribute("alt", "Preview of the chosen photo");
+    preview.hidden = true;
+
+    var results = document.createElement("div");
+    results.setAttribute("role", "status");
+
+    var button = Canopy.makeButton("Identify this plant", "", function () {
+        Canopy.identifyPhotos(photo.files, menu.value, button, results, null);
+    });
+
+    /* show the chosen photo so the visitor can check it is the right one */
+    photo.addEventListener("change", function () {
+        if (photo.files.length > 0) {
+            preview.setAttribute("src", URL.createObjectURL(photo.files[0]));
+            preview.hidden = false;
+        } else {
+            preview.hidden = true;
+        }
+    });
+
+    box.appendChild(photoLabel);
+    box.appendChild(photo);
+    box.appendChild(organLabel);
+    box.appendChild(menu);
+    box.appendChild(button);
+    box.appendChild(preview);
+    box.appendChild(results);
 };
 
 /* ---------- Enhancement 3: preview pop-up before sending ----------
@@ -858,6 +931,11 @@ Canopy.setupCounter = function (form) {
 Canopy.initEnhancements = function () {
     Canopy.setupDropdown();
     Canopy.highlightCurrentPage();
+
+    var identifyTool = Canopy.byId("identify-tool");
+    if (identifyTool !== null) {
+        Canopy.setupIdentifyPage(identifyTool);
+    }
 
     var slideshow = Canopy.byId("plant-slideshow");
     if (slideshow !== null) {
