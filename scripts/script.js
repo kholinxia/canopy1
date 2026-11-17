@@ -1,30 +1,32 @@
-/* ===========================================
-   Canopy - script.js
+/*
+   Canopy script.js
    COS10005 Web Development, Assignment 2
    Lincoln Kho Jia Heng, 105808759
 
    The basic requirements live in this file:
      1. Enquire buttons: click one and the plant name is saved in
         sessionStorage, then enquiry.html picks it up and fills in Subject.
-     2. Same-page transfer: change the Plant drop-down on enquiry.html and
+     2. Same page transfer: change the Plant drop down on enquiry.html and
         Subject changes with it.
      3. Validation, all in JavaScript (enquiry.html and contribute.html).
         I wanted every mistake in ONE message, not one alert per field.
-     4. The Plant drop-down and the Explore menu are built from arrays.
+     4. The Plant drop down and the Explore menu are built from arrays.
 
    The extra stuff is in enhancements.js. Load this file first, because
    that one reuses the Canopy object I make below.
-   =========================================== */
+*/
 
 "use strict";
 
-/* Everything the other file needs goes on this one object, so I'm not
-   leaving loose variables all over the place */
+/*
+ Everything the other file needs goes on this one object, so I'm not
+   leaving loose variables all over the place
+*/
 var Canopy = {};
 
-/* ---------- Data (arrays) ---------- */
+/* Data (arrays) */
 
-/* The plants for the drop-down on enquiry.html */
+/* The plants for the drop down on enquiry.html */
 Canopy.plants = [
     { name: "Dipterocarpaceae", type: "Family" },
     { name: "Burseraceae", type: "Family" },
@@ -56,7 +58,7 @@ Canopy.plantGroups = [
     { type: "Species", label: "Species" }
 ];
 
-/* ---------- Small helpers ---------- */
+/* Small helpers */
 
 /* getElementById is long to type, so a shortcut */
 Canopy.byId = function (id) {
@@ -68,16 +70,18 @@ Canopy.makeSubject = function (name, type) {
     return "RE: Enquiry on " + name + " (" + type.toLowerCase() + ")";
 };
 
-/* ---------- 1. Data transfer between pages ---------- */
+/* 1. Data transfer between pages */
 
-/* Runs when someone clicks Enquire. I only save the plant here and let the
-   link carry on to enquiry.html by itself. */
+/*
+ Runs when someone clicks Enquire. I only save the plant here and let the
+   link carry on to enquiry.html by itself.
+*/
 Canopy.storeEnquiry = function (name, type) {
     sessionStorage.setItem("enquiryName", name);
     sessionStorage.setItem("enquiryType", type);
 };
 
-/* Finds every Enquire button (they all have data-enquiry-name) and hooks them up */
+/* Finds every Enquire button (they all have data enquiry name) and hooks them up */
 Canopy.bindEnquireButtons = function () {
     var buttons = document.querySelectorAll("[data-enquiry-name]");
     for (var i = 0; i < buttons.length; i++) {
@@ -88,9 +92,11 @@ Canopy.bindEnquireButtons = function () {
     }
 };
 
-/* On enquiry.html: read the saved plant, pick it in the list, fill in Subject.
+/*
+ On enquiry.html: read the saved plant, pick it in the list, fill in Subject.
    I delete the saved values afterwards, otherwise opening the page again
-   later shows an old plant and that looked like a bug. */
+   later shows an old plant and that looked like a bug.
+*/
 Canopy.applyStoredEnquiry = function () {
     var name = sessionStorage.getItem("enquiryName");
     var type = sessionStorage.getItem("enquiryType");
@@ -105,7 +111,7 @@ Canopy.applyStoredEnquiry = function () {
     sessionStorage.removeItem("enquiryType");
 };
 
-/* ---------- 2. Data transfer in the same page ---------- */
+/* 2. Data transfer in the same page */
 
 /* Change the plant by hand and Subject follows */
 Canopy.onPlantChange = function () {
@@ -119,10 +125,12 @@ Canopy.onPlantChange = function () {
     subject.value = Canopy.makeSubject(parts[1], parts[0]);
 };
 
-/* ---------- 4. Drop-down lists built with JavaScript ---------- */
+/* 4. Drop down lists built with JavaScript */
 
-/* Plant list: one optgroup per group, one option per plant, then append
-   them all to the select */
+/*
+ Plant list: one optgroup per group, one option per plant, then append
+   them all to the select
+*/
 Canopy.buildPlantList = function () {
     var select = Canopy.byId("plant");
     if (select === null) {
@@ -148,8 +156,10 @@ Canopy.buildPlantList = function () {
     }
 };
 
-/* Menu: rebuild the Explore links from the array. I clear the ones already
-   in the HTML first or everything shows up twice (found that out the hard way). */
+/*
+ Menu: rebuild the Explore links from the array. I clear the ones already
+   in the HTML first or everything shows up twice (found that out the hard way).
+*/
 Canopy.buildExploreMenu = function () {
     var lists = document.querySelectorAll("nav .has-dropdown .dropdown");
     for (var n = 0; n < lists.length; n++) {
@@ -168,7 +178,7 @@ Canopy.buildExploreMenu = function () {
     }
 };
 
-/* ---------- 3. Validation ---------- */
+/* 3. Validation */
 
 /* Max lengths */
 Canopy.limits = { name: 25, street: 40, city: 20, phone: 10, postcode: 5 };
@@ -238,9 +248,11 @@ Canopy.checks = {
     }
 };
 
-/* Every text field: its id, the name shown in the message, and its check.
+/*
+ Every text field: its id, the name shown in the message, and its check.
    Radio buttons, the checkbox and the file field are different, so
-   Canopy.validateForm deals with those on their own. */
+   Canopy.validateForm deals with those on their own.
+*/
 Canopy.rules = {
     "enquiry-form": [
         { id: "subject", label: "Subject", check: "required" },
@@ -279,7 +291,7 @@ Canopy.checkField = function (rule) {
     return problem === "" ? "" : rule.label + " " + problem;
 };
 
-/* Checks the whole form and gives back a list of messages (empty = all good) */
+/* Checks the whole form and gives back a list of messages (empty means all good) */
 Canopy.validateForm = function (form) {
     var errors = [];
     var rules = Canopy.rules[form.id];
@@ -307,8 +319,10 @@ Canopy.validateForm = function (form) {
     return errors;
 };
 
-/* Show all errors together: a list under the form (screen readers can read it
-   too) and one alert */
+/*
+ Show all errors together: a list under the form (screen readers can read it
+   too) and one alert
+*/
 Canopy.showErrors = function (errors) {
     var box = Canopy.byId("form-errors");
     while (box.firstChild) {
@@ -344,7 +358,7 @@ Canopy.onReset = function () {
     Canopy.showErrors([]);
 };
 
-/* ---------- Start-up ---------- */
+/* Start up */
 
 Canopy.init = function () {
     Canopy.buildExploreMenu();

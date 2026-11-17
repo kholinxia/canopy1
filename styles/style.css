@@ -1,16 +1,16 @@
-/* ===========================================
-   Canopy - style.css (main / desktop styles)
+/*
+   Canopy style.css (main desktop styles)
    COS10005 Assignment 1, Lincoln Kho Jia Heng
 
    Colours I picked:
-     sage  #8B9A6E  header bar and call-to-action bar
-     cream #F7F2EB  page background
-     beige #EAE2D6  cards, table cells and forms
+     sage 8B9A6E header bar and call to action bar
+     cream F7F2EB page background
+     beige EAE2D6 cards, table cells and forms
    White text on plain sage was too hard to read, so text on sage is
-   near-black and headings/buttons use darker shades of the same green.
+   near black and headings and buttons use darker shades of the same green.
    To change the colour scheme, edit the variables just below.
    Everything else uses them.
-   =========================================== */
+*/
 
 :root {
     --color-sage: #8b9a6e;
@@ -24,7 +24,7 @@
 
     --color-neutral: #f7f2eb;      /* cream page background */
 
-    --color-ink: #20251f;     /* near-black, body text */
+    --color-ink: #20251f;     /* near black, body text */
     --color-surface: #eae2d6; /* beige: cards, forms */
 
     --radius: 10px;
@@ -32,7 +32,7 @@
     --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.18);
 }
 
-/* ---------- Element selectors ---------- */
+/* Element selectors */
 * {
     box-sizing: border-box;
 }
@@ -67,7 +67,7 @@ h1, h2, h3 {
     margin-top: 0.2em;
 }
 
-/* ---------- Layout (liquid / responsive) ---------- */
+/* Layout (liquid responsive) */
 main, footer {
     width: 94%;
     max-width: 1500px;
@@ -75,7 +75,7 @@ main, footer {
 }
 
 header {
-    /* faint leaf pattern behind the green header (image is in styles/images) */
+    /* faint leaf pattern behind the green header (the image is in the images folder inside styles) */
     background-image: url("images/leaves.svg");
     background-color: var(--color-sage);
     color: var(--color-ink);
@@ -108,7 +108,7 @@ main > * {
     animation: rise 0.6s ease backwards;
 }
 
-/* ---------- Class selectors ---------- */
+/* Class selectors */
 .tagline {
     font-style: italic;
     margin-top: 0;
@@ -135,9 +135,11 @@ main > * {
     width: auto;
 }
 
-/* Hamburger menu (checkbox hack). The checkbox is hidden and the label
+/*
+ Hamburger menu (checkbox hack). The checkbox is hidden and the label
    works as the Menu button. It only shows on phones, see mobile.css.
-   Idea from https://css-tricks.com/the-checkbox-hack/ */
+   Idea from https://css-tricks.com/the-checkbox-hack/
+*/
 .nav-toggle {
     position: absolute;
     opacity: 0;
@@ -250,7 +252,7 @@ main > * {
     margin-bottom: 0.5rem;
 }
 
-/* ---------- Id selector ---------- */
+/* Id selector */
 #hero img {
     border-radius: 0;
     box-shadow: none;
@@ -261,7 +263,7 @@ main > * {
     object-fit: cover;
 }
 
-/* ---------- Contextual selectors ---------- */
+/* Contextual selectors */
 nav ul li {
     display: inline-block;
 }
@@ -286,7 +288,7 @@ form fieldset legend {
     padding: 0 0.4rem;
 }
 
-/* ---------- Pseudo-classes ---------- */
+/* Pseudo classes */
 nav a:hover,
 nav a:focus {
     color: var(--color-accent);
@@ -308,7 +310,7 @@ form button:hover {
     transform: translateY(-2px);
 }
 
-/* ---------- Menu styling ---------- */
+/* Menu styling */
 .menu a {
     color: var(--color-ink);
     text-decoration: none;
@@ -333,12 +335,12 @@ form button:hover {
     border-bottom: 2px solid var(--color-accent);
 }
 
-/* ===========================================
-   Dropdown under "Explore" that slides down with Families / Genera /
-   Species in three columns. It is opened by JavaScript (Enhancement 1 in
+/*
+   Dropdown under "Explore" that slides down with Families, Genera and
+   Species in three columns. It is opened by JavaScript (the dropdown code in
    enhancements.js), which adds the "open" class.
    Look based on https://www.w3schools.com/howto/howto_css_dropdown_navbar.asp
-   =========================================== */
+*/
 nav {
     position: relative;
 }
@@ -391,7 +393,7 @@ nav {
     background-color: rgba(var(--color-accent-rgb), 0.9);
 }
 
-/* ---------- Buttons ---------- */
+/* Buttons */
 button, .btn {
     background-color: var(--color-primary);
     color: #fff;
@@ -421,7 +423,7 @@ button[type="reset"] {
     opacity: 0.75;
 }
 
-/* ---------- Footer ---------- */
+/* Footer */
 footer {
     text-align: center;
     padding: 1.5rem 0;
@@ -430,7 +432,7 @@ footer {
     margin-top: 2rem;
 }
 
-/* ===== Explore overview: one column of rows, each with buttons to the other two pages ===== */
+/* Explore overview: one column of rows, each with buttons to the other two pages */
 .category-column {
     display: flex;
     flex-direction: column;
@@ -493,7 +495,7 @@ footer {
     color: #fff;
 }
 
-/* ===== ENHANCEMENT: photo gallery on the species page (see enhancement1.html) ===== */
+/* ENHANCEMENT: photo gallery on the species page (see enhancement1.html) */
 .gallery {
     display: flex;
     flex-wrap: wrap;
@@ -539,7 +541,7 @@ footer {
     padding: 0.3rem 0.2rem;
 }
 
-/* ===== ENHANCEMENT: flip cards on the species page (see enhancement1.html) ===== */
+/* ENHANCEMENT: flip cards on the species page (see enhancement1.html) */
 .flip-card-row {
     display: flex;
     flex-wrap: wrap;
@@ -615,7 +617,7 @@ footer {
     line-height: 1.4;
 }
 
-/* ===== ENHANCEMENT: attribute selectors and pseudo-elements (see enhancement1.html) ===== */
+/* ENHANCEMENT: attribute selectors and pseudo elements (see enhancement1.html) */
 
 /* icon in front of mailto links */
 a[href^="mailto:"]::before {
@@ -638,7 +640,7 @@ a[href^="http"]::after {
     padding-right: 4px;
 }
 
-/* ===== ENHANCEMENT: colours and messages for valid / invalid fields (JavaScript enhancement 2, see enhancement2.html) ===== */
+/* ENHANCEMENT: colours and messages for valid invalid fields (JavaScript enhancement 2, see enhancement2.html) */
 .field-bad {
     border: 2px solid #8b3a2f;
     background-color: rgba(139, 58, 47, 0.06);
@@ -664,7 +666,7 @@ a[href^="http"]::after {
     color: var(--color-primary);
 }
 
-/* list of all the problems, filled in by scripts/script.js when a form fails */
+/* list of all the problems, filled in by script.js when a form fails */
 .form-errors {
     border-left: 4px solid #8b3a2f;
     background-color: rgba(139, 58, 47, 0.08);
@@ -696,8 +698,9 @@ input, textarea, select {
     transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
-/* ===== page layout: main column on the left, manual box on the right ===== */
+/* page layout: main column on the left, manual box on the right */
 .page-layout {
+    --manual-w: clamp(220px, 20vw, 300px);
     width: 94%;
     max-width: 1500px;
     margin: 0 auto;
@@ -709,7 +712,7 @@ input, textarea, select {
 .page-layout main {
     flex: none;
     min-width: 0;
-    width: calc(100% - 30vw - 2rem);
+    width: calc(100% - var(--manual-w) - 2rem);
     max-width: none;
     margin: 0;
     float: left;
@@ -724,12 +727,12 @@ input, textarea, select {
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     border-top: 6px solid var(--color-accent);
-    padding: 1.2rem;
+    padding: 1rem;
     flex-basis: clamp(230px, 18vw, 320px);
     animation: rise 0.6s 0.3s ease backwards;
     animation-delay: 0.2s;
     float: right;
-    width: 30vw;
+    width: var(--manual-w);
     box-sizing: border-box;
     border: 4px solid var(--color-accent);
 }
@@ -782,7 +785,7 @@ input, textarea, select {
     background-color: #eae2d6;
 }
 
-/* ---------- Manual box text ---------- */
+/* Manual box text */
 .manual-box h3 {
     font-size: 1rem;
     margin: 0.6rem 0 0.4rem;
@@ -798,7 +801,7 @@ input, textarea, select {
     margin-bottom: 0.45rem;
 }
 
-/* ---------- Explore rows: photo on the left, text on the right, buttons below ---------- */
+/* Explore rows: photo on the left, text on the right, buttons below */
 .explore-row {
     display: flex;
     gap: 1.5rem;
@@ -860,7 +863,7 @@ input, textarea, select {
     color: #fff;
 }
 
-/* ---------- Contributor flip cards ---------- */
+/* Contributor flip cards */
 .contrib-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -938,7 +941,7 @@ input, textarea, select {
     overflow-y: auto;
 }
 
-/* ===== wide screens, fade-in on page load, call-to-action bar ===== */
+/* wide screens, fade in on page load, call to action bar */
 
 /* bigger text and layout on large screens so the page is not mostly empty space */
 html {
@@ -1025,7 +1028,7 @@ main > :nth-child(4) { animation-delay: 0.24s; }
 main > :nth-child(5) { animation-delay: 0.32s; }
 main > :nth-child(n+6) { animation-delay: 0.4s; }
 
-/* call-to-action bar at the bottom of every page */
+/* call to action bar at the bottom of every page */
 .cta-bar {
     margin: 1rem auto 0;
     padding: 1.6rem 2rem;
@@ -1051,7 +1054,7 @@ main > :nth-child(n+6) { animation-delay: 0.4s; }
 }
 
 
-/* ===== wide screens: bigger text, use the extra width ===== */
+/* wide screens: bigger text, use the extra width */
 
 /* sections sit side by side if there is room, otherwise they stack */
 #visual-cues,
@@ -1093,7 +1096,7 @@ textarea { width: 100%; }
 
 #intro h2 { column-span: all; }
 
-/* ---------- Motion: slide-in on load, slow drift on the banner ---------- */
+/* Motion: slide in on load, slow drift on the banner */
 @keyframes rise {
     from { opacity: 0; transform: translateY(14px); }
     to   { opacity: 1; transform: none; }
@@ -1121,8 +1124,10 @@ textarea { width: 100%; }
 }
 
 
-/* ===== Header: logo and tagline on the left, menu on the right.
-   The Menu button only shows on small screens (see mobile.css). ===== */
+/*
+ Header: logo and tagline on the left, menu on the right.
+   The Menu button only shows on small screens (see mobile.css).
+*/
 
 header h1, header p.tagline { grid-column: 1; }
 header p.tagline { margin-bottom: 0; }
@@ -1140,7 +1145,7 @@ header nav { grid-column: 2; grid-row: 1 / span 2; }
 }
 
 
-/* ---------- Scientist flip cards (initials on the front, plant photo on the back) ---------- */
+/* Scientist flip cards (initials on the front, plant photo on the back) */
 
 .contrib-initials {
     width: 130px;
@@ -1179,7 +1184,7 @@ header nav { grid-column: 2; grid-row: 1 / span 2; }
     border: none;
 }
 
-/* ---------- Photo credit lines ---------- */
+/* Photo credit lines */
 .photo-credit {
     display: block;
     font-style: normal;
@@ -1193,7 +1198,7 @@ header nav { grid-column: 2; grid-row: 1 / span 2; }
 .contrib-back figcaption { font-size: 0.72rem; margin-top: 0.25rem; line-height: 1.3; }
 .contrib-back figcaption a { color: #fff; }
 
-/* ---------- Video page: box for the embedded video ---------- */
+/* Video page: box for the embedded video */
 .video-slot {
     width: 100%;
     max-width: 900px;
@@ -1206,7 +1211,7 @@ header nav { grid-column: 2; grid-row: 1 / span 2; }
 
 .video-slot iframe { width: 100%; height: 100%; border: 0; display: block; }
 
-/* ---------- Profile page (like the sample, everything centred) ---------- */
+/* Profile page (like the sample, everything centred) */
 #profile-card,
 #personal-details,
 .profile-email {
@@ -1222,7 +1227,7 @@ header nav { grid-column: 2; grid-row: 1 / span 2; }
 
 .profile-email .btn { margin: 0; padding: 0.7rem 2.2rem; }
 
-/* ---------- Home: cards that link to the three Explore pages ---------- */
+/* Home: cards that link to the three Explore pages */
 #explore-links {
     display: flex;
     flex-wrap: wrap;
@@ -1239,9 +1244,9 @@ header nav { grid-column: 2; grid-row: 1 / span 2; }
 }
 #explore-links article h3 { margin-top: 0; }
 
-/* ---------- Forms: fieldsets in one column (replaces the two-column grid above) ---------- */
+/* Forms: fieldsets in one column (replaces the two column grid above) */
 
-/* ---------- Footer: four columns on a dark band, copyright line below ---------- */
+/* Footer: four columns on a dark band, copyright line below */
 body > footer {
     width: 100%;
     max-width: none;
@@ -1305,11 +1310,11 @@ body > footer .footer-legal {
 }
 
 
-/* ===== Manual box (aside): floats right, 30% wide, coloured border ===== */
+/* Manual box (aside): floats right, 30% wide, coloured border */
 
 .cta-bar, body > footer { clear: both; }
 
-/* h1 uses the font shorthand: style weight size/line-height family */
+/* h1 uses the font shorthand: style, weight, size and line height, family */
 h1 { font: normal 700 2rem/1.25 Georgia, "Times New Roman", serif; }
 
 /* radio and checkbox rows */
@@ -1332,7 +1337,7 @@ fieldset.inline-group { margin: 1rem 0; }
 }
 
 
-/* ===== JavaScript additions (Assignment 2) ===== */
+/* JavaScript additions (Assignment 2) */
 
 /* the Enquire button on each plant */
 .explore-row-links .btn-enquire {
@@ -1345,7 +1350,7 @@ fieldset.inline-group { margin: 1rem 0; }
     background-color: rgba(var(--color-primary-rgb), 0.55);
 }
 
-/* preview pop-up before a form is sent (JavaScript enhancement 3) */
+/* preview pop up before a form is sent (JavaScript enhancement 3) */
 #preview-dialog {
     width: min(90vw, 34rem);
     max-height: 85vh;

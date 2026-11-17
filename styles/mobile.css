@@ -1,8 +1,8 @@
-/* ===========================================
-   Canopy - mobile.css (phones)
+/*
+   Canopy mobile.css (phones)
    Only loaded when the screen is 700px wide or less, using the media
    attribute on the <link> tag in each HTML page.
-   =========================================== */
+*/
 
 body {
     font-size: 95%;
@@ -17,13 +17,13 @@ main, footer {
 }
 
 /* menu opens as a column instead of a row (the toggle itself is in style.css) */
-/* no hover on touch screens, so the Explore sub-links are always shown under it */
+/* no hover on touch screens, so the Explore sub links are always shown under it */
 .submenu ul {
     flex-wrap: wrap;
     gap: 0.5rem;
 }
 
-/* explore rows: text and buttons stacked, full-width buttons that are easy to tap */
+/* explore rows: text and buttons stacked, full width buttons that are easy to tap */
 .category-row {
     flex-direction: column;
     align-items: stretch;
@@ -55,7 +55,7 @@ main, footer {
     overflow-x: auto;
 }
 
-/* full-width buttons */
+/* full width buttons */
 form button {
     margin: 0.3rem 0;
 }
@@ -117,7 +117,7 @@ iframe {
     height: 480px;
 }
 
-/* wide-screen layouts go back to one column */
+/* wide screen layouts go back to one column */
 #visual-cues { display: block; }
 #visual-cues figure { margin: 1rem 0; }
 
@@ -130,14 +130,14 @@ iframe {
 .cta-actions { width: 100%; }
 .cta-actions .btn { flex: 1; text-align: center; }
 
-/* wide-screen layouts go back to one column */
+/* wide screen layouts go back to one column */
 #intro { column-count: 1; }
 
 #hero img { aspect-ratio: 16 / 9; }
 
 .profile-photo { align-self: center; }
 
-/* ===== phone header: Menu button, logo, tagline underneath, menu opens as a light panel ===== */
+/* phone header: Menu button, logo, tagline underneath, menu opens as a light panel */
 header {
     position: relative;
     grid-template-columns: auto 1fr;
@@ -201,7 +201,7 @@ header p.tagline { grid-column: 1 / -1; grid-row: 2; font-size: 0.85rem; }
     transform: none;
 }
 
-/* explore sub-links are always listed under it, with a line on the left */
+/* explore sub links are always listed under it, with a line on the left */
 .dropdown {
     position: static;
     display: block;
