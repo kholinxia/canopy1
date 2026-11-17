@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-  acknowledgement.html - acknowledgement page for Assignment 1 (photos, references, CSS and HTML techniques)
+  acknowledgement.html - acknowledgement page (photos, references, CSS/HTML techniques and JavaScript sources)
   COS10005 Web Development, Assignment 2 (Semester 2, 2026)
   Lincoln Kho Jia Heng, 105808759
 -->
@@ -10,8 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Lincoln Kho Jia Heng (105808759)" />
     <meta name="keywords" content="Sarawak, plants, ERT, citizen science, Dipterocarpaceae, Burseraceae, biodiversity" />
-    <meta name="description" content="Photo credits and sources used on the Canopy website." />
-    <title>Canopy | Acknowledgement 1</title>
+    <meta name="description" content="Photo credits, references and code sources used on the Canopy website." />
+    <title>Canopy | Acknowledgement</title>
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 700px)" />
     <script src="scripts/script.js" defer="defer"></script>
@@ -52,12 +52,11 @@
     <div class="page-layout">
     <!-- main part of the page -->
     <main>
-        <h2>Acknowledgement 1</h2>
+        <h2>Acknowledgement</h2>
         <p>
             Canopy uses photos supplied by other people and knowledge gathered from published sources. Photos and references are
-            listed separately below: first who supplied each photo, then where the knowledge on this website was
-            learned (plants, scientists and building techniques). All descriptions were written in my own words.
-            The JavaScript added for Assignment 2 is credited on <a href="acknowledgement2.html">Acknowledgement 2</a>.
+            listed first: who supplied each photo, then where the knowledge on this website was learned (plants, scientists and
+            building techniques). The last part credits the JavaScript. All descriptions were written in my own words.
         </p>
 
         <!-- section: photo credits -->
@@ -144,6 +143,76 @@
             </dl>
         </section>
 
+
+        <!-- section: JavaScript (Assignment 2) -->
+        <section id="ack-javascript">
+            <h3>JavaScript (Assignment 2)</h3>
+            <p>
+                All the JavaScript was written by me. These pages were read to check how each feature works, and the
+                same links are in the comments of <code>scripts/script.js</code> and <code>scripts/enhancements.js</code>.
+            </p>
+<!-- section: required parts -->
+        <h4>Assignment 2 requirements</h4>
+            <!-- definition list -->
+            <dl>
+                <dt>Passing the plant name between pages (sessionStorage)</dt>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API">MDN Web Docs &#8211; Web Storage API</a></dd>
+                <dt>Building the plant list and the Explore menu from arrays</dt>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement">MDN Web Docs &#8211; Document.createElement()</a></dd>
+                <dt>Checking the form fields (regular expressions)</dt>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions">MDN Web Docs &#8211; Regular expressions</a></dd>
+            </dl>
+        
+
+        
+<!-- section: enhancements -->
+        <h4>Enhancements (explained on <a href="enhancement2.html">Enhancements 2</a>)</h4>
+            <dl>
+                <dt>1. Identify a plant from a photo</dt>
+                <dd><a href="https://my.plantnet.org/doc/getting-started/introduction">Pl@ntNet &#8211; API documentation (third-party service; plant identification by Pl@ntNet)</a></dd>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">MDN Web Docs &#8211; Using the Fetch API</a></dd>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData">MDN Web Docs &#8211; FormData</a></dd>
+                <dt>2. Sending the form to an API</dt>
+                <dd><a href="https://docs.web3forms.com/">Web3Forms &#8211; documentation (third-party service)</a></dd>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">MDN Web Docs &#8211; Using the Fetch API</a></dd>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData">MDN Web Docs &#8211; FormData</a></dd>
+                <dt>3. Preview pop-up before sending</dt>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal">MDN Web Docs &#8211; HTMLDialogElement.showModal()</a></dd>
+                <dt>4. Plant slideshow</dt>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/setInterval">MDN Web Docs &#8211; setInterval()</a></dd>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia">MDN Web Docs &#8211; Window.matchMedia()</a></dd>
+                <dt>5. Search and filter the species</dt>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event">MDN Web Docs &#8211; input event</a></dd>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent">MDN Web Docs &#8211; Node.textContent</a></dd>
+            </dl>
+        
+
+        
+<!-- section: extras -->
+        <h4>Other JavaScript (not counted as enhancements)</h4>
+            <dl>
+                <dt>Dropdown menu opened with JavaScript</dt>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseenter_event">MDN Web Docs &#8211; mouseenter event</a></dd>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-expanded">MDN Web Docs &#8211; aria-expanded</a></dd>
+                <dd>The look of the dropdown is the one from Assignment 1, see the code and design techniques above.</dd>
+                <dt>Saved draft and comment counter</dt>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API">MDN Web Docs &#8211; Web Storage API</a></dd>
+                <dt>Menu highlights the current page</dt>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/API/Location/pathname">MDN Web Docs &#8211; Location.pathname</a></dd>
+                <dt>Live feedback while typing</dt>
+                <dd><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions">MDN Web Docs &#8211; Regular expressions</a></dd>
+            </dl>
+        
+
+        
+            <h4>Third-party code</h4>
+            <p>
+                No library, framework or copied script is used. The only third-party parts are two online services. Web3Forms receives the form data and emails it to me
+                (its access key is a public key made for use in page code). Pl@ntNet identifies plants from photos on the Contribute
+                and Identify pages; its API key is my own free-plan key.
+            </p>
+        </section>
+
         <hr />
 
         <!-- aside: a related note -->
@@ -160,7 +229,8 @@
         <ol>
             <li>Photos lists who supplied each image and where it appears, with a link to the source.</li>
             <li>References lists where the knowledge on this website was learned.</li>
-            <li>Code and design techniques credit the methods used to build the site.</li>
+            <li>Code and design techniques credit the methods used to build the pages.</li>
+            <li>JavaScript lists the sources for the Assignment 2 requirements, the five enhancements and the other scripts.</li>
         </ol>
     </aside>
     </div>
@@ -209,8 +279,7 @@
                     <li><a href="video.html">Video page</a></li>
                     <li><a href="enhancement1.html">Enhancements 1 (CSS)</a></li>
                     <li><a href="enhancement2.html">Enhancements 2 (JavaScript)</a></li>
-                    <li><a href="acknowledgement.html" aria-current="page">Acknowledgement 1</a></li>
-                    <li><a href="acknowledgement2.html">Acknowledgement 2</a></li>
+                    <li><a href="acknowledgement.html" aria-current="page">Acknowledgement</a></li>
                 </ul>
             </nav>
         </div>

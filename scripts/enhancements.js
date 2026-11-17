@@ -3,8 +3,8 @@
    COS10005 Web Development, Assignment 2
    Lincoln Kho Jia Heng, 105808759
 
-   The five JavaScript enhancements, each one in its own function.
-   They are listed and explained on enhancement2.html.
+   My five enhancements, each in its own function.
+   enhancement2.html explains them for people reading the site.
 
      1. Identify a plant from a photo (Pl@ntNet API)
      2. Sending the form to an API (Web3Forms) with fetch()
@@ -12,25 +12,24 @@
      4. Plant slideshow on the home page
      5. Search and filter on the Species page
 
-   They are numbered from the hardest (1) to the easiest (5). The dropdown
-   menu, the menu highlight, the live feedback while typing and the saved
-   form draft are also in this file, but they are not counted as enhancements.
+   1 is the hardest and 5 is the easiest. The dropdown menu, menu highlight,
+   live feedback and saved draft are in here too, but I'm not counting them
+   as enhancements.
 
-   This file needs script.js to be loaded first. It uses the Canopy
-   object from there (the rules, the checks and the helpers).
+   Load script.js first. This file borrows the Canopy object from it
+   (the rules, the checks and the helpers).
    =========================================== */
 
 "use strict";
 
 /* ---------- Other A (not counted): dropdown menu opened with JavaScript ----------
-   The Explore link has a dropdown with Families, Genera and Species. The CSS
-   only describes the closed and the open look (.dropdown and .open); this code
-   decides when it is open:
-     - the mouse moves onto Explore: it opens (and shuts a moment after the mouse leaves)
-     - the keyboard moves onto Explore or a link inside it: it opens
-     - Escape, or a click anywhere else: it closes
-     - touch screens have no hover, so the first tap opens it and the second tap follows the link
-   aria-expanded tells screen readers whether the menu is open.
+   Explore has a dropdown (Families, Genera, Species). The CSS only has the closed
+   and open looks (.dropdown and .open). This code decides WHEN it opens:
+     - mouse on Explore: opens, and closes a moment after the mouse leaves
+     - keyboard on Explore or a link inside: opens
+     - Escape or a click somewhere else: closes
+     - phones have no hover, so the first tap opens it and the second follows the link
+   aria-expanded is there so screen readers know if it's open.
    Ideas: MDN, mouseenter event and aria-expanded
    https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseenter_event
    https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-expanded */
@@ -54,7 +53,7 @@ Canopy.makeDropdown = function (item) {
 
     item.addEventListener("mouseenter", open);
     item.addEventListener("mouseleave", function () {
-        /* a short wait so the menu does not snap shut if the mouse slips off */
+        /* tiny delay, otherwise the menu slams shut when the mouse slips off for a second */
         timer = window.setTimeout(close, 250);
     });
 
@@ -71,8 +70,8 @@ Canopy.makeDropdown = function (item) {
         }
     });
 
-    /* remember if the menu was already open before this press, because the
-       press itself opens it (touch screens fire hover events on a tap) */
+    /* work out if it was already open BEFORE this press. A tap on a phone fires
+       hover first, so by the time the click comes it already looks open */
     link.addEventListener("pointerdown", function () {
         wasOpen = item.classList.contains("open");
     });
@@ -98,9 +97,9 @@ Canopy.setupDropdown = function () {
 };
 
 /* ---------- Other B (not counted): highlight the current page in the menu ----------
-   Reads the file name from the address (for example "enquiry.html") and gives
-   the matching menu link the "active" class, which the CSS styles.
-   The Families, Genera and Species pages also light up Explore.
+   Takes the file name from the address (like "enquiry.html") and gives the
+   matching menu link the "active" class. The CSS does the colouring.
+   The Families, Genera and Species pages light up Explore as well.
    Idea: MDN, Location.pathname
    https://developer.mozilla.org/en-US/docs/Web/API/Location/pathname */
 Canopy.highlightCurrentPage = function () {
@@ -108,7 +107,7 @@ Canopy.highlightCurrentPage = function () {
     if (file === "") {
         file = "index.html";
     }
-    /* these pages belong under the Explore menu item */
+    /* these all count as Explore */
     var exploreGroup = ["explore.html", "explore1.html", "explore2.html", "explore3.html"];
     if (exploreGroup.indexOf(file) !== -1) {
         file = "explore.html";
@@ -123,9 +122,9 @@ Canopy.highlightCurrentPage = function () {
 };
 
 /* ---------- Other C (not counted): live feedback while typing ----------
-   Uses the same rules and regular expressions as the submit check in script.js,
-   but shows the result next to each field straight away. A field is checked
-   when you leave it, and then again on every key press.
+   Same rules and regular expressions as the submit check in script.js, but the
+   message shows up next to the field straight away. A field is checked when you
+   leave it, and after that on every key press.
    Idea: MDN, Regular expressions
    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions */
 Canopy.getNote = function (rule) {
@@ -164,8 +163,9 @@ Canopy.showFieldResult = function (rule) {
 Canopy.setupLiveFeedback = function (form) {
     var rules = Canopy.rules[form.id];
     for (var i = 0; i < rules.length; i++) {
-        /* the empty message boxes are made now and keep their height, so the
-           form does not jump when the first message appears */
+        /* make the empty message boxes now and give them a height. Before I did this
+           the whole form jumped when the first message appeared, and a click on the
+           checkbox missed because it had moved */
         Canopy.getNote(rules[i]);
         (function (rule) {
             var field = Canopy.byId(rule.id);
@@ -182,7 +182,7 @@ Canopy.setupLiveFeedback = function (form) {
             });
         })(rules[i]);
     }
-    /* the Cancel button clears the colours and messages as well */
+    /* Cancel should clear the colours and messages too */
     form.addEventListener("reset", function () {
         var notes = form.querySelectorAll(".field-note");
         for (var n = 0; n < notes.length; n++) {
@@ -199,27 +199,27 @@ Canopy.setupLiveFeedback = function (form) {
 };
 
 /* ---------- Enhancement 1: identify a plant from a photo (Pl@ntNet API) ----------
-   On the Contribute page and on the Identify page, choose a photo, say what part
-   of the plant it shows and press "Identify this plant". The photo is sent to the Pl@ntNet
-   identification service. It answers with its best guesses and a score for each,
-   and one click puts a guess into the "Plant's name" box.
-   Pl@ntNet needs an API key (made on my.plantnet.org). The key goes in the web
-   address, not in the body. Pl@ntNet calls it a private key; it is written here
-   because the site has no server to hide it in, so it is only suitable for this
-   assignment. For use in a browser, the key's settings on my.plantnet.org must have
-   "expose my API key" ticked and the address of the site (for example
-   http://localhost:8000) added to the allowed domains. The free plan allows 500
-   identifications a day.
+   Works on the Contribute page and the Identify page. Pick a photo, say what part
+   of the plant it shows, press "Identify this plant". The photo goes to Pl@ntNet,
+   which sends back its best guesses with a score each. On Contribute, one click
+   copies a guess into the "Plant's name" box.
+   You need an API key from my.plantnet.org, and it goes in the web address, not the
+   body. Pl@ntNet says it's a private key, but this site has no server to hide it on,
+   so it just sits here in the code. That is fine for an assignment and not fine for
+   a real site, so I'll make a new key after marking. To make it work in a browser:
+   tick "expose my API key" in the key settings, and add the site's address (e.g.
+   http://localhost:8000) to the allowed domains. I got a 403 error before I did
+   that. The free plan gives 500 identifications a day.
    Ideas: Pl@ntNet API documentation, MDN Using the Fetch API and FormData
    https://my.plantnet.org/doc/getting-started/introduction
    https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch */
 Canopy.plantnetKey = "2b10vhm3qmD4oZ9owlsy2Z52vO";
 Canopy.plantnetUrl = "https://my-api.plantnet.org/v2/identify/all";
 
-/* Words for the "part of the plant" menu: [value Pl@ntNet understands, text shown] */
+/* Options for the "part of the plant" menu: [what Pl@ntNet understands, what the visitor sees] */
 Canopy.organs = [["auto", "Not sure"], ["leaf", "Leaf"], ["flower", "Flower"], ["fruit", "Fruit"], ["bark", "Bark"], ["habit", "Whole tree"]];
 
-/* Writes a message into the results box. "kind" is a class: identify-wait, identify-error or "" */
+/* Puts a message in the results box. "kind" is a class: identify-wait, identify-error or "" */
 Canopy.identifyMessage = function (box, text, kind) {
     while (box.firstChild) {
         box.removeChild(box.firstChild);
@@ -232,9 +232,9 @@ Canopy.identifyMessage = function (box, text, kind) {
     box.appendChild(note);
 };
 
-/* Shows each guess. On the Contribute page each guess has a button that copies the
-   name into the form (nameField). On the Identify page there is no form, so a guess
-   that is one of the eight species on this site gets a link to its profile instead. */
+/* Show each guess. On Contribute every guess gets a button that copies the name into
+   the form (nameField). Identify has no form, so if a guess is one of our eight
+   species it gets a link to that profile instead. */
 Canopy.identifyResults = function (box, results, nameField) {
     while (box.firstChild) {
         box.removeChild(box.firstChild);
@@ -262,7 +262,7 @@ Canopy.identifyResults = function (box, results, nameField) {
             item.appendChild(Canopy.makeButton("Use this name", "Use " + name + " as the plant name", (function (chosen) {
                 return function () {
                     nameField.value = chosen;
-                    /* tell the other scripts (draft and live feedback) that the box changed */
+                    /* let the draft saver and live feedback know the box changed, they won't notice otherwise */
                     nameField.dispatchEvent(new Event("input", { bubbles: true }));
                     nameField.focus();
                 };
@@ -282,14 +282,14 @@ Canopy.identifyResults = function (box, results, nameField) {
     box.appendChild(list);
 };
 
-/* Sends up to five photos to Pl@ntNet and shows what comes back in the "results" box.
-   "organ" is the part of the plant, "button" is switched off while waiting. */
+/* Send up to five photos to Pl@ntNet and show the answer in the results box.
+   "organ" = which part of the plant, "button" is turned off while we wait. */
 Canopy.identifyPhotos = function (files, organ, button, results, nameField) {
     if (files.length === 0) {
         Canopy.identifyMessage(results, "Choose a photo first.", "identify-error");
         return;
     }
-    /* Pl@ntNet accepts at most 5 photos of the same plant, and one organ for each */
+    /* Pl@ntNet takes 5 photos max, all of the same plant, each with its own organ */
     var data = new FormData();
     var used = Math.min(files.length, 5);
     for (var p = 0; p < used; p++) {
@@ -329,7 +329,7 @@ Canopy.identifyPhotos = function (files, organ, button, results, nameField) {
     });
 };
 
-/* makes the "What does the photo show?" menu */
+/* builds the "What does the photo show?" menu */
 Canopy.makeOrganMenu = function (id) {
     var menu = document.createElement("select");
     menu.setAttribute("id", id);
@@ -342,7 +342,7 @@ Canopy.makeOrganMenu = function (id) {
     return menu;
 };
 
-/* Contribute page: the identify box goes under the photo upload */
+/* Contribute page: the identify box sits under the photo upload */
 Canopy.setupIdentify = function (form) {
     var photo = form.elements["plant-photo"];
     var nameField = form.elements["plant-name"];
@@ -374,8 +374,8 @@ Canopy.setupIdentify = function (form) {
     row.parentNode.insertBefore(wrapper, row.nextSibling);
 };
 
-/* Identify page: a photo picker, a small preview of the photo and the same identify
-   button. Nothing is sent anywhere except to Pl@ntNet, and nothing is saved. */
+/* Identify page: photo picker, small preview, same identify button. The photo only
+   goes to Pl@ntNet and nothing is saved anywhere. */
 Canopy.setupIdentifyPage = function (box) {
     var photoLabel = document.createElement("label");
     photoLabel.setAttribute("for", "identify-photo");
@@ -402,7 +402,7 @@ Canopy.setupIdentifyPage = function (box) {
         Canopy.identifyPhotos(photo.files, menu.value, button, results, null);
     });
 
-    /* show the chosen photo so the visitor can check it is the right one */
+    /* show the photo they picked so they can check it's the right one */
     photo.addEventListener("change", function () {
         if (photo.files.length > 0) {
             preview.setAttribute("src", URL.createObjectURL(photo.files[0]));
@@ -422,10 +422,10 @@ Canopy.setupIdentifyPage = function (box) {
 };
 
 /* ---------- Enhancement 3: preview pop-up before sending ----------
-   When the form is valid, the submit is held back and a pop-up shows what
-   will be sent. "Edit" closes it, "Confirm and send" sends the form.
-   Uses the HTML dialog element. Browsers that do not know it send the form
-   straight away.
+   If the form is valid I hold the submit back and show a pop-up with what is
+   about to be sent. "Edit" closes it, "Confirm and send" sends it.
+   It uses the HTML dialog element. A browser that doesn't have dialog just
+   sends the form straight away.
    Idea: MDN, HTMLDialogElement.showModal()
    https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal */
 Canopy.labelFor = function (field) {
@@ -433,7 +433,7 @@ Canopy.labelFor = function (field) {
     return label === null ? field.name : label.textContent.replace(":", "").trim();
 };
 
-/* Collects "label / value" pairs for everything the visitor filled in */
+/* Gathers "label / value" pairs of whatever the visitor typed */
 Canopy.collectValues = function (form) {
     var pairs = [];
     var done = {};
@@ -513,10 +513,10 @@ Canopy.showPreview = function (form) {
 Canopy.setupPreview = function (form) {
     form.addEventListener("submit", function (event) {
         if (event.defaultPrevented) {
-            return;     /* the validation in script.js found a problem */
+            return;     /* script.js found a mistake, so stop here */
         }
         if (typeof HTMLDialogElement !== "function") {
-            return;     /* no dialog support: send the form as normal */
+            return;     /* no dialog in this browser, so just send it normally */
         }
         event.preventDefault();
         Canopy.showPreview(form);
@@ -524,20 +524,20 @@ Canopy.setupPreview = function (form) {
 };
 
 /* ---------- Enhancement 2: sending the form to an API (Web3Forms) ----------
-   After the checks pass and the preview is confirmed, the form data is sent
-   with fetch() instead of leaving the page. Web3Forms is a free form API: it
-   receives the data and emails it to me, and answers with JSON that says if it
-   worked. The page then shows a thank-you or an error message.
+   Once the checks pass and the preview is confirmed, fetch() sends the data and
+   the visitor stays on the page. Web3Forms is a free form API: it gets the data,
+   emails it to me, and replies with JSON saying if it worked. Then the page shows
+   a thank-you or an error. (This is how I got the form working with no server.)
    Ideas: MDN, Using the Fetch API and FormData; Web3Forms documentation
    https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
    https://developer.mozilla.org/en-US/docs/Web/API/FormData
    https://docs.web3forms.com/ */
 
-/* The access key is a hidden field in each form. The same address is also in each
-   form's action attribute, so the form still works if JavaScript is switched off. */
+/* The access key is a hidden field in each form. The address is also in the form's
+   action attribute, so it still sends if JavaScript is off. */
 Canopy.formEndpoint = "https://api.web3forms.com/submit";
 
-/* Shows a result message (success or failure) in the same box as the errors */
+/* Success or failure message goes in the same box as the errors */
 Canopy.showStatus = function (message, good) {
     var box = Canopy.byId("form-errors");
     while (box.firstChild) {
@@ -549,8 +549,8 @@ Canopy.showStatus = function (message, good) {
     box.appendChild(note);
 };
 
-/* Sends the form fields with fetch(). The free Web3Forms plan does not take file
-   uploads, so only the names of the chosen photos are sent. */
+/* Sends the fields with fetch(). Free Web3Forms can't take file uploads (that's a
+   paid thing), so I only send the photo file names, not the photos. */
 Canopy.sendForm = function (form) {
     var data = new FormData(form);
     var fileInput = form.querySelector("input[type=file]");
@@ -583,11 +583,11 @@ Canopy.sendForm = function (form) {
 };
 
 /* ---------- Enhancement 4: plant slideshow on the home page ----------
-   Shows the eight species one at a time. It starts on a random plant, moves on
-   by itself every five seconds, and has Previous / Next buttons, a Pause /
-   Play button and one dot for each plant. It pauses while the mouse or the
-   keyboard focus is inside it, the left and right arrow keys change the plant,
-   and it starts paused if the visitor has asked their device for less motion.
+   Shows the eight species one at a time. It starts on a random plant and moves
+   on every five seconds by itself. There are Previous / Next buttons, Pause / Play
+   and a dot for each plant. It stops while the mouse or keyboard focus is on it,
+   left and right arrow keys change the plant, and it starts paused for people who
+   told their device they want less motion.
    Ideas: MDN, setInterval() and matchMedia()
    https://developer.mozilla.org/en-US/docs/Web/API/setInterval
    https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia */
@@ -602,7 +602,7 @@ Canopy.slides = [
     { name: "Santiria apiculata", image: "santiria-apiculata", fact: "Often grows in swampy ground; fruit ripens from green to red to purplish-black." }
 ];
 
-/* makes a small button with some text */
+/* little helper that makes a button */
 Canopy.makeButton = function (text, label, onClick) {
     var button = document.createElement("button");
     button.setAttribute("type", "button");
@@ -616,7 +616,7 @@ Canopy.makeButton = function (text, label, onClick) {
 };
 
 Canopy.setupSlideshow = function (box) {
-    var current = Math.floor(Math.random() * Canopy.slides.length);   /* random start */
+    var current = Math.floor(Math.random() * Canopy.slides.length);   /* start on a random plant so it isn't always the same one */
     var playing = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var timer = null;
     var dots = [];
@@ -626,7 +626,7 @@ Canopy.setupSlideshow = function (box) {
     var controls = document.createElement("div");
     controls.setAttribute("class", "slide-controls");
 
-    /* fills the stage with the plant at position "index" */
+    /* put the plant at position "index" on the stage */
     var show = function (index) {
         current = (index + Canopy.slides.length) % Canopy.slides.length;
         var plant = Canopy.slides[current];
@@ -686,7 +686,7 @@ Canopy.setupSlideshow = function (box) {
         update();
     });
 
-    /* shows the right words on the Pause / Play button and starts or stops the timer */
+    /* change the Pause / Play wording and start or stop the timer */
     var update = function () {
         playButton.firstChild.nodeValue = playing ? "Pause" : "Play";
         playButton.setAttribute("aria-label", playing ? "Pause the slideshow" : "Play the slideshow");
@@ -716,7 +716,7 @@ Canopy.setupSlideshow = function (box) {
     }
     controls.appendChild(dotBox);
 
-    /* pause while the visitor is using it, then carry on */
+    /* stop while they're using it, carry on when they leave */
     box.addEventListener("mouseenter", function () { if (playing) { stop(); } });
     box.addEventListener("mouseleave", function () { if (playing) { start(); } });
     box.addEventListener("focusin", function () { if (playing) { stop(); } });
@@ -739,11 +739,11 @@ Canopy.setupSlideshow = function (box) {
 };
 
 /* ---------- Enhancement 5: search and filter on the Species page ----------
-   Adds a search box and a conservation status menu above the species list.
-   Typing or choosing an option hides the profiles (and gallery pictures) that
-   do not match, and a line says how many are showing. The search looks at
-   the whole profile text, so a local name such as "keruing" works too. The
-   status options are read from the profiles, not typed in by hand.
+   A search box and a conservation status menu above the species list. Typing or
+   picking an option hides the profiles (and gallery pictures) that don't match,
+   and a line says how many are left. The search reads the whole profile text, so a
+   local name like "keruing" works too. I read the status options from the profiles
+   instead of typing them in, so if I add a species it just works.
    Ideas: MDN, input event and Node.textContent
    https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
    https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent */
@@ -847,10 +847,9 @@ Canopy.setupSpeciesFilter = function (gallery) {
 };
 
 /* ---------- Other D (not counted): saved draft and comment counter ----------
-   While you type, the form is saved in localStorage, so a closed tab or a
-   page refresh does not lose it. The draft is removed after the form is
-   sent or reset. A counter under the Comments box shows how many characters
-   have been typed.
+   While you type, the form is saved in localStorage, so closing the tab by
+   accident or refreshing doesn't lose it. The draft is deleted once the form is
+   sent or reset. There is also a character counter under the Comments box.
    Idea: MDN, Web Storage API
    https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API */
 Canopy.draftKey = function (form) {
@@ -875,8 +874,8 @@ Canopy.saveDraft = function (form) {
     localStorage.setItem(Canopy.draftKey(form), JSON.stringify(draft));
 };
 
-/* Puts the saved values back, but never over something that is already
-   filled in (for example the plant chosen with an Enquire button) */
+/* Put the saved values back, but never over something already filled in
+   (like the plant picked with an Enquire button, that should win) */
 Canopy.restoreDraft = function (form) {
     var saved = localStorage.getItem(Canopy.draftKey(form));
     if (saved === null) {
@@ -891,7 +890,7 @@ Canopy.restoreDraft = function (form) {
         if (field.type === "checkbox") {
             field.checked = draft[name];
         } else if (field.length !== undefined && field.type === undefined) {
-            /* a group of radio buttons */
+            /* radio buttons come as a group */
             for (var r = 0; r < field.length; r++) {
                 if (field[r].value === draft[name]) { field[r].checked = true; }
             }
@@ -912,7 +911,7 @@ Canopy.setupDraft = function (form) {
     form.addEventListener("reset", function () { Canopy.clearDraft(form); });
 };
 
-/* The counter under the Comments box */
+/* The counter under Comments */
 Canopy.setupCounter = function (form) {
     var box = form.querySelector("textarea");
     var counter = document.createElement("span");
